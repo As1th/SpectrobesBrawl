@@ -109,6 +109,9 @@ public class SpikanControl : MonoBehaviour
     public void spawnCHParts()
     {
         Instantiate(CHParts, tailball.transform.position, transform.rotation);
+       
+        Instantiate(CHParts, tailball.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y+35, transform.eulerAngles.z));
+        Instantiate(CHParts, tailball.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 35, transform.eulerAngles.z));
     }
 
     public void startIdle()
