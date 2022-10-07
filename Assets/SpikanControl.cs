@@ -12,7 +12,8 @@ public class SpikanControl : MonoBehaviour
     public Transform cam;
     public float turnSmoothTime = 0.1f;
     public float attackCoolDown = 0f;
-
+    public GameObject CHParts;
+    public GameObject tailball;
     Vector3 velocity;
     
     void Start()
@@ -104,10 +105,14 @@ public class SpikanControl : MonoBehaviour
 
     }
 
+
+    public void spawnCHParts()
+    {
+        Instantiate(CHParts, tailball.transform.position, transform.rotation);
+    }
+
     public void startIdle()
     {
-
-
         attackCoolDown = 30;
         animator.SetTrigger("Idle");
         isAttacking = false;
