@@ -13,11 +13,11 @@ TagManager:
   - Water
   - UI
   - KrawlHitBox
-  - 
-  - 
-  - 
-  - 
-  - 
+  - KrawlHurtBox
+  - SpecHitBox
+  - SpecHurtBox
+  - KrawlBody
+  - SpecBody
   - 
   - 
   - 

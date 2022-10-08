@@ -25,10 +25,12 @@ public class SpikanControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (!isAttacking)
         {
-            
-       
+
+
             if (Input.GetButtonDown("Attack"))
             {
                 if (attackCoolDown == 0)
@@ -37,7 +39,7 @@ public class SpikanControl : MonoBehaviour
                     animator.SetTrigger("Attack");
                     isAttacking = true;
                 }
-                
+
             }
             else if (Input.GetButtonDown("Attack2"))
             {
@@ -47,7 +49,7 @@ public class SpikanControl : MonoBehaviour
                     animator.SetTrigger("Attack2");
                     isAttacking = true;
                 }
-                
+
             }
             else if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
             {
@@ -64,21 +66,21 @@ public class SpikanControl : MonoBehaviour
                     moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                     controller.Move(moveDir.normalized * speed * Time.deltaTime);
                 }
-                
+
                 animator.SetBool("IsRunning", true);
                 if (Input.GetButtonDown("Dash"))
                 {
                     if (dashcooldown == 0 && attackCoolDown == 0)
                     {
-                       
-                      
+
+
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;
                         GetComponent<ImpactReceiver>().AddImpact(moveDir, 485);
                         dashcooldown = 38;
-                
+
                     }
-                    
+
                 }
             }
             else
@@ -88,9 +90,17 @@ public class SpikanControl : MonoBehaviour
             }
 
         }
+       
 
 
 
+
+
+    }
+
+
+    public void FixedUpdate()
+    {
 
         if (attackCoolDown > 0)
         {
@@ -102,7 +112,6 @@ public class SpikanControl : MonoBehaviour
         {
             dashcooldown--;
         }
-
     }
 
 
