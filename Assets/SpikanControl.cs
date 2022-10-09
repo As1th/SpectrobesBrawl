@@ -90,17 +90,7 @@ public class SpikanControl : MonoBehaviour
             }
 
         }
-       
 
-
-
-
-
-    }
-
-
-    public void FixedUpdate()
-    {
 
         if (attackCoolDown > 0)
         {
@@ -112,6 +102,16 @@ public class SpikanControl : MonoBehaviour
         {
             dashcooldown--;
         }
+
+
+
+    }
+
+
+    public void FixedUpdate()
+    {
+
+        
     }
 
 
@@ -125,7 +125,7 @@ public class SpikanControl : MonoBehaviour
 
     public void startIdle()
     {
-        attackCoolDown = 30;
+        attackCoolDown = 20;
         animator.SetTrigger("Idle");
         isAttacking = false;
     }
