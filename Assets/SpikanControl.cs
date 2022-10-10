@@ -125,7 +125,7 @@ public class SpikanControl : MonoBehaviour
 
     public void startIdle()
     {
-        attackCoolDown = 20;
+        attackCoolDown = 18;
         animator.SetTrigger("Idle");
         isAttacking = false;
     }
