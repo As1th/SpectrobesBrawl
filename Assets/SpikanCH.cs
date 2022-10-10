@@ -21,7 +21,7 @@ public class SpikanCH : MonoBehaviour
         float hVel = new Vector3(controller.velocity.x, 0, controller.velocity.z).magnitude;
         float speedForward = Vector3.Dot(controller.velocity, transform.forward);
         float speedDown = Vector3.Dot(controller.velocity, -transform.up);
-        print(speedForward);
+
 
         
       

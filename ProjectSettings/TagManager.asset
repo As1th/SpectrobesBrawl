@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - CHPart
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - SpecHurtBox
   - KrawlBody
   - SpecBody
-  - 
-  - 
+  - AttackEffectBody
+  - ExtraNavigator
   - 
   - 
   - 

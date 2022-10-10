@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TailDamage : MonoBehaviour
 {
-    
+    public GameObject attackParticle;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +19,17 @@ public class TailDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (transform.root.gameObject.GetComponent<SpikanControl>().isAttacking)
         {
+            
             if (other.gameObject.layer == 6 && other.gameObject.transform.root.GetComponent<Krawl>().iframe == false)
             {
+         
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-                other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 20, hitDir.z)*Time.deltaTime, 815, 815);
+                other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 17, hitDir.z)*Time.deltaTime, 845, 845);
                 other.gameObject.transform.root.GetComponent<Krawl>().iframe = true;
+                Instantiate(attackParticle, transform.position, Quaternion.identity);
             }
         }
     }
