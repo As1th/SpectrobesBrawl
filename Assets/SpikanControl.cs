@@ -15,17 +15,35 @@ public class SpikanControl : MonoBehaviour
     public GameObject CHParts;
     public GameObject tailball;
     Vector3 velocity;
-    
+    public bool stagger;
+    public bool iframe = false;
+    public bool permaGround;
+    public Collider hurtbox;
     void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        hurtbox = tailball.GetComponent<Collider>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (permaGround)
+        {
+            float verticalVelosity = 0;
+            if (controller.isGrounded)
+            {
+                verticalVelosity -= 0;
+            }
+            else
+            {
+                verticalVelosity -= 1;
+            }
 
+
+            controller.Move(new Vector3(0, verticalVelosity, 0));
+        }
 
         if (!isAttacking)
         {
@@ -33,9 +51,9 @@ public class SpikanControl : MonoBehaviour
 
             if (Input.GetButtonDown("Attack"))
             {
-                if (attackCoolDown == 0)
+                if (attackCoolDown == 0 && controller.isGrounded)
                 {
-
+                  
                     animator.SetTrigger("Attack");
                     isAttacking = true;
                 }
@@ -43,9 +61,10 @@ public class SpikanControl : MonoBehaviour
             }
             else if (Input.GetButtonDown("Attack2"))
             {
-                if (attackCoolDown == 0)
+                if (attackCoolDown == 0 && controller.isGrounded)
                 {
-
+                    iframe = true;
+                    permaGround = true;
                     animator.SetTrigger("Attack2");
                     isAttacking = true;
                 }
@@ -57,7 +76,7 @@ public class SpikanControl : MonoBehaviour
                 float vertical = Input.GetAxisRaw("Vertical");
                 Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
                 Vector3 moveDir = new Vector3(0, 0, 0);
-                if (direction.magnitude >= 0.1f)
+                if (direction.magnitude >= 0.1f && !stagger)
                 {
                     float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                     float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -73,7 +92,7 @@ public class SpikanControl : MonoBehaviour
                     if (dashcooldown == 0 && attackCoolDown == 0)
                     {
 
-
+                        iframe = true;
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;
                         GetComponent<ImpactReceiver>().AddImpact(moveDir, 485);
@@ -107,11 +126,14 @@ public class SpikanControl : MonoBehaviour
 
     }
 
-
-    public void FixedUpdate()
+    public void Hit(Vector3 dir, float force, float dmg)
     {
+        deactivateHurtBox();
+        stagger = true;
+        GetComponent<ImpactReceiver>().AddImpact(dir, force);
+       // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
+        animator.SetTrigger("Hit");
 
-        
     }
 
 
@@ -125,14 +147,26 @@ public class SpikanControl : MonoBehaviour
 
     public void startIdle()
     {
+        deactivateHurtBox();
+        permaGround = false;
+        iframe = false;
+        stagger = false;
         attackCoolDown = 18;
         animator.SetTrigger("Idle");
         isAttacking = false;
     }
 
-    
 
-   
-    
+
+    public void activateHurtBox()
+    {
+        hurtbox.enabled = true;
+    }
+
+    public void deactivateHurtBox()
+    {
+        hurtbox.enabled = false;
+    }
+
 
 }

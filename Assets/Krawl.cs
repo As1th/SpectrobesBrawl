@@ -5,6 +5,7 @@ using UnityEngine;
 public class Krawl : MonoBehaviour
 {
     public bool iframe = false;
+    public bool stagger = false;
     private CharacterController controller;
     private Animator animator;
     private ImpactReceiver impact;
@@ -27,18 +28,21 @@ public class Krawl : MonoBehaviour
             controller.Move(Vector3.down*90.81f*Time.deltaTime);
         }
 
-        if (!iframe)
+        if (!stagger && !GetComponent<SwarController>().isAttacking)
         {
             transform.LookAt(player.transform);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
             Vector3 dir = (player.transform.position - transform.position).normalized;
             controller.Move(new Vector3(dir.x, 0, dir.z) * speed * Time.deltaTime);
+
+           
+
         }
     }
     public void Hit(Vector3 dir, float force, float dmg)
     {
-      
-            iframe = true;
+            GetComponent<SwarController>().deactivateHurtBox();
+            stagger = true;
             impact.AddImpact(dir, force);
             transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
             animator.SetTrigger("Hit");

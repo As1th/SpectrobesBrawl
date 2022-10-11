@@ -21,7 +21,7 @@ public class CHParticleDamage : MonoBehaviour
         if (other.gameObject.layer == 6)
         {
             Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-            other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 6, hitDir.z) * Time.deltaTime, 200, 200);
+            other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 8, hitDir.z) * Time.deltaTime, 200, 200);
 
             Instantiate(attackParticle, transform.position, Quaternion.identity);
             Destroy(transform.root.gameObject);
