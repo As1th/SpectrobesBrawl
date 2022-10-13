@@ -9,7 +9,10 @@ public class FaceCamera : MonoBehaviour
     {
         
     }
-
+    public void Kill()
+    {
+        Destroy(this.gameObject);
+    }
     // Update is called once per frame
     void Update()
     {

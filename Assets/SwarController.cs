@@ -15,6 +15,7 @@ public class SwarController : MonoBehaviour
     public bool inRange = false;
     public float attackCoolDown = 0f;
     public Collider hurtbox;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,6 @@ public class SwarController : MonoBehaviour
                 transform.LookAt(player.transform);
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
                 animator.SetTrigger("Attack");
-              
             }
 
         }
@@ -70,6 +70,7 @@ public class SwarController : MonoBehaviour
         krawl.iframe = false;
         krawl.stagger = false;
         isAttacking = false;
+        krawl.deathCheck();
         //inRange = false;
       //  isAttacking = false;
     }

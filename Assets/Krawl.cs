@@ -10,7 +10,9 @@ public class Krawl : MonoBehaviour
     private Animator animator;
     private ImpactReceiver impact;
     GameObject player;
+    public GameObject cloud;
     public float speed = 27f;
+    public float health = 50f;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,7 @@ public class Krawl : MonoBehaviour
     {
         if (!controller.isGrounded)
         {
-            controller.Move(Vector3.down*90.81f*Time.deltaTime);
+            controller.Move(Vector3.down * 90.81f * Time.deltaTime);
         }
 
         if (!stagger && !GetComponent<SwarController>().isAttacking)
@@ -35,17 +37,28 @@ public class Krawl : MonoBehaviour
             Vector3 dir = (player.transform.position - transform.position).normalized;
             controller.Move(new Vector3(dir.x, 0, dir.z) * speed * Time.deltaTime);
 
-           
+
 
         }
     }
+
+    public void deathCheck()
+    {
+        if (health <= 0)
+        {
+            Instantiate(cloud, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
+
     public void Hit(Vector3 dir, float force, float dmg)
     {
             GetComponent<SwarController>().deactivateHurtBox();
             stagger = true;
             impact.AddImpact(dir, force);
             transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
-            animator.SetTrigger("Hit");
-        
+           
+            health -= dmg;
+        animator.SetTrigger("Hit");
     }
 }
