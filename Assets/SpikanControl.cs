@@ -19,6 +19,8 @@ public class SpikanControl : MonoBehaviour
     public bool iframe = false;
     public bool permaGround;
     public Collider hurtbox;
+    public float health = 20;
+    public GameObject cloud;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -125,13 +127,22 @@ public class SpikanControl : MonoBehaviour
 
 
     }
-
+    public void deathCheck()
+    {
+        if (health <= 0)
+        {
+            Instantiate(cloud, transform.position, Quaternion.identity);
+            Camera.main.gameObject.transform.parent = null;
+            Destroy(this.gameObject);
+        }
+    }
     public void Hit(Vector3 dir, float force, float dmg)
     {
         deactivateHurtBox();
         stagger = true;
         GetComponent<ImpactReceiver>().AddImpact(dir, force);
        // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
+       health -= dmg;
         animator.SetTrigger("Hit");
 
     }
@@ -152,6 +163,7 @@ public class SpikanControl : MonoBehaviour
         iframe = false;
         stagger = false;
         attackCoolDown = 18;
+        deathCheck();
         animator.SetTrigger("Idle");
         isAttacking = false;
     }
