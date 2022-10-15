@@ -13,15 +13,19 @@ public class SwarRangeChecker : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-
-        transform.root.gameObject.GetComponent<SwarController>().inRange = true;
+        if (other.transform.root.CompareTag("Player"))
+        {
+            transform.root.gameObject.GetComponent<SwarController>().inRange = true;
+        }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
 
-        transform.root.gameObject.GetComponent<SwarController>().inRange = false;
-
+        if (other.transform.root.CompareTag("Player"))
+        {
+            transform.root.gameObject.GetComponent<SwarController>().inRange = false;
+        }
     }
 }
