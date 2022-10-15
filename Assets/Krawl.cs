@@ -13,9 +13,11 @@ public class Krawl : MonoBehaviour
     public GameObject cloud;
     public float speed = 27f;
     public float health = 50f;
+    public GameObject scripts;
     // Start is called before the first frame update
     void Start()
     {
+        scripts = GameObject.Find("Scripts");
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         impact = GetComponent<ImpactReceiver>();
@@ -48,6 +50,7 @@ public class Krawl : MonoBehaviour
         {
             Instantiate(cloud, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+            scripts.GetComponent<GameManager>().spawnKrawl();
         }
     }
 
@@ -59,6 +62,6 @@ public class Krawl : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
            
             health -= dmg;
-        animator.SetTrigger("Hit");
+            animator.SetTrigger("Hit");
     }
 }
