@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
     public GameObject KrawlSpawner;
     public GameObject SpawnLociArray;
     public List<GameObject> spawnLoci = new List<GameObject>();
+    public float score = 0;
+    public float ch = 0;
+    public float ev = 0;
+    public bool lost = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +25,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+        if (ch > 50)
+        { ch = 50; }
     }
 
     public void spawnKrawl()

@@ -15,7 +15,7 @@ public class SwarController : MonoBehaviour
     public bool inRange = false;
     public float attackCoolDown = 0f;
     public Collider hurtbox;
-   
+    public GameObject weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +63,7 @@ public class SwarController : MonoBehaviour
 
     public void startIdle()
     {
+        weapon.GetComponent<SwarHeadbuttDamage>().hitOnce = false;
         deactivateHurtBox();
         attackCoolDown = 10;
         //attackCoolDown = 30;

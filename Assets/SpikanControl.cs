@@ -21,6 +21,7 @@ public class SpikanControl : MonoBehaviour
     public Collider hurtbox;
     public float health = 20;
     public GameObject cloud;
+    public GameObject scripts;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -63,8 +64,9 @@ public class SpikanControl : MonoBehaviour
             }
             else if (Input.GetButtonDown("Attack2"))
             {
-                if (attackCoolDown == 0 && controller.isGrounded)
+                if (attackCoolDown == 0 && controller.isGrounded && scripts.GetComponent<GameManager>().ch >=50)
                 {
+                    scripts.GetComponent<GameManager>().ch = 0;
                     iframe = true;
                     permaGround = true;
                     animator.SetTrigger("Attack2");
@@ -133,11 +135,16 @@ public class SpikanControl : MonoBehaviour
         {
             Instantiate(cloud, transform.position, Quaternion.identity);
             Camera.main.gameObject.transform.parent = null;
-            Destroy(this.gameObject);
+            Camera.main.gameObject.GetComponent<Rotate>().enabled = true;
+            scripts.GetComponent<GameManager>().lost = true;
+            this.gameObject.SetActive(false);
+            
         }
     }
     public void Hit(Vector3 dir, float force, float dmg)
     {
+        scripts.GetComponent<GameManager>().ch += 5;
+        scripts.GetComponent<GameManager>().ev += 5;
         deactivateHurtBox();
         stagger = true;
         GetComponent<ImpactReceiver>().AddImpact(dir, force);

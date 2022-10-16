@@ -32,15 +32,17 @@ public class Krawl : MonoBehaviour
             controller.Move(Vector3.down * 90.81f * Time.deltaTime);
         }
 
-        if (!stagger && !GetComponent<SwarController>().isAttacking)
+        if (!stagger && !GetComponent<SwarController>().isAttacking && player.activeSelf == true)
         {
             transform.LookAt(player.transform);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
             Vector3 dir = (player.transform.position - transform.position).normalized;
             controller.Move(new Vector3(dir.x, 0, dir.z) * speed * Time.deltaTime);
-
-
-
+        }
+        if (player.activeSelf == false)
+        {
+            animator.SetBool("IsRunning", false);
+            animator.SetTrigger("Idle");
         }
     }
 
@@ -51,12 +53,24 @@ public class Krawl : MonoBehaviour
             Instantiate(cloud, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
             scripts.GetComponent<GameManager>().spawnKrawl();
+
+
+            scripts.GetComponent<GameManager>().score += 10;
+          //  scripts.GetComponent<GameManager>().ch += 10;
+            scripts.GetComponent<GameManager>().ev += 10;
         }
     }
 
-    public void Hit(Vector3 dir, float force, float dmg)
+    public void Hit(Vector3 dir, float force, float dmg, bool giveCHXP)
     {
-            GetComponent<SwarController>().deactivateHurtBox();
+            scripts.GetComponent<GameManager>().ev += 10;
+        if (giveCHXP)
+        {
+            scripts.GetComponent<GameManager>().ch += 10;
+        }
+        
+
+        GetComponent<SwarController>().deactivateHurtBox();
             stagger = true;
             impact.AddImpact(dir, force);
             transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
