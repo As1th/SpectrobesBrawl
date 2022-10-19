@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwarController : MonoBehaviour
+public class CacswarController : MonoBehaviour
 {
     private CharacterController controller;
     private Animator animator;
@@ -14,8 +14,7 @@ public class SwarController : MonoBehaviour
     GameObject player;
     public bool inRange = false;
     public float attackCoolDown = 0f;
-    public Collider hurtbox;
-    public GameObject weapon;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +45,9 @@ public class SwarController : MonoBehaviour
                 Vector3 dir = (player.transform.position - transform.position).normalized;
                 controller.Move(new Vector3(dir.x, 0, dir.z) * speed * Time.deltaTime);
             }
+            else {
+                animator.SetBool("IsRunning", false);
+            }
         }
         if (player.activeSelf == false)
         {
@@ -73,21 +75,12 @@ public class SwarController : MonoBehaviour
 
     }
 
-    public void activateHurtBox()
-    {
-        hurtbox.enabled = true;
-    }
-
-    public void deactivateHurtBox()
-    {
-        hurtbox.enabled = false;
-    }
+    
 
     public void startIdle()
     {
-        weapon.GetComponent<SwarHeadbuttDamage>().hitOnce = false;
-        deactivateHurtBox();
-        attackCoolDown = 10;
+       
+        attackCoolDown = 100;
         //attackCoolDown = 30;
         animator.SetTrigger("Idle");
         krawl.iframe = false;
