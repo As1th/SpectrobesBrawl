@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpikanCH : MonoBehaviour
 {
     CharacterController controller;
-    bool spawned;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class SpikanCH : MonoBehaviour
     void Update()
     {
         controller.SimpleMove(transform.forward * 83);
-        float hVel = new Vector3(controller.velocity.x, 0, controller.velocity.z).magnitude;
+
         float speedForward = Vector3.Dot(controller.velocity, transform.forward);
         float speedDown = Vector3.Dot(controller.velocity, -transform.up);
 

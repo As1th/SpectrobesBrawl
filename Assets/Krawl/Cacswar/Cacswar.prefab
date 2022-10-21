@@ -197,6 +197,8 @@ MonoBehaviour:
   isAttacking: 0
   inRange: 0
   attackCoolDown: 0
+  projectiles: {fileID: 8182364275663894206, guid: 7002b5425b5bf144cbaeaaf274d27132, type: 3}
+  spawnPoint: {fileID: 7464396458112022665}
 --- !u!1 &564847204402622282
 GameObject:
   m_ObjectHideFlags: 0

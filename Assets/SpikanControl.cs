@@ -99,7 +99,7 @@ public class SpikanControl : MonoBehaviour
                         iframe = true;
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;
-                        GetComponent<ImpactReceiver>().AddImpact(moveDir, 485);
+                        GetComponent<ImpactReceiver>().AddImpact(moveDir, 500);
                         dashcooldown = 38;
 
                     }

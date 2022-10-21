@@ -15,7 +15,7 @@ public class CacswarRangeChecker : MonoBehaviour
     {
         if (other.transform.root.CompareTag("Player"))
         {
-            print("in");
+            
             transform.root.gameObject.GetComponent<CacswarController>().inRange = true;
         }
 
@@ -26,7 +26,7 @@ public class CacswarRangeChecker : MonoBehaviour
 
         if (other.transform.root.CompareTag("Player"))
         {
-            print("out");
+            
             transform.root.gameObject.GetComponent<CacswarController>().inRange = false;
         }
     }
