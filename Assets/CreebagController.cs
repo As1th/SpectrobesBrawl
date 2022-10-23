@@ -58,8 +58,10 @@ public class CreebagController : MonoBehaviour
             if (!krawl.stagger && !isAttacking && inRange && attackCoolDown==0)
             {
                 isAttacking = true;
+                
                 transform.LookAt(player.transform);
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+                impact.AddImpact(transform.forward, 1000);
                 animator.SetTrigger("Attack");
             }
 
@@ -85,7 +87,7 @@ public class CreebagController : MonoBehaviour
 
     public void startIdle()
     {
-        weapon.GetComponent<SwarHeadbuttDamage>().hitOnce = false;
+        weapon.GetComponent<CreebagDamage>().hitOnce = false;
         deactivateHurtBox();
         attackCoolDown = 10;
         //attackCoolDown = 30;

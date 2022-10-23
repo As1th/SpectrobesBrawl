@@ -215,7 +215,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2300
   attackParticle: {fileID: 4398385451141665581, guid: 14626bc59caeacf4d836f52a29a413f9, type: 3}
+  reverseAttackParticle: {fileID: 6791193647279498658, guid: 6fca76321d2346549ba44cc1c980f6dc, type: 3}
   dead: 0
+  scripts: {fileID: 0}
   defensePoof: {fileID: 1502973039688521276, guid: c5a22d731ca21574db1c413b461f4931, type: 3}
 --- !u!54 &4411219739918777845
 Rigidbody:

@@ -7,6 +7,7 @@ public class MoveAirProjectile : MonoBehaviour
     Rigidbody rb;
     public float speed;
     public GameObject attackParticle;
+    public GameObject reverseAttackParticle;
     public bool dead;
     public GameObject scripts;
     public GameObject defensePoof;
@@ -38,15 +39,17 @@ public class MoveAirProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+       
         if (other.gameObject.layer == 9 && !dead)
         {
-            this.gameObject.transform.Rotate(new Vector3(1, 0, 0), -145);
+            this.gameObject.transform.Rotate(new Vector3(1, 0, 0), -180);
             this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
             this.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * 7000);
             dead = true;
             Instantiate(defensePoof, transform.position, Quaternion.identity);
             scripts.GetComponent<GameManager>().ch += 5;
             scripts.GetComponent<GameManager>().ev += 5;
+            this.gameObject.layer = 1;
             return;
 
         }
@@ -61,6 +64,13 @@ public class MoveAirProjectile : MonoBehaviour
 
             if (other.gameObject.transform.root.GetComponent<SpikanControl>().iframe == true)
             { return; }
+        }
+        if (other.gameObject.layer == 6 && dead)
+        {
+            Instantiate(reverseAttackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
+            Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
+            other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, force:300, dmg: 5, true);
+            Destroy(this.gameObject);
         }
         if (!dead)
         {
