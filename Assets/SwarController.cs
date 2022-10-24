@@ -46,6 +46,10 @@ public class SwarController : MonoBehaviour
                 Vector3 dir = (player.transform.position - transform.position).normalized;
                 controller.Move(new Vector3(dir.x, 0, dir.z) * speed * Time.deltaTime);
             }
+            else
+            {
+                animator.SetBool("IsRunning", false);
+            }
         }
         if (player.activeSelf == false)
         {

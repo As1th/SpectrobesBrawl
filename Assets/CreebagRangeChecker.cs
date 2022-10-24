@@ -25,7 +25,7 @@ public class CreebagRangeChecker : MonoBehaviour
 
         if (other.transform.root.CompareTag("Player"))
         {
-            print("sdsd");
+        
             transform.root.gameObject.GetComponent<CreebagController>().inRange = false;
         }
     }

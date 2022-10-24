@@ -16,7 +16,7 @@ public class CreebagController : MonoBehaviour
     public float attackCoolDown = 0f;
     public Collider hurtbox;
     public GameObject weapon;
-
+    public ParticleSystem attackPart;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +46,10 @@ public class CreebagController : MonoBehaviour
                 Vector3 dir = (player.transform.position - transform.position).normalized;
                 controller.Move(new Vector3(dir.x, 0, dir.z) * speed * Time.deltaTime);
             }
+            else
+            {
+                animator.SetBool("IsRunning", false);
+            }
         }
         if (player.activeSelf == false)
         {
@@ -57,12 +61,14 @@ public class CreebagController : MonoBehaviour
         {
             if (!krawl.stagger && !isAttacking && inRange && attackCoolDown==0)
             {
+                print("s");
                 isAttacking = true;
                 
                 transform.LookAt(player.transform);
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-                impact.AddImpact(transform.forward, 1000);
+                attackPart.Play();
                 animator.SetTrigger("Attack");
+                impact.AddImpact(transform.forward, 625);
             }
 
         }
@@ -78,18 +84,20 @@ public class CreebagController : MonoBehaviour
     public void activateHurtBox()
     {
         hurtbox.enabled = true;
+       
     }
 
     public void deactivateHurtBox()
     {
         hurtbox.enabled = false;
+        attackPart.Stop();
     }
 
     public void startIdle()
     {
         weapon.GetComponent<CreebagDamage>().hitOnce = false;
         deactivateHurtBox();
-        attackCoolDown = 10;
+        attackCoolDown = 95;
         //attackCoolDown = 30;
         animator.SetTrigger("Idle");
         krawl.iframe = false;
