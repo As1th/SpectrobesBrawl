@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreebagController : MonoBehaviour
+public class GrisController : MonoBehaviour
 {
     private CharacterController controller;
     private Animator animator;
@@ -16,7 +16,7 @@ public class CreebagController : MonoBehaviour
     public float attackCoolDown = 0f;
     public Collider hurtbox;
     public GameObject weapon;
-    public ParticleSystem attackPart;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,14 +61,10 @@ public class CreebagController : MonoBehaviour
         {
             if (!krawl.stagger && !isAttacking && inRange && attackCoolDown==0)
             {
-              
                 isAttacking = true;
-                
                 transform.LookAt(player.transform);
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-                attackPart.Play();
                 animator.SetTrigger("Attack");
-                impact.AddImpact(transform.forward, 625);
             }
 
         }
@@ -84,20 +80,18 @@ public class CreebagController : MonoBehaviour
     public void activateHurtBox()
     {
         hurtbox.enabled = true;
-       
     }
 
     public void deactivateHurtBox()
     {
         hurtbox.enabled = false;
-        attackPart.Stop();
     }
 
     public void startIdle()
     {
-        weapon.GetComponent<CreebagDamage>().hitOnce = false;
+        weapon.GetComponent<GrisDamage>().hitOnce = false;
         deactivateHurtBox();
-        attackCoolDown = 95;
+        attackCoolDown = 10;
         //attackCoolDown = 30;
         animator.SetTrigger("Idle");
         krawl.iframe = false;
