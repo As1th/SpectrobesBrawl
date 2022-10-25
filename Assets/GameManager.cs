@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     public UIBarScript chBar;
     public UIBarScript healthBar;
     public UIBarScript evBar;
+    public GameObject pointCounter;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
         evBar.UpdateValue((int)ev, 200);
         chBar.UpdateValue((int)ch,50);
         healthBar.UpdateValue((int)health,275);
+        pointCounter.GetComponent<Text>().text = score.ToString();
     }
 
     public void spawnKrawl()
