@@ -35,13 +35,15 @@ public class Krawl : MonoBehaviour
         if (health <= 0)
         {
             Instantiate(cloud, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
-            scripts.GetComponent<GameManager>().spawnKrawl();
-
-
             scripts.GetComponent<GameManager>().score += 10;
-          //  scripts.GetComponent<GameManager>().ch += 10;
+            //  scripts.GetComponent<GameManager>().ch += 10;
             scripts.GetComponent<GameManager>().ev += 10;
+            scripts.GetComponent<GameManager>().spawnKrawl();
+            Destroy(this.gameObject);
+            
+
+
+           
         }
     }
 
@@ -58,7 +60,6 @@ public class Krawl : MonoBehaviour
             stagger = true;
             impact.AddImpact(dir, force);
             transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
-           
             health -= dmg;
             animator.SetTrigger("Hit");
     }

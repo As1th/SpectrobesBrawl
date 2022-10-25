@@ -19,7 +19,7 @@ public class SpikanControl : MonoBehaviour
     public bool iframe = false;
     public bool permaGround;
     public Collider hurtbox;
-    public float health = 20;
+    //public float health = 20;
     public GameObject cloud;
     public GameObject scripts;
     void Start()
@@ -131,7 +131,7 @@ public class SpikanControl : MonoBehaviour
     }
     public void deathCheck()
     {
-        if (health <= 0)
+        if (scripts.GetComponent<GameManager>().health <= 0)
         {
             Instantiate(cloud, transform.position, Quaternion.identity);
             Camera.main.gameObject.transform.parent = null;
@@ -148,8 +148,8 @@ public class SpikanControl : MonoBehaviour
         deactivateHurtBox();
         stagger = true;
         GetComponent<ImpactReceiver>().AddImpact(dir, force);
-       // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
-       health -= dmg;
+        // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
+        scripts.GetComponent<GameManager>().health -= dmg;
         animator.SetTrigger("Hit");
 
     }

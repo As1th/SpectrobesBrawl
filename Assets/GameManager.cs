@@ -10,11 +10,15 @@ public class GameManager : MonoBehaviour
     public float score = 0;
     public float ch = 0;
     public float ev = 0;
+    public float health;
     public bool lost = false;
+    public UIBarScript chBar;
+    public UIBarScript healthBar;
+    public UIBarScript evBar;
     // Start is called before the first frame update
     void Start()
     {
-     
+        health = 275;
         for (int i = 0; i < SpawnLociArray.transform.childCount; i++)
         {
             
@@ -27,6 +31,19 @@ public class GameManager : MonoBehaviour
     {
         if (ch > 50)
         { ch = 50; }
+
+        if (health < 0)
+        {
+            health = 0;
+        }
+
+        if (ev > 200)
+        {
+            ev = 200;
+        }
+        evBar.UpdateValue((int)ev, 200);
+        chBar.UpdateValue((int)ch,50);
+        healthBar.UpdateValue((int)health,275);
     }
 
     public void spawnKrawl()
