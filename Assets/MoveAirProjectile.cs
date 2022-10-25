@@ -47,8 +47,8 @@ public class MoveAirProjectile : MonoBehaviour
             this.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * 7000);
             dead = true;
             Instantiate(defensePoof, transform.position, Quaternion.identity);
-            scripts.GetComponent<GameManager>().ch += 5;
-            scripts.GetComponent<GameManager>().ev += 5;
+            scripts.GetComponent<GameManager>().ch += 1;
+            scripts.GetComponent<GameManager>().ev += 1;
             this.gameObject.layer = 1;
             return;
 

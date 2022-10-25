@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6481e742991c9e344af8686f20c9b474, type: 2}
+  m_Motion: {fileID: 7400000, guid: dac2e98972704e34a8ce28a32c4a7ff3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -81,7 +81,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0a0ddf62b17a8d94b80569ef615fc4ec, type: 2}
+  m_Motion: {fileID: 7400000, guid: c9ed3caaa1953984b9f9b655c0053e14, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -168,7 +168,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cacswar
+  m_Name: Muteela
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsRunning
@@ -254,7 +254,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 16f93f5ee296d9648b662ed9ddf2db8b, type: 2}
+  m_Motion: {fileID: 7400000, guid: e53545035c3ddbf40a8e870ae213573e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -281,7 +281,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0f43f5bfac5fc374fa07eb81637bd6af, type: 2}
+  m_Motion: {fileID: 7400000, guid: 34ca50cc4dd567241aa4a8b5940e5ee2, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
