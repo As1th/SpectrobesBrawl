@@ -32,6 +32,7 @@ public class SpikanControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         if (permaGround)
         {
             float verticalVelosity = 0;
@@ -54,7 +55,7 @@ public class SpikanControl : MonoBehaviour
 
             if (Input.GetButtonDown("Attack"))
             {
-                if (attackCoolDown == 0 && controller.isGrounded)
+                if (attackCoolDown == 0 && !stagger) //used to be && controller.isGrounded instead of && !stagger
                 {
                   
                     animator.SetTrigger("Attack");
@@ -64,7 +65,7 @@ public class SpikanControl : MonoBehaviour
             }
             else if (Input.GetButtonDown("Attack2"))
             {
-                if (attackCoolDown == 0 && controller.isGrounded && scripts.GetComponent<GameManager>().ch >=50)
+                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >=50) //used to be && controller.isGrounded instead of && !stagger
                 {
                     scripts.GetComponent<GameManager>().ch = 0;
                     iframe = true;

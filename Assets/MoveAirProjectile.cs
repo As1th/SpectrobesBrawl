@@ -11,6 +11,7 @@ public class MoveAirProjectile : MonoBehaviour
     public bool dead;
     public GameObject scripts;
     public GameObject defensePoof;
+    public bool playEffectOnCollision = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +60,10 @@ public class MoveAirProjectile : MonoBehaviour
             {
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
                 other.gameObject.transform.root.GetComponent<SpikanControl>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, 300, dmg: 5);
-                Instantiate(attackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
+                if (!playEffectOnCollision)
+                {
+                    Instantiate(attackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
+                }
             }
 
             if (other.gameObject.transform.root.GetComponent<SpikanControl>().iframe == true)
@@ -76,6 +80,11 @@ public class MoveAirProjectile : MonoBehaviour
         }
         if (!dead)
         {
+            if(playEffectOnCollision)
+            {
+                Instantiate(attackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
+
+            }
             Destroy(this.gameObject);
         }
     }

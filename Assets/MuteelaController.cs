@@ -81,8 +81,7 @@ public class MuteelaController : MonoBehaviour
         
         var var = Instantiate(projectiles, spawnPoint.transform.position, transform.rotation);
         var.transform.LookAt(new Vector3(player.transform.position.x , player.transform.position.y+10f, player.transform.position.z));
-        Instantiate(projectiles, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 35, transform.eulerAngles.z));
-        Instantiate(projectiles, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 35, transform.eulerAngles.z));
+        
     }
 
     public void startIdle()
