@@ -22,11 +22,14 @@ public class SpikanControl : MonoBehaviour
     //public float health = 20;
     public GameObject cloud;
     public GameObject scripts;
+    public GameObject Spikanor;
     void Start()
     {
+        cam = Camera.main.transform;
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         hurtbox = tailball.GetComponent<Collider>();
+       
     }
 
     // Update is called once per frame
@@ -72,6 +75,19 @@ public class SpikanControl : MonoBehaviour
                     permaGround = true;
                     animator.SetTrigger("Attack2");
                     isAttacking = true;
+                }
+
+            }
+            else if (Input.GetButtonDown("Evolve"))
+            {
+                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ev >= 0) //used to be && controller.isGrounded instead of && !stagger
+                {
+                    scripts.GetComponent<GameManager>().ev = 0;
+                    iframe = true;
+                    var var = Instantiate(Spikanor, transform.position, transform.rotation);
+                    Camera.main.transform.parent = var.transform;
+                    var.GetComponent<SpikanControl>().scripts = scripts;
+                    this.gameObject.SetActive(false);
                 }
 
             }
