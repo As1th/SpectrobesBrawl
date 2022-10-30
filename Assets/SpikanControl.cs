@@ -23,6 +23,7 @@ public class SpikanControl : MonoBehaviour
     public GameObject cloud;
     public GameObject scripts;
     public GameObject Spikanor;
+    public ParticleSystem evolvePart;
     void Start()
     {
         cam = Camera.main.transform;
@@ -35,7 +36,10 @@ public class SpikanControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (!controller.isGrounded)
+        {
+            controller.Move(Vector3.down * 90.81f * Time.deltaTime);
+        }
         if (permaGround)
         {
             float verticalVelosity = 0;
@@ -82,9 +86,11 @@ public class SpikanControl : MonoBehaviour
             {
                 if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ev >= 0) //used to be && controller.isGrounded instead of && !stagger
                 {
+                    var eff = Instantiate(evolvePart, new Vector3(transform.position.x, transform.position.y + 18f, transform.position.z), Quaternion.identity);
                     scripts.GetComponent<GameManager>().ev = 0;
                     iframe = true;
                     var var = Instantiate(Spikanor, transform.position, transform.rotation);
+                    eff.transform.parent = var.transform;
                     Camera.main.transform.parent = var.transform;
                     var.GetComponent<SpikanControl>().scripts = scripts;
                     this.gameObject.SetActive(false);

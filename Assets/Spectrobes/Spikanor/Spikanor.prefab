@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b6f98b8bf2cfb449f43173874b9b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 28
+  speed: 30
   isAttacking: 0
   cam: {fileID: 0}
   turnSmoothTime: 0.39
@@ -1182,19 +1182,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &2584915802055233799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192911760889969028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f9289649db9cc04c8000f7cdd5361aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackParticle: {fileID: 4697218109777110270, guid: 8f70d061242024a4a96296858b5aab51, type: 3}
 --- !u!136 &3409248271897317730
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1209,6 +1196,19 @@ CapsuleCollider:
   m_Height: 24
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: -1.63}
+--- !u!114 &2584915802055233799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192911760889969028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9289649db9cc04c8000f7cdd5361aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackParticle: {fileID: 4697218109777110270, guid: 8f70d061242024a4a96296858b5aab51, type: 3}
 --- !u!4 &713412166562554686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e065d5c498a7da648b9c455d1e1a56c4, type: 3}
