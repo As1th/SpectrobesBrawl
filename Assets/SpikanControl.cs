@@ -24,13 +24,15 @@ public class SpikanControl : MonoBehaviour
     public GameObject scripts;
     public GameObject Spikanor;
     public ParticleSystem evolvePart;
+    public GameObject CHPartsEvolved;
+    public bool evolved=false;
     void Start()
     {
         cam = Camera.main.transform;
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         hurtbox = tailball.GetComponent<Collider>();
-       
+      
     }
 
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class SpikanControl : MonoBehaviour
     {
         if (!controller.isGrounded)
         {
-            controller.Move(Vector3.down * 90.81f * Time.deltaTime);
+            controller.Move(Vector3.down * 40.81f * Time.deltaTime);
         }
         if (permaGround)
         {
@@ -72,28 +74,32 @@ public class SpikanControl : MonoBehaviour
             }
             else if (Input.GetButtonDown("Attack2"))
             {
-                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >=50) //used to be && controller.isGrounded instead of && !stagger
+                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >= 50) //used to be && controller.isGrounded instead of && !stagger
                 {
-                    scripts.GetComponent<GameManager>().ch = 0;
+                   
+                   
+                        scripts.GetComponent<GameManager>().ch = 0;
                     iframe = true;
                     permaGround = true;
                     animator.SetTrigger("Attack2");
                     isAttacking = true;
+                    
                 }
 
             }
             else if (Input.GetButtonDown("Evolve"))
             {
-                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ev >= 0) //used to be && controller.isGrounded instead of && !stagger
+                if (attackCoolDown == 0 && !stagger &&!evolved && scripts.GetComponent<GameManager>().ev >= 0) //used to be && controller.isGrounded instead of && !stagger
                 {
                     var eff = Instantiate(evolvePart, new Vector3(transform.position.x, transform.position.y + 18f, transform.position.z), Quaternion.identity);
                     scripts.GetComponent<GameManager>().ev = 0;
-                    iframe = true;
+                    scripts.GetComponent<GameManager>().healthStore = scripts.GetComponent<GameManager>().health;
                     var var = Instantiate(Spikanor, transform.position, transform.rotation);
                     eff.transform.parent = var.transform;
                     Camera.main.transform.parent = var.transform;
                     var.GetComponent<SpikanControl>().scripts = scripts;
-                    this.gameObject.SetActive(false);
+                    var.GetComponent<SpikanControl>().evolved = true;
+                    Destroy(this.gameObject);
                 }
 
             }
@@ -167,8 +173,11 @@ public class SpikanControl : MonoBehaviour
     public void Hit(Vector3 dir, float force, float dmg)
     {
         scripts.GetComponent<GameManager>().ch += 5;
-        scripts.GetComponent<GameManager>().ev += 5;
-        deactivateHurtBox();
+        if (!evolved)
+        {
+            scripts.GetComponent<GameManager>().ev += 5;
+        }
+            deactivateHurtBox();
         stagger = true;
         GetComponent<ImpactReceiver>().AddImpact(dir, force);
         // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
@@ -186,6 +195,12 @@ public class SpikanControl : MonoBehaviour
         Instantiate(CHParts, tailball.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 35, transform.eulerAngles.z));
     }
 
+    public void spawnSpikanorCH()
+    {
+        Instantiate(CHPartsEvolved, transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
+
+       
+    }
     public void startIdle()
     {
         deactivateHurtBox();

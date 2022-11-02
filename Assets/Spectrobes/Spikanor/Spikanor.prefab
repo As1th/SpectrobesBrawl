@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1039264887417188311}
   - component: {fileID: 1039264887417188309}
   - component: {fileID: 1039264887417188299}
+  - component: {fileID: 6839016942129572215}
   m_Layer: 11
   m_Name: Spikanor
   m_TagString: Player
@@ -101,6 +102,9 @@ MonoBehaviour:
   cloud: {fileID: 1520691996188032948, guid: a7118756efde7a343a6ad2ad3ad4413a, type: 3}
   scripts: {fileID: 0}
   Spikanor: {fileID: 0}
+  evolvePart: {fileID: 0}
+  CHPartsEvolved: {fileID: 1442054980357783883, guid: e76f240c87f1a4e4dad750913542bc2d, type: 3}
+  evolved: 0
 --- !u!114 &1039264887417188299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +117,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce90b6c524622246b604f7afc08911a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6839016942129572215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192911760238613120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 240f50afeaf884440b5f6863a57aa52e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scripts: {fileID: 0}
+  count: 5000
+  spikan: {fileID: 3203851345011050413, guid: cd454736eedbdcf4cbd9e92f332bc8d3, type: 3}
+  evolvePart: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
 --- !u!1 &270208894231283646
 GameObject:
   m_ObjectHideFlags: 0

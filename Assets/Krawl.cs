@@ -9,7 +9,7 @@ public class Krawl : MonoBehaviour
     private CharacterController controller;
     private Animator animator;
     private ImpactReceiver impact;
-    GameObject player;
+    public GameObject player;
     public GameObject cloud;
     //public float speed = 27f;
     public float health = 50f;
@@ -37,7 +37,10 @@ public class Krawl : MonoBehaviour
             Instantiate(cloud, transform.position, Quaternion.identity);
             scripts.GetComponent<GameManager>().score += 10;
             //  scripts.GetComponent<GameManager>().ch += 10;
-            scripts.GetComponent<GameManager>().ev += 10;
+            if (!player.GetComponent<SpikanControl>().evolved)
+            {
+                scripts.GetComponent<GameManager>().ev += 10;
+            }
             scripts.GetComponent<GameManager>().spawnKrawl();
             Destroy(this.gameObject);
             
@@ -49,7 +52,10 @@ public class Krawl : MonoBehaviour
 
     public void Hit(Vector3 dir, float force, float dmg, bool giveCHXP)
     {
-            scripts.GetComponent<GameManager>().ev += 10;
+            if (!player.GetComponent<SpikanControl>().evolved)
+            {
+                scripts.GetComponent<GameManager>().ev += 10;
+            }
             if (giveCHXP)
             {
                 scripts.GetComponent<GameManager>().ch += 10;

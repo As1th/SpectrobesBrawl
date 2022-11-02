@@ -49,7 +49,10 @@ public class MoveAirProjectile : MonoBehaviour
             dead = true;
             Instantiate(defensePoof, transform.position, Quaternion.identity);
             scripts.GetComponent<GameManager>().ch += 1;
-            scripts.GetComponent<GameManager>().ev += 1;
+            if (!other.gameObject.transform.root.GetComponent<SpikanControl>().evolved)
+            {
+                scripts.GetComponent<GameManager>().ev += 1;
+            }
             this.gameObject.layer = 1;
             return;
 
@@ -75,7 +78,10 @@ public class MoveAirProjectile : MonoBehaviour
             Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
             other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, force:300, dmg: 5, true);
             scripts.GetComponent<GameManager>().ch += 5;
-            scripts.GetComponent<GameManager>().ev += 5;
+            if (!other.gameObject.GetComponent<Krawl>().player.GetComponent<SpikanControl>().evolved)
+            {
+                scripts.GetComponent<GameManager>().ev += 5;
+            }
             Destroy(this.gameObject);
         }
         if (!dead)

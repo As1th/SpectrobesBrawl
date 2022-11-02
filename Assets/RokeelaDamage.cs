@@ -7,6 +7,9 @@ public class RokeelaDamage : MonoBehaviour
     public GameObject attackParticle;
     
     public bool hitOnce = false;
+    public float hitHeight=1600;
+    public float knockback = 670;
+    public float dmg=10;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +34,7 @@ public class RokeelaDamage : MonoBehaviour
             {
                 hitOnce = true;
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-                other.gameObject.transform.root.GetComponent<SpikanControl>().Hit(new Vector3(hitDir.x, 4, hitDir.z) * Time.deltaTime, 670, dmg:10);
+                other.gameObject.transform.root.GetComponent<SpikanControl>().Hit(new Vector3(hitDir.x, 16, hitDir.z) * Time.deltaTime, knockback, dmg:dmg);
                 //other.gameObject.transform.root.GetComponent<SpikanControl>().iframe = true;
                 Instantiate(attackParticle, this.gameObject.transform.position+(-transform.right*5), Quaternion.identity);
             }

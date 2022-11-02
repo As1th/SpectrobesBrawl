@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public float ch = 0;
     public float ev = 0;
     public float health;
+    public float healthStore;
     public bool lost = false;
     public UIBarScript chBar;
     public UIBarScript healthBar;
