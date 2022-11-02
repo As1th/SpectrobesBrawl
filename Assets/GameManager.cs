@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public UIBarScript healthBar;
     public UIBarScript evBar;
     public GameObject pointCounter;
+    public GameObject[] KrawlList;
     // Start is called before the first frame update
     void Start()
     {
