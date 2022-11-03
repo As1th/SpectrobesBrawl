@@ -91,7 +91,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 804676702065654111}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 3.8
   m_Height: 7.67
   m_Direction: 0
@@ -579,6 +579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iframe: 0
   stagger: 0
+  player: {fileID: 0}
   cloud: {fileID: 8013741707763146875, guid: bc810e53da8d80d41be2d86e19e4fe60, type: 3}
   health: 50
   scripts: {fileID: 0}
@@ -661,7 +662,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 3799420199422766902}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 4
   m_Height: 7.67
   m_Direction: 0
@@ -691,7 +692,6 @@ GameObject:
   - component: {fileID: 4407763425909947506}
   - component: {fileID: 4407763425909947511}
   - component: {fileID: 4407763425909947508}
-  - component: {fileID: 4407763425909947509}
   - component: {fileID: 4407763425909947510}
   m_Layer: 14
   m_Name: Range
@@ -745,18 +745,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4407763425909947509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4407763425909947507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fb68fa77f93ce944b241070a9271636, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4407763425909947510
 MonoBehaviour:
   m_ObjectHideFlags: 0

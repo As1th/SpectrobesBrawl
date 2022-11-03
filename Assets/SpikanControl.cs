@@ -99,6 +99,10 @@ public class SpikanControl : MonoBehaviour
                     Camera.main.transform.parent = var.transform;
                     var.GetComponent<SpikanControl>().scripts = scripts;
                     var.GetComponent<SpikanControl>().evolved = true;
+                    foreach (GameObject k in scripts.GetComponent<GameManager>().currentKrawl)
+                    {
+                        k.GetComponent<Krawl>().player = var;
+                    }
                     Destroy(this.gameObject);
                 }
 

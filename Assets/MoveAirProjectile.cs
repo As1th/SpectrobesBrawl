@@ -76,9 +76,9 @@ public class MoveAirProjectile : MonoBehaviour
         {
             Instantiate(reverseAttackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
             Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-            other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, force:300, dmg: 5, true);
+            other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, force:300, dmg: 10, true);
             scripts.GetComponent<GameManager>().ch += 5;
-            if (!other.gameObject.GetComponent<Krawl>().player.GetComponent<SpikanControl>().evolved)
+            if (!(other.gameObject.transform.root.GetComponent<Krawl>().player.GetComponent<SpikanControl>().evolved))
             {
                 scripts.GetComponent<GameManager>().ev += 5;
             }

@@ -11,7 +11,7 @@ public class RokeelaController : MonoBehaviour
     float gravity;
     public float speed=27f;
     public bool isAttacking = false;
-    GameObject player;
+   
     public bool inRange = false;
     public float attackCoolDown = 0f;
     public Collider hurtbox;
@@ -26,7 +26,7 @@ public class RokeelaController : MonoBehaviour
         impact = GetComponent<ImpactReceiver>();
         krawl = GetComponent<Krawl>();
         animator.SetBool("IsRunning", true);
-        player = GameObject.FindGameObjectWithTag("Player");
+      
     }
 
     // Update is called once per frame
@@ -37,14 +37,14 @@ public class RokeelaController : MonoBehaviour
             controller.Move(Vector3.down * 90.81f * Time.deltaTime);
         }
 
-        if (!krawl.stagger && !isAttacking && player.activeSelf == true)
+        if (!krawl.stagger && !isAttacking && GetComponent<Krawl>().player.activeSelf == true)
         {
-            transform.LookAt(player.transform);
+            transform.LookAt(GetComponent<Krawl>().player.transform);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
             if (!inRange)
             {
                 animator.SetBool("IsRunning", true);
-                Vector3 dir = (player.transform.position - transform.position).normalized;
+                Vector3 dir = (GetComponent<Krawl>().player.transform.position - transform.position).normalized;
                 controller.Move(new Vector3(dir.x, 0, dir.z) * speed * Time.deltaTime);
             }
             else
@@ -52,7 +52,7 @@ public class RokeelaController : MonoBehaviour
                 animator.SetBool("IsRunning", false);
             }
         }
-        if (player.activeSelf == false)
+        if (GetComponent<Krawl>().player.activeSelf == false)
         {
             animator.SetBool("IsRunning", false);
             animator.SetTrigger("Idle");
@@ -63,7 +63,7 @@ public class RokeelaController : MonoBehaviour
             if (!krawl.stagger && !isAttacking && inRange && attackCoolDown==0)
             {
                 isAttacking = true;
-                transform.LookAt(player.transform);
+                transform.LookAt(GetComponent<Krawl>().player.transform);
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
                 animator.SetTrigger("Attack");
             }

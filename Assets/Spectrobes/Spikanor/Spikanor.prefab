@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scripts: {fileID: 0}
-  count: 5000
+  count: 4000
   spikan: {fileID: 3203851345011050413, guid: cd454736eedbdcf4cbd9e92f332bc8d3, type: 3}
   evolvePart: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
 --- !u!1 &270208894231283646

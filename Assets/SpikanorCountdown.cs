@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpikanorCountdown : MonoBehaviour
 {
     public GameObject scripts;
-    public float count = 1000;
+    public float count;
     public GameObject spikan;
     public ParticleSystem evolvePart;
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class SpikanorCountdown : MonoBehaviour
     void Update()
     {
         scripts.GetComponent<GameManager>().health = scripts.GetComponent<GameManager>().healthStore;
-        scripts.GetComponent<GameManager>().ev = count / 5000 * 200;
+        scripts.GetComponent<GameManager>().ev = count / 4000 * 200;
 
 
         if (count > 0)
@@ -31,6 +31,10 @@ public class SpikanorCountdown : MonoBehaviour
             var.GetComponent<SpikanControl>().evolved = false;
             eff.transform.parent = var.transform;
             Camera.main.transform.parent = var.transform;
+            foreach (GameObject k in scripts.GetComponent<GameManager>().currentKrawl)
+            {
+                k.GetComponent<Krawl>().player = var;
+            }
             Destroy(this.gameObject);
         }
     }

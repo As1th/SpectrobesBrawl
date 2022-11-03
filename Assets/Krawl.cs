@@ -41,7 +41,9 @@ public class Krawl : MonoBehaviour
             {
                 scripts.GetComponent<GameManager>().ev += 10;
             }
-            scripts.GetComponent<GameManager>().spawnKrawl();
+           scripts.GetComponent<GameManager>().currentKrawl.Remove(this.gameObject);
+           scripts.GetComponent<GameManager>().spawnKrawl();
+
             Destroy(this.gameObject);
             
 

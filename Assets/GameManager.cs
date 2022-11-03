@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public UIBarScript evBar;
     public GameObject pointCounter;
     public GameObject[] KrawlList;
+    public List<GameObject> currentKrawl = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,9 @@ public class GameManager : MonoBehaviour
             
             spawnLoci.Add(SpawnLociArray.transform.GetChild(i).gameObject);
         }
+
+        spawnKrawl();
+        spawnKrawl();
     }
 
     // Update is called once per frame
@@ -53,7 +57,88 @@ public class GameManager : MonoBehaviour
 
     public void spawnKrawl()
     {
-        int random = Random.Range(0, spawnLoci.Count-1);
-        Instantiate(KrawlSpawner, spawnLoci[random].transform.position, Quaternion.Euler(90,0,0));
+      int i = 0;
+        if (score <= 50)
+        {
+            if (currentKrawl.Count < 2)
+            {
+                i = Random.Range(0, 2);
+                summon(i);
+            }
+        }
+        else if (score <= 80)
+        {
+            i = Random.Range(0, 3);
+            summon(i);
+            if (currentKrawl.Count < 3)
+            {
+                i = Random.Range(0, 3);
+                summon(i);
+            }
+        }
+        else if (score <= 130)
+        {
+            if (currentKrawl.Count < 2)
+            {
+                i = Random.Range(1, 3);
+                summon(i);
+            }
+        }
+        else if (score <= 160)
+        {
+            i = Random.Range(0, 3);
+            summon(i);
+            if (currentKrawl.Count < 3)
+            {
+                i = Random.Range(0, 3);
+                summon(i);
+            }
+        }
+        else if (score <= 230)
+        {
+            if (currentKrawl.Count < 2)
+            {
+                i = Random.Range(3, 5);
+                summon(i);
+            }
+        }
+        else if (score <= 290)
+        {
+            i = Random.Range(2, 5);
+            summon(i);
+            if (currentKrawl.Count < 3)
+            {
+                i = Random.Range(2, 5);
+                summon(i);
+            }
+        }
+        else if (score <= 370)
+        {
+            if (currentKrawl.Count < 2)
+            {
+                i = Random.Range(4, 8);
+                summon(i);
+            }
+        }
+        else if (score <= 450)
+        {
+            i = Random.Range(3, 8);
+            summon(i);
+            if (currentKrawl.Count < 3)
+            {
+                i = Random.Range(3, 8);
+                summon(i);
+            }
+        }
     }
+
+    public void summon(int i)
+    {
+        int random = Random.Range(0, spawnLoci.Count);
+        var var = Instantiate(KrawlSpawner, spawnLoci[random].transform.position, Quaternion.Euler(90, 0, 0));
+        var.GetComponent<KrawlSpawner>().krawl = KrawlList[i];
+        
+    }
+
+
 }
