@@ -35,7 +35,7 @@ public class Krawl : MonoBehaviour
         if (health <= 0)
         {
             Instantiate(cloud, transform.position, Quaternion.identity);
-            scripts.GetComponent<GameManager>().score += 10;
+            scripts.GetComponent<GameManager>().AddScore();
             //  scripts.GetComponent<GameManager>().ch += 10;
             if (!player.GetComponent<SpikanControl>().evolved)
             {

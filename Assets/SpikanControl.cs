@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SpikanControl : MonoBehaviour
 {
+
     // Start is called before the first frame update
     private CharacterController controller;
     private Animator animator;
@@ -78,7 +79,7 @@ public class SpikanControl : MonoBehaviour
                 {
                    
                    
-                        scripts.GetComponent<GameManager>().ch = 0;
+                    scripts.GetComponent<GameManager>().ch = 0;
                     iframe = true;
                     permaGround = true;
                     animator.SetTrigger("Attack2");
@@ -111,15 +112,36 @@ public class SpikanControl : MonoBehaviour
             {
                 float horizontal = Input.GetAxisRaw("Horizontal");
                 float vertical = Input.GetAxisRaw("Vertical");
+
                 Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
                 Vector3 moveDir = new Vector3(0, 0, 0);
                 if (direction.magnitude >= 0.1f && !stagger)
                 {
-                    float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                    float targetAngle;
+                    if (vertical >= 0)
+                    {
+                        targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                        animator.SetFloat("WalkCycleMultiplier", 1);
+                    }
+                    else {
+                        animator.SetFloat("WalkCycleMultiplier", -1);
+                        if (Mathf.Approximately(horizontal, 0))
+                        {
+                            targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                        } else
+                        {
+                            targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                        }
 
-                    moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                            // transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                    }
+
+                    
+                        moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                     controller.Move(moveDir.normalized * speed * Time.deltaTime);
                 }
 

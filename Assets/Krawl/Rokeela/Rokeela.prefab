@@ -305,6 +305,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackParticle: {fileID: 4398385451141665581, guid: 08b9c3123855ce64aa75b4931e817b41, type: 3}
   hitOnce: 0
+  hitHeight: 1600
+  knockback: 670
+  dmg: 10
 --- !u!1 &2984941126395491220
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,8 +657,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iframe: 0
   stagger: 0
+  player: {fileID: 0}
   cloud: {fileID: 8013741707763146875, guid: bc810e53da8d80d41be2d86e19e4fe60, type: 3}
-  health: 65
+  health: 50
   scripts: {fileID: 0}
 --- !u!114 &3721286573955629590
 MonoBehaviour:

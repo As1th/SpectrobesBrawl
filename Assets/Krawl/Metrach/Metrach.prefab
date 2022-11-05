@@ -524,8 +524,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iframe: 0
   stagger: 0
+  player: {fileID: 0}
   cloud: {fileID: 8013741707763146875, guid: bc810e53da8d80d41be2d86e19e4fe60, type: 3}
-  health: 85
+  health: 50
   scripts: {fileID: 0}
 --- !u!114 &4571587539893141264
 MonoBehaviour:
