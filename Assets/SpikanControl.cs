@@ -58,16 +58,26 @@ public class SpikanControl : MonoBehaviour
 
             controller.Move(new Vector3(0, verticalVelosity, 0));
         }
-
-        if (!isAttacking)
+        if (Input.GetButtonDown("Pause"))
+        {
+            if (Time.timeScale == 1)
+            {
+                scripts.GetComponent<Menu>().pause();
+            }
+            else
+            {
+                scripts.GetComponent<Menu>().resume();
+            }
+        }
+        if (!isAttacking && Time.timeScale != 0)
         {
 
-
+           
             if (Input.GetButtonDown("Attack"))
             {
                 if (attackCoolDown == 0 && !stagger) //used to be && controller.isGrounded instead of && !stagger
                 {
-                  
+
                     animator.SetTrigger("Attack");
                     isAttacking = true;
                 }
@@ -77,20 +87,20 @@ public class SpikanControl : MonoBehaviour
             {
                 if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >= 50) //used to be && controller.isGrounded instead of && !stagger
                 {
-                   
-                   
+
+
                     scripts.GetComponent<GameManager>().ch = 0;
                     iframe = true;
                     permaGround = true;
                     animator.SetTrigger("Attack2");
                     isAttacking = true;
-                    
+
                 }
 
             }
             else if (Input.GetButtonDown("Evolve"))
             {
-                if (attackCoolDown == 0 && !stagger &&!evolved && scripts.GetComponent<GameManager>().ev >= 200) //used to be && controller.isGrounded instead of && !stagger
+                if (attackCoolDown == 0 && !stagger && !evolved && scripts.GetComponent<GameManager>().ev >= 200) //used to be && controller.isGrounded instead of && !stagger
                 {
                     var eff = Instantiate(evolvePart, new Vector3(transform.position.x, transform.position.y + 18f, transform.position.z), Quaternion.identity);
                     scripts.GetComponent<GameManager>().ev = 0;
@@ -137,11 +147,11 @@ public class SpikanControl : MonoBehaviour
                             transform.rotation = Quaternion.Euler(0f, angle, 0f);
                         }
 
-                            // transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                        // transform.rotation = Quaternion.Euler(0f, angle, 0f);
                     }
 
-                    
-                        moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+                    moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                     controller.Move(moveDir.normalized * speed * Time.deltaTime);
                 }
 

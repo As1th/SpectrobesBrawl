@@ -150,26 +150,7 @@ public class UIManagerTech : MonoBehaviour
 
 	void Start(){
 		// By default, starts on the home screen, disables others
-		homeScreen.SetActive(true);
-		if(newAccountScreen != null)
-		newAccountScreen.SetActive(false);
-		if(deleteAccountScreen != null)
-		deleteAccountScreen.SetActive(false);
-		if(loginScreen != null)
-		loginScreen.SetActive(false);
-		if(databaseScreen != null)
-		databaseScreen.SetActive(false);
-		if(creditsScreen != null)
-		creditsScreen.SetActive(false);
-		if(systemScreen != null)
-		systemScreen.SetActive(false);
-		if(loadingScreen != null)
-		loadingScreen.SetActive(false);
-		if(loadGameScreen != null)
-		loadGameScreen.SetActive(false);
-		if(newGameScreen != null)
-		newGameScreen.SetActive(false);
-
+		
 		if(advancedMenu){
 			// Set Save Path to local
 			m_Path = Application.dataPath;

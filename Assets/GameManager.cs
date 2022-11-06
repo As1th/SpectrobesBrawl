@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public AudioSource defeat;
     public AudioSource bgm;
     public List<GameObject> currentKrawl = new List<GameObject>();
+    public GameObject defeatPopup;
+    public TextMeshProUGUI scoreTextDefeatMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,7 +89,9 @@ public class GameManager : MonoBehaviour
     {
         defeat.Play();
         bgm.Stop();
-    
+        defeatPopup.SetActive(true);
+        scoreTextDefeatMenu.text = score.ToString();
+
     }
     public void AddScore()
     {
