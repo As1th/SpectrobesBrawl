@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject pointCounter;
     public GameObject[] KrawlList;
     public TextMeshProUGUI countdown;
+    public AudioSource defeat;
+    public AudioSource bgm;
     public List<GameObject> currentKrawl = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -81,6 +83,12 @@ public class GameManager : MonoBehaviour
        
     }
 
+    public void defeatSequence()
+    {
+        defeat.Play();
+        bgm.Stop();
+    
+    }
     public void AddScore()
     {
         score += 10;

@@ -90,7 +90,7 @@ public class SpikanControl : MonoBehaviour
             }
             else if (Input.GetButtonDown("Evolve"))
             {
-                if (attackCoolDown == 0 && !stagger &&!evolved && scripts.GetComponent<GameManager>().ev >= 0) //used to be && controller.isGrounded instead of && !stagger
+                if (attackCoolDown == 0 && !stagger &&!evolved && scripts.GetComponent<GameManager>().ev >= 200) //used to be && controller.isGrounded instead of && !stagger
                 {
                     var eff = Instantiate(evolvePart, new Vector3(transform.position.x, transform.position.y + 18f, transform.position.z), Quaternion.identity);
                     scripts.GetComponent<GameManager>().ev = 0;
@@ -192,6 +192,7 @@ public class SpikanControl : MonoBehaviour
             Camera.main.gameObject.transform.parent = null;
             Camera.main.gameObject.GetComponent<Rotate>().enabled = true;
             scripts.GetComponent<GameManager>().lost = true;
+            scripts.GetComponent<GameManager>().defeatSequence();
             this.gameObject.SetActive(false);
             
         }
