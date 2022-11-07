@@ -28,6 +28,8 @@ public class SpikanControlIntro : MonoBehaviour
     public GameObject CHPartsEvolved;
     public bool evolved=false;
     public GameObject camAnchor;
+    public AudioSource dashSound;
+        public AudioSource swingSound;
     void Start()
     {
         cam = Camera.main.transform;
@@ -68,7 +70,7 @@ public class SpikanControlIntro : MonoBehaviour
             {
                 if (attackCoolDown == 0 && !stagger) //used to be && controller.isGrounded instead of && !stagger
                 {
-                  
+                    swingSound.Play();
                     animator.SetTrigger("Attack");
                     isAttacking = true;
                 }
@@ -161,7 +163,7 @@ public class SpikanControlIntro : MonoBehaviour
                 {
                     if (dashcooldown == 0 && attackCoolDown == 0)
                     {
-
+                        dashSound.Play();
                         iframe = true;
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;

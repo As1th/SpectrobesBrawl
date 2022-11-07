@@ -26,6 +26,8 @@ public class SpikanControl : MonoBehaviour
     public GameObject Spikanor;
     public ParticleSystem evolvePart;
     public GameObject CHPartsEvolved;
+    public AudioSource dashSound;
+    public AudioSource swingSound;
     public bool evolved=false;
     void Start()
     {
@@ -77,7 +79,7 @@ public class SpikanControl : MonoBehaviour
             {
                 if (attackCoolDown == 0 && !stagger) //used to be && controller.isGrounded instead of && !stagger
                 {
-
+                    swingSound.Play();
                     animator.SetTrigger("Attack");
                     isAttacking = true;
                 }
@@ -160,7 +162,7 @@ public class SpikanControl : MonoBehaviour
                 {
                     if (dashcooldown == 0 && attackCoolDown == 0)
                     {
-
+                        dashSound.Play();
                         iframe = true;
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;

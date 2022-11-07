@@ -10,12 +10,14 @@ public class MoveAirProjectile : MonoBehaviour
     public GameObject reverseAttackParticle;
     public bool dead;
     public GameObject scripts;
+    public AudioSource blocksound;
     public GameObject defensePoof;
     public bool playEffectOnCollision = false;
     // Start is called before the first frame update
     void Start()
     {
         dead = false;
+        blocksound = GameObject.Find("BlockSound").GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * speed);
         scripts = GameObject.Find("Scripts");
@@ -43,6 +45,7 @@ public class MoveAirProjectile : MonoBehaviour
        
         if (other.gameObject.layer == 9 && !dead)
         {
+            blocksound.Play();
             this.gameObject.transform.Rotate(new Vector3(1, 0, 0), -180);
             this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
             this.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * 7000);
