@@ -526,13 +526,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 29.16
-  m_Radius: 6
+  m_Height: 24.8
+  m_Radius: 9
   m_SlopeLimit: 45
-  m_StepOffset: 4
-  m_SkinWidth: 0.08
+  m_StepOffset: 1
+  m_SkinWidth: 1
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 14.42, z: 0}
+  m_Center: {x: 0, y: 12.3, z: 0}
 --- !u!95 &4407763426062582848
 Animator:
   serializedVersion: 4
@@ -581,8 +581,9 @@ MonoBehaviour:
   stagger: 0
   player: {fileID: 0}
   cloud: {fileID: 8013741707763146875, guid: bc810e53da8d80d41be2d86e19e4fe60, type: 3}
-  health: 50
+  health: 55
   scripts: {fileID: 0}
+  touch: 0
 --- !u!114 &4407763427550444763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,7 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da63bb3f790fdde4689eb49cefa26ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 21
+  speed: 22
   isAttacking: 0
   inRange: 0
   attackCoolDown: 0

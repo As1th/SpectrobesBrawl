@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class GameManager : MonoBehaviour
 {
     public GameObject KrawlSpawner;
@@ -30,10 +31,23 @@ public class GameManager : MonoBehaviour
     public List<GameObject> currentKrawl = new List<GameObject>();
     public GameObject defeatPopup;
     public TextMeshProUGUI scoreTextDefeatMenu;
+    public TextMeshProUGUI wavesTextDefeatMenu;
+    public AudioSource beepLoop;
+    public bool swarm = false;
+    public TextMeshProUGUI warningText;
+    public GameObject warningIcon;
+    int swarmCount;
+    public AudioSource beepCountdown;
+    public AudioSource alarm;
+    int counter = 0;
+    public GameObject difficultyMenu;
+    public int maxKrawlPerWave;
+    public GameObject player;
+    public bool randomWaveMode;
     // Start is called before the first frame update
     void Start()
     {
-        health = 275;
+        health = 400;
         for (int i = 0; i < SpawnLociArray.transform.childCount; i++)
         {
             
@@ -41,24 +55,76 @@ public class GameManager : MonoBehaviour
         }
         minKrawl = 0;
         maxKrawl = 2;
-        StartCoroutine(
-                countDownAndBegin());
+
+
     }
 
-    
+   
+    public void startEasy()
+    {
+        maxKrawlPerWave = 2;
+        difficultyMenu.SetActive(false);
+        StartCoroutine(
+                countDownAndBegin());
+        swarmCount = 3;
+        player.GetComponent<SpikanControl>().enabled = true;
+    }
+    public void startNormal()
+    {
+        maxKrawlPerWave = 3;
+        difficultyMenu.SetActive(false);
+        StartCoroutine(
+                countDownAndBegin());
+        swarmCount = 3;
+        player.GetComponent<SpikanControl>().enabled = true;
+    }
+    IEnumerator setNewWarning(string w, bool permanent)
+    {
+       
+        warningText.text = w;
+        warningIcon.SetActive(true);
+       
+
+        if (!permanent)
+        {
+            alarm.Play();
+            yield return new WaitForSeconds(5);
+            warningText.text = "";
+            warningIcon.SetActive(false);
+           
+        }
+        else {
+            if (counter < 2)
+            {
+                alarm.Play();
+                counter++;
+            }
+           
+        }
+    }
 
     IEnumerator countDownAndBegin()
     {
         yield return new WaitForSeconds(1f);
+        beepCountdown.Play();
         countdown.text = "3";
         yield return new WaitForSeconds(1f);
+        beepCountdown.Play();
         countdown.text = "2";
+    
+
         yield return new WaitForSeconds(1f);
+        beepCountdown.Play();
         countdown.text = "1";
+       
         yield return new WaitForSeconds(1f);
+        beepCountdown.pitch = 1.5f;
+        beepCountdown.Play();
         countdown.text = "GO!";
+       
         yield return new WaitForSeconds(1f);
         countdown.text = "";
+        beepCountdown.pitch = 1f;
         InvokeRepeating("spawn", 0, 2);
     }
     // Update is called once per frame
@@ -72,26 +138,46 @@ public class GameManager : MonoBehaviour
             health = 0;
         }
 
-        if (ev > 200)
+        if (ev >= 400)
         {
-            ev = 200;
+            ev = 400;
+            if (!beepLoop.isPlaying)
+            {
+                beepLoop.Play();
+            }
         }
-        evBar.UpdateValue((int)ev, 200);
+        else {
+            beepLoop.Stop();
+        }
+        evBar.UpdateValue((int)ev, 400);
         chBar.UpdateValue((int)ch,50);
-        healthBar.UpdateValue((int)health,275);
+        healthBar.UpdateValue((int)health,400);
         pointCounter.GetComponent<Text>().text = score.ToString();
 
-       
-       
+        if (Input.GetButtonDown("Pause")  && !lost)
+        {
+            if (Time.timeScale == 1)
+            {
+                GetComponent<Menu>().pause();
+            }
+            else
+            {
+                GetComponent<Menu>().resume();
+            }
+        }
+
     }
 
     public void defeatSequence()
     {
         defeat.Play();
         bgm.Stop();
+        beepLoop.enabled=false;
         defeatPopup.SetActive(true);
         scoreTextDefeatMenu.text = score.ToString();
-
+        int waves = (int)(score / 100);
+        wavesTextDefeatMenu.text = waves.ToString();
+        GetComponent<Menu>().resume();
     }
     public void AddScore()
     {
@@ -109,68 +195,71 @@ public class GameManager : MonoBehaviour
     public void spawnKrawl()
     {
       int i = 0;
-       
+       //removed
+    }
+
+    public void generateAndSummonSetAmountOfTimes(int x)
+    {
+        int y;
+        for (y = x; y > 0; y--)
+        {
+            int i = Random.Range(minKrawl, maxKrawl);
+            if (randomWaveMode)
+            {
+                i = Random.Range(0, KrawlList.Length);
+            }
+            summon(i);
+        }
     }
 
     public void spawn()
     {
         int i = 0;
-        if (scoreIncrement < 5)
+        if (swarm)
         {
-            if (currentKrawl.Count == 0)
+            StartCoroutine(setNewWarning("THE KRAWL ARE SWARMING!", true));
+            generateAndSummonSetAmountOfTimes(swarmCount-currentKrawl.Count);
+            if (upgradeKrawl)
             {
-                i = Random.Range(minKrawl, maxKrawl);
-                summon(i);
-                i = Random.Range(minKrawl, maxKrawl);
-                summon(i);
-            }
-            else if (currentKrawl.Count == 1)
-            {
-                i = Random.Range(minKrawl, maxKrawl);
-                summon(i);
+                swarmCount++;
             }
         }
-        else {
-            if (currentKrawl.Count == 0)
-            {
-                i = Random.Range(minKrawl, maxKrawl);
-                summon(i);
-                i = Random.Range(minKrawl, maxKrawl);
-                summon(i);
-                i = Random.Range(minKrawl, maxKrawl);
-                summon(i);
-                i = Random.Range(minKrawl, maxKrawl);
-                summon(i);
-            }
-            else if (currentKrawl.Count == 1)
-            {
-                i = Random.Range(minKrawl, maxKrawl);
-                summon(i);
-                i = Random.Range(minKrawl, maxKrawl);
-                summon(i);
-            }
-            else if (currentKrawl.Count == 2)
-            {
-                i = Random.Range(minKrawl, maxKrawl);
-                summon(i);
-            }
+        else if (scoreIncrement < 5)
+        {
+            
+                generateAndSummonSetAmountOfTimes((maxKrawlPerWave-1)-currentKrawl.Count);
+            
            
+        }
+        else {
+
+            generateAndSummonSetAmountOfTimes(maxKrawlPerWave - currentKrawl.Count);
+
         }
         if (upgradeKrawl)
         {
             if (maxKrawl <= 18)
             {
+                if (!randomWaveMode)
+                {
+                    StartCoroutine(setNewWarning("STRONGER KRAWL APPROACHING!", false));
+                }
                 maxKrawl += 2;
                 minKrawl += 2;
             }
             else if (maxKrawl != 21)
             {
+                if (!randomWaveMode)
+                {
+                    StartCoroutine(setNewWarning("STRONGER KRAWL APPROACHING!", false));
+                }
                 maxKrawl = 21;
-                minKrawl += 2;
+                minKrawl += 1;
             }
             else
             {
-                minKrawl = 9;
+                minKrawl = 6;
+                swarm = true;
             }
                 
 
@@ -178,109 +267,7 @@ public class GameManager : MonoBehaviour
             upgradeKrawl = false;
         }
 
-        /*
-        if (score <= 50)
-        {
-            if (currentKrawl.Count == 0)
-            {
-                i = Random.Range(0, 2);
-
-                summon(i);
-                i = Random.Range(0, 2);
-                summon(i);
-            }
-            else if (currentKrawl.Count == 1)
-            {
-                i = Random.Range(0, 2);
-                summon(i);
-            }
-        }
-        else if (score <= 100)
-        {
-            if (currentKrawl.Count == 0)
-            {
-                i = Random.Range(0, 2);
-
-                summon(i);
-                i = Random.Range(0, 2);
-                summon(i);
-                i = Random.Range(0, 2);
-                summon(i);
-            }
-            else if (currentKrawl.Count == 1)
-            {
-                i = Random.Range(0, 2);
-                summon(i);
-                i = Random.Range(0, 2);
-                summon(i);
-            }
-            else if (currentKrawl.Count == 2)
-            {
-                i = Random.Range(0, 2);
-                summon(i);
-            }
-        }
-
-
-
-
-
-
-        else if (score <= 130)
-        {
-            if (currentKrawl.Count < 2)
-            {
-                i = Random.Range(1, 3);
-                summon(i);
-            }
-        }
-        else if (score <= 160)
-        {
-            i = Random.Range(0, 3);
-            summon(i);
-            if (currentKrawl.Count < 3)
-            {
-                i = Random.Range(0, 3);
-                summon(i);
-            }
-        }
-        else if (score <= 230)
-        {
-            if (currentKrawl.Count < 2)
-            {
-                i = Random.Range(3, 5);
-                summon(i);
-            }
-        }
-        else if (score <= 290)
-        {
-            i = Random.Range(2, 5);
-            summon(i);
-            if (currentKrawl.Count < 3)
-            {
-                i = Random.Range(2, 5);
-                summon(i);
-            }
-        }
-        else if (score <= 370)
-        {
-            if (currentKrawl.Count < 2)
-            {
-                i = Random.Range(4, 8);
-                summon(i);
-            }
-        }
-        else if (score <= 450)
-        {
-            i = Random.Range(3, 8);
-            summon(i);
-            if (currentKrawl.Count < 3)
-            {
-                i = Random.Range(3, 8);
-                summon(i);
-            }
-        }
-        */
+       
     }
 
     public void summon(int i)

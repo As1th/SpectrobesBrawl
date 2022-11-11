@@ -6,7 +6,7 @@
  
     Category {
  
-        Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Opaque" }
+        Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Fade" }
  
  
         SubShader {

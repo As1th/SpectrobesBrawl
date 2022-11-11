@@ -17,6 +17,7 @@ public class CreebagController : MonoBehaviour
     public Collider hurtbox;
     public GameObject weapon;
     public ParticleSystem attackPart;
+    public AudioSource attackSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,10 +64,11 @@ public class CreebagController : MonoBehaviour
             {
               
                 isAttacking = true;
-                
+                attackSound.Play();
                 transform.LookAt(GetComponent<Krawl>().player.transform);
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
                 attackPart.Play();
+               
                 animator.SetTrigger("Attack");
                 impact.AddImpact(transform.forward, 625);
             }

@@ -29,7 +29,8 @@ public class SpikanControlIntro : MonoBehaviour
     public bool evolved=false;
     public GameObject camAnchor;
     public AudioSource dashSound;
-        public AudioSource swingSound;
+    public AudioSource chSound;
+    public AudioSource swingSound;
     void Start()
     {
         cam = Camera.main.transform;
@@ -80,8 +81,8 @@ public class SpikanControlIntro : MonoBehaviour
             {
                 if (attackCoolDown == 0 && !stagger) //used to be && controller.isGrounded instead of && !stagger
                 {
-                   
-                   
+                    chSound.Play();
+
                     scripts.GetComponent<GameManager>().ch = 0;
                     iframe = true;
                     permaGround = true;
@@ -167,7 +168,7 @@ public class SpikanControlIntro : MonoBehaviour
                         iframe = true;
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;
-                        GetComponent<ImpactReceiver>().AddImpact(moveDir, 500);
+                        GetComponent<ImpactReceiver>().AddImpact(moveDir, 515);
                         dashcooldown = 38;
 
                     }
@@ -246,7 +247,7 @@ public class SpikanControlIntro : MonoBehaviour
         permaGround = false;
         iframe = false;
         stagger = false;
-        attackCoolDown = 18;
+        attackCoolDown = 11;
         deathCheck();
         animator.SetTrigger("Idle");
         isAttacking = false;

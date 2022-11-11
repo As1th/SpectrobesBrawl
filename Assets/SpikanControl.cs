@@ -28,7 +28,10 @@ public class SpikanControl : MonoBehaviour
     public GameObject CHPartsEvolved;
     public AudioSource dashSound;
     public AudioSource swingSound;
+    public AudioSource chSound;
     public bool evolved=false;
+    public bool touch;
+
     void Start()
     {
         cam = Camera.main.transform;
@@ -37,10 +40,40 @@ public class SpikanControl : MonoBehaviour
         hurtbox = tailball.GetComponent<Collider>();
       
     }
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+       
+        //hitNormal = hit.normal;
+        if (hit.gameObject.layer == 10)
+        {
+            if (IsBAboveA(A: hit.gameObject.transform, B: transform, Ra: hit.gameObject.GetComponent<CharacterController>().radius, Rb: 8))
+            {
+                touch = true;
+            }
+           
+        }
+    }
 
+    public static bool IsBAboveA(Transform A, Transform B, float Ra, float Rb)
+    {
+        Vector3 Vab = (B.position - A.position) - Vector3.Dot(B.position - A.position, A.up) * A.up;
+        if (Vab.magnitude < (Ra + Rb))
+        {
+            if (Vector3.Dot(B.position - A.position, A.up) > 0)
+            {
+                return true; // object B is above object A
+            }
+        }
+        return false; // object B is not above object A
+    }
     // Update is called once per frame
     void Update()
     {
+        if (touch)
+        {
+            gameObject.GetComponent<CharacterController>().SimpleMove(transform.forward * 100);
+        }
+        touch = false;
         if (!controller.isGrounded)
         {
             controller.Move(Vector3.down * 40.81f * Time.deltaTime);
@@ -60,17 +93,7 @@ public class SpikanControl : MonoBehaviour
 
             controller.Move(new Vector3(0, verticalVelosity, 0));
         }
-        if (Input.GetButtonDown("Pause"))
-        {
-            if (Time.timeScale == 1)
-            {
-                scripts.GetComponent<Menu>().pause();
-            }
-            else
-            {
-                scripts.GetComponent<Menu>().resume();
-            }
-        }
+        
         if (!isAttacking && Time.timeScale != 0)
         {
 
@@ -90,7 +113,7 @@ public class SpikanControl : MonoBehaviour
                 if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >= 50) //used to be && controller.isGrounded instead of && !stagger
                 {
 
-
+                    chSound.Play();
                     scripts.GetComponent<GameManager>().ch = 0;
                     iframe = true;
                     permaGround = true;
@@ -102,7 +125,7 @@ public class SpikanControl : MonoBehaviour
             }
             else if (Input.GetButtonDown("Evolve"))
             {
-                if (attackCoolDown == 0 && !stagger && !evolved && scripts.GetComponent<GameManager>().ev >= 200) //used to be && controller.isGrounded instead of && !stagger
+                if (attackCoolDown == 0 && !stagger && !evolved && scripts.GetComponent<GameManager>().ev >= 400) //used to be && controller.isGrounded instead of && !stagger
                 {
                     var eff = Instantiate(evolvePart, new Vector3(transform.position.x, transform.position.y + 18f, transform.position.z), Quaternion.identity);
                     scripts.GetComponent<GameManager>().ev = 0;
@@ -182,6 +205,14 @@ public class SpikanControl : MonoBehaviour
         }
 
 
+     
+
+
+
+    }
+
+    public void FixedUpdate()
+    {
         if (attackCoolDown > 0)
         {
             attackCoolDown--;
@@ -192,9 +223,6 @@ public class SpikanControl : MonoBehaviour
         {
             dashcooldown--;
         }
-
-
-
     }
     public void deathCheck()
     {

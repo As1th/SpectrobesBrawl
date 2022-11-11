@@ -34,7 +34,7 @@ public class RokeelaDamage : MonoBehaviour
             {
                 hitOnce = true;
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-                other.gameObject.transform.root.GetComponent<SpikanControl>().Hit(new Vector3(hitDir.x, 16, hitDir.z) * Time.deltaTime, knockback, dmg:dmg);
+                other.gameObject.transform.root.GetComponent<SpikanControl>().Hit(new Vector3(hitDir.x, 15, hitDir.z) * Time.deltaTime, knockback, dmg:dmg);
                 //other.gameObject.transform.root.GetComponent<SpikanControl>().iframe = true;
                 Instantiate(attackParticle, this.gameObject.transform.position+(-transform.right*5), Quaternion.identity);
             }

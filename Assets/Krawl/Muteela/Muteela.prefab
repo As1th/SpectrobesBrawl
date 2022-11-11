@@ -616,8 +616,8 @@ CharacterController:
   m_Height: 35
   m_Radius: 13
   m_SlopeLimit: 45
-  m_StepOffset: 4
-  m_SkinWidth: 0.08
+  m_StepOffset: 1
+  m_SkinWidth: 1
   m_MinMoveDistance: 0.001
   m_Center: {x: 1.6, y: 17.3, z: -1}
 --- !u!95 &7608902537962067299
@@ -658,6 +658,7 @@ MonoBehaviour:
   cloud: {fileID: 8013741707763146875, guid: bc810e53da8d80d41be2d86e19e4fe60, type: 3}
   health: 40
   scripts: {fileID: 0}
+  touch: 0
 --- !u!114 &7608902537962067302
 MonoBehaviour:
   m_ObjectHideFlags: 0

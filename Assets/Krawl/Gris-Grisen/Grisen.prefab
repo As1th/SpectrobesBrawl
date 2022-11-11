@@ -210,13 +210,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 35
-  m_Radius: 13
+  m_Height: 19.45
+  m_Radius: 9
   m_SlopeLimit: 45
-  m_StepOffset: 4
-  m_SkinWidth: 0.08
+  m_StepOffset: 1
+  m_SkinWidth: 1
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 17.4, z: 0}
+  m_Center: {x: 0, y: 10.3, z: 0}
 --- !u!95 &2100137578294027306
 Animator:
   serializedVersion: 4
@@ -255,6 +255,7 @@ MonoBehaviour:
   cloud: {fileID: 8013741707763146875, guid: bc810e53da8d80d41be2d86e19e4fe60, type: 3}
   health: 50
   scripts: {fileID: 0}
+  touch: 0
 --- !u!114 &2100137578294027304
 MonoBehaviour:
   m_ObjectHideFlags: 0

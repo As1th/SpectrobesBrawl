@@ -65,7 +65,7 @@ public class MoveAirProjectile : MonoBehaviour
             if (other.gameObject.transform.root.GetComponent<SpikanControl>().iframe == false)
             {
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-                other.gameObject.transform.root.GetComponent<SpikanControl>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, 150, dmg: 5);
+                other.gameObject.transform.root.GetComponent<SpikanControl>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, 100, dmg: 5);
                 if (!playEffectOnCollision)
                 {
                     Instantiate(attackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);

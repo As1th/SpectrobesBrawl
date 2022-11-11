@@ -14,6 +14,7 @@ public class Krawl : MonoBehaviour
     //public float speed = 27f;
     public float health = 50f;
     public GameObject scripts;
+    public bool touch;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +24,39 @@ public class Krawl : MonoBehaviour
         impact = GetComponent<ImpactReceiver>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
 
+        //hitNormal = hit.normal;
+        if (hit.gameObject.layer == 10 || hit.gameObject.layer == 10)
+        {
+            if (IsBAboveA(A: hit.gameObject.transform, B: transform, Ra:hit.gameObject.GetComponent<CharacterController>().radius, Rb:GetComponent<CharacterController>().radius))
+            {
+                touch = true;
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        if (touch)
+        {
+            gameObject.GetComponent<CharacterController>().SimpleMove(transform.right * 80);
+        }
+        touch = false;
     }
-
+    public static bool IsBAboveA(Transform A, Transform B, float Ra, float Rb)
+    {
+        Vector3 Vab = (B.position - A.position) - Vector3.Dot(B.position - A.position, A.up) * A.up;
+        if (Vab.magnitude < (Ra + Rb))
+        {
+            if (Vector3.Dot(B.position - A.position, A.up) > 0)
+            {
+                return true; // object B is above object A
+            }
+        }
+        return false; // object B is not above object A
+    }
     public void deathCheck()
     {
         if (health <= 0)

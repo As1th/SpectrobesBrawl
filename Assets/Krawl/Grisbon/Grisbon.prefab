@@ -204,13 +204,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 32.5
+  m_Height: 29
   m_Radius: 12
   m_SlopeLimit: 45
-  m_StepOffset: 4
-  m_SkinWidth: 0.08
+  m_StepOffset: 1
+  m_SkinWidth: 1
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 16.2, z: 0}
+  m_Center: {x: 0, y: 14.4, z: 0}
 --- !u!95 &2513112290149173245
 Animator:
   serializedVersion: 4
@@ -245,9 +245,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iframe: 0
   stagger: 0
+  player: {fileID: 0}
   cloud: {fileID: 8013741707763146875, guid: bc810e53da8d80d41be2d86e19e4fe60, type: 3}
   health: 45
   scripts: {fileID: 0}
+  touch: 0
 --- !u!114 &2513112290149173241
 MonoBehaviour:
   m_ObjectHideFlags: 0

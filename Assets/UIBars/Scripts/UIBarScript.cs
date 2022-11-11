@@ -77,6 +77,13 @@ public class UIBarScript : MonoBehaviour {
 
 	void Update () 
 	{
+		RectTransform FRT = (Filler.transform as RectTransform);
+
+		//this is the location of the filler object when the HP is at 1
+		Mask0 = new Vector3(FRT.position.x, FRT.position.y, FRT.position.z);
+
+		//the location of the filler object when the HP is at 0 depends on the FillStyle
+		
 		//set the Update Category (is the HP going up, down, or not moving)
 		if (Mathf.Round(Value * 100f)/100f == Mathf.Round(NewValue * 100f)/100f)
 		{
@@ -95,8 +102,10 @@ public class UIBarScript : MonoBehaviour {
 		RectTransform MRT = (Mask.transform as RectTransform);
 		if (FillStyle == FillStyles.horizontal)
 		{
+			
 			Mask1 = new Vector3(MRT.position.x,MRT.position.y,MRT.position.z);
 			Mask0 = new Vector3(MRT.position.x - MRT.rect.width + MaskOffset,MRT.position.y,MRT.position.z );
+			
 		}
 		else
 		{
@@ -109,9 +118,9 @@ public class UIBarScript : MonoBehaviour {
 		Value = Mathf.Clamp(Value,0f,1f);//make sure the Value is between 0 and 1
 
 		//move the Filler position to display the Correct Percent
-		RectTransform FRT = (Filler.transform as RectTransform);
+		FRT = (Filler.transform as RectTransform);
 		FRT.position = Vector3.Lerp (Mask0,Mask1,Value);
-
+		
 		//set the color for the Fill Image, and the Text Objects
 		Filler.GetComponent<Image>().color = HPColor.Evaluate(Value);
 		PercentTxt.GetComponent<Text>().color = TextColor.Evaluate(Value);

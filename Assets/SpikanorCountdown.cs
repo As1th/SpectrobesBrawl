@@ -12,14 +12,14 @@ public class SpikanorCountdown : MonoBehaviour
     void Start()
     {
         scripts =  GetComponent<SpikanControl>().scripts;
-
+        count = 2000;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         scripts.GetComponent<GameManager>().health = scripts.GetComponent<GameManager>().healthStore;
-        scripts.GetComponent<GameManager>().ev = count / 4000 * 200;
+        scripts.GetComponent<GameManager>().ev = count / 2000 * 400;
 
 
         if (count > 0)

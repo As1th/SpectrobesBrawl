@@ -31,7 +31,7 @@ public class MoldovaDamage : MonoBehaviour
             {
                 hitOnce = true;
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-                other.gameObject.transform.root.GetComponent<SpikanControl>().Hit(new Vector3(hitDir.x, 3, hitDir.z) * Time.deltaTime, 700, dmg:20);
+                other.gameObject.transform.root.GetComponent<SpikanControl>().Hit(new Vector3(hitDir.x, 3, hitDir.z) * Time.deltaTime, 700, dmg:25);
                 //other.gameObject.transform.root.GetComponent<SpikanControl>().iframe = true;
                 Instantiate(attackParticle, this.gameObject.transform.position+(-transform.right*5), Quaternion.identity);
             }

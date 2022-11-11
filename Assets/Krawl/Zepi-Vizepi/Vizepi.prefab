@@ -284,7 +284,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 39
+  m_Radius: 35
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2378004592041177204
 MonoBehaviour:
@@ -448,13 +448,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 23
-  m_Radius: 9.6
+  m_Height: 24
+  m_Radius: 9
   m_SlopeLimit: 45
-  m_StepOffset: 4
-  m_SkinWidth: 0.08
+  m_StepOffset: 1
+  m_SkinWidth: 1
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 11.29, z: 0}
+  m_Center: {x: 0, y: 12, z: 0}
 --- !u!95 &2378004592607797230
 Animator:
   serializedVersion: 4
@@ -491,8 +491,9 @@ MonoBehaviour:
   stagger: 0
   player: {fileID: 0}
   cloud: {fileID: 8013741707763146875, guid: bc810e53da8d80d41be2d86e19e4fe60, type: 3}
-  health: 25
+  health: 15
   scripts: {fileID: 0}
+  touch: 0
 --- !u!114 &2378004592607797225
 MonoBehaviour:
   m_ObjectHideFlags: 0
