@@ -822,7 +822,7 @@ CharacterController:
   m_Radius: 10
   m_SlopeLimit: 45
   m_StepOffset: 1
-  m_SkinWidth: 0.08
+  m_SkinWidth: 1
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 14.6, z: -0.6}
 --- !u!95 &9146533458003305618
@@ -893,6 +893,7 @@ MonoBehaviour:
   cloud: {fileID: 8013741707763146875, guid: bc810e53da8d80d41be2d86e19e4fe60, type: 3}
   health: 45
   scripts: {fileID: 0}
+  touch: 0
 --- !u!1 &8522256315694618442
 GameObject:
   m_ObjectHideFlags: 0

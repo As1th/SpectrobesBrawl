@@ -190,7 +190,7 @@ public class SpikanControl : MonoBehaviour
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;
                         GetComponent<ImpactReceiver>().AddImpact(moveDir, 500);
-                        dashcooldown = 38;
+                        dashcooldown = 36;
 
                     }
 
@@ -274,7 +274,7 @@ public class SpikanControl : MonoBehaviour
         permaGround = false;
         iframe = false;
         stagger = false;
-        attackCoolDown = 18;
+        attackCoolDown = 11;
         deathCheck();
         animator.SetTrigger("Idle");
         isAttacking = false;

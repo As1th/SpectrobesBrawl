@@ -169,7 +169,7 @@ public class SpikanControlIntro : MonoBehaviour
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;
                         GetComponent<ImpactReceiver>().AddImpact(moveDir, 515);
-                        dashcooldown = 38;
+                        dashcooldown = 36;
 
                     }
 

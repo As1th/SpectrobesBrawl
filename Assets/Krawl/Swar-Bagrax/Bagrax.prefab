@@ -785,7 +785,7 @@ MonoBehaviour:
   stagger: 0
   player: {fileID: 0}
   cloud: {fileID: 8013741707763146875, guid: bc810e53da8d80d41be2d86e19e4fe60, type: 3}
-  health: 65
+  health: 60
   scripts: {fileID: 0}
   touch: 0
 --- !u!1 &6733326730849542693
