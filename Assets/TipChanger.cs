@@ -16,7 +16,7 @@ public class TipChanger : MonoBehaviour
     public void OnEnable()
     {
         text = GetComponent<TextMeshProUGUI>();
-        i = Random.Range(0, 6);
+        i = Random.Range(0, 7);
         changeText(i);
     }
     public void changeText(int i)
@@ -43,6 +43,9 @@ public class TipChanger : MonoBehaviour
             case 5:
                 text.text = "TIP: LONG-RANGE OR DASH-ATTACK KRAWL ARE MORE FRAGILE THAN CLOSE-RANGE KRAWL.";
                 break;
+            case 6:
+                text.text = "TIP: A SINGLE WAVE IS MADE UP OF ABOUT 10 KRAWL SPAWNING A FEW AT A TIME.";
+                break;
 
 
         }
@@ -52,7 +55,7 @@ public class TipChanger : MonoBehaviour
     public void incrementText()
     {
         i++;
-        if (i == 6)
+        if (i == 7)
         { i =0; }
         changeText(i);
     }

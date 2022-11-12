@@ -46,7 +46,7 @@ public class SpikanControl : MonoBehaviour
         //hitNormal = hit.normal;
         if (hit.gameObject.layer == 10)
         {
-            if (IsBAboveA(A: hit.gameObject.transform, B: transform, Ra: hit.gameObject.GetComponent<CharacterController>().radius, Rb: 8))
+            if (IsBAboveA(A: hit.gameObject.transform, B: transform, Ra: hit.gameObject.GetComponent<CharacterController>().radius, Rb: 9.5f))
             {
                 touch = true;
             }

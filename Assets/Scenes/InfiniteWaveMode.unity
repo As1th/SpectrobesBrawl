@@ -3629,7 +3629,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 25
-  m_Radius: 9.5
+  m_Radius: 7
   m_SlopeLimit: 45
   m_StepOffset: 1
   m_SkinWidth: 1
@@ -7156,7 +7156,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5905e-41, y: -13398.641, z: 4.5905e-41, w: 9.403955e-38}
+  m_BoundingSphereOverride: {x: -1, y: 10, z: 7, w: -12}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

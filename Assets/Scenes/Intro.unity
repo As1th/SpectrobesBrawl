@@ -5501,7 +5501,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 25
-  m_Radius: 9.5
+  m_Radius: 7
   m_SlopeLimit: 45
   m_StepOffset: 1
   m_SkinWidth: 1

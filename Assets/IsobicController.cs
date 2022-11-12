@@ -68,7 +68,7 @@ public class IsobicController : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
               
                 animator.SetTrigger("Attack");
-                impact.AddImpact(transform.forward, 650);
+                StartCoroutine(waitAndAddForce());
             }
 
         }
@@ -80,7 +80,11 @@ public class IsobicController : MonoBehaviour
         }
 
     }
-
+    IEnumerator waitAndAddForce()
+    {
+        yield return new WaitForSeconds(0.6f);
+        impact.AddImpact(transform.forward, 650);
+    }
     public void activateHurtBox()
     {
         hurtbox.enabled = true;

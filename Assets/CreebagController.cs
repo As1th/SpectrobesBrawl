@@ -70,7 +70,7 @@ public class CreebagController : MonoBehaviour
                 attackPart.Play();
                
                 animator.SetTrigger("Attack");
-                impact.AddImpact(transform.forward, 625);
+                StartCoroutine(waitAndAddForce());
             }
 
         }
@@ -82,7 +82,11 @@ public class CreebagController : MonoBehaviour
         }
 
     }
-
+    IEnumerator waitAndAddForce()
+    {
+        yield return new WaitForSeconds(0.6f);
+        impact.AddImpact(transform.forward, 650);
+    }
     public void activateHurtBox()
     {
         hurtbox.enabled = true;

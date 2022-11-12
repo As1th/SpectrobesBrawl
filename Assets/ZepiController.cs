@@ -68,7 +68,7 @@ public class ZepiController : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
            
                 animator.SetTrigger("Attack");
-                impact.AddImpact(transform.forward, 425);
+                StartCoroutine(waitAndAddForce());
             }
 
         }
@@ -81,6 +81,11 @@ public class ZepiController : MonoBehaviour
 
     }
 
+    IEnumerator waitAndAddForce()
+    {
+        yield return new WaitForSeconds(0.5f);
+        impact.AddImpact(transform.forward, 475);
+    }
     public void activateHurtBox()
     {
         hurtbox.enabled = true;
