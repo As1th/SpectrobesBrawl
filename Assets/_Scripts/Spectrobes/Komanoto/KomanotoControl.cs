@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpikanControl : MonoBehaviour
+public class KomanotoControl : MonoBehaviour
 {
 
     // Start is called before the first frame update
@@ -31,6 +31,7 @@ public class SpikanControl : MonoBehaviour
     public AudioSource chSound;
     public bool evolved=false;
     public bool touch;
+    public ParticleSystem groundFire;
 
     void Start()
     {
@@ -105,12 +106,13 @@ public class SpikanControl : MonoBehaviour
                     swingSound.Play();
                     animator.SetTrigger("Attack");
                     isAttacking = true;
+                    groundFire.Play();
                 }
 
             }
             else if (Input.GetButtonDown("Attack2"))
             {
-                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >= 50) //used to be && controller.isGrounded instead of && !stagger
+                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >= 0) //used to be && controller.isGrounded instead of && !stagger
                 {
 
                     chSound.Play();
