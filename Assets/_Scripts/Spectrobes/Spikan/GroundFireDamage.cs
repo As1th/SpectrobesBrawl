@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TailDamage : MonoBehaviour
+public class GroundFireDamage : MonoBehaviour
 {
     public GameObject attackParticle;
     // Start is called before the first frame update
@@ -20,16 +20,17 @@ public class TailDamage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (transform.root.gameObject.GetComponent<SpikanControl>().isAttacking)
+        if (transform.root.gameObject.GetComponent<SpectrobeController>().isAttacking)
         {
             
             if (other.gameObject.layer == 6 && other.gameObject.transform.root.GetComponent<Krawl>().iframe == false)
             {
                 GetComponent<AudioSource>().Play();
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-                other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 17, hitDir.z)*Time.deltaTime, 850, dmg:20, true);
+                Instantiate(attackParticle, other.gameObject.transform.position, Quaternion.identity);
+                other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 23, hitDir.z)*Time.deltaTime, 825, dmg:20, true);
                 other.gameObject.transform.root.GetComponent<Krawl>().iframe = true;
-                Instantiate(attackParticle, transform.position, Quaternion.identity);
+               
             }
         }
     }

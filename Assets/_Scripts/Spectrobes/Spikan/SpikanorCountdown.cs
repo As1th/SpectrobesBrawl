@@ -11,7 +11,7 @@ public class SpikanorCountdown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scripts =  GetComponent<SpikanControl>().scripts;
+        scripts =  GetComponent<SpectrobeController>().scripts;
         count = 2000;
     }
 
@@ -27,8 +27,8 @@ public class SpikanorCountdown : MonoBehaviour
         else {
             var eff = Instantiate(evolvePart, new Vector3(transform.position.x, transform.position.y + 10f, transform.position.z), Quaternion.identity);
             var var = Instantiate(spikan, transform.position, transform.rotation);
-            var.GetComponent<SpikanControl>().scripts = GetComponent<SpikanControl>().scripts;
-            var.GetComponent<SpikanControl>().evolved = false;
+            var.GetComponent<SpectrobeController>().scripts = GetComponent<SpectrobeController>().scripts;
+            var.GetComponent<SpectrobeController>().evolved = false;
             eff.transform.parent = var.transform;
             Camera.main.transform.parent = var.transform;
             foreach (GameObject k in scripts.GetComponent<GameManager>().currentKrawl)

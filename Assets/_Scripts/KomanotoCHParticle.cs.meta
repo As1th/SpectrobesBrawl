@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 4455a1f45229bb4458b89c7939019a01
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - attackParticle: {instanceID: 0}
+  - defensePoof: {fileID: 1502973039688521276, guid: c5a22d731ca21574db1c413b461f4931, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

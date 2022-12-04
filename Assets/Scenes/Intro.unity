@@ -5545,16 +5545,17 @@ MonoBehaviour:
   turnSmoothTime: 0.39
   attackCoolDown: 0
   CHParts: {fileID: 1651746522653123420, guid: d711672efa6a600468dc8250b21bc8e4, type: 3}
-  tailball: {fileID: 714819455}
+  normalAttackCollider: {fileID: 714819455}
   stagger: 0
   iframe: 0
   permaGround: 0
   hurtbox: {fileID: 0}
   cloud: {fileID: 1520691996188032948, guid: a7118756efde7a343a6ad2ad3ad4413a, type: 3}
   scripts: {fileID: 1217110867}
-  Spikanor: {fileID: 192911760238613120, guid: c5dd79a378b665844864942bba5c09bf, type: 3}
+  EvolvedForm: {fileID: 192911760238613120, guid: c5dd79a378b665844864942bba5c09bf, type: 3}
   evolvePart: {fileID: 198159274938206214, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
   CHPartsEvolved: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
+  groundFire: {fileID: 0}
   evolved: 0
   camAnchor: {fileID: 667934647}
   dashSound: {fileID: 359283433}
@@ -20208,7 +20209,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   bgm: {fileID: 0}
   beepLoop: {fileID: 0}
-  UI: {fileID: 0}
+  UI: {fileID: 1561413554}
 --- !u!1 &1217619277
 GameObject:
   m_ObjectHideFlags: 0

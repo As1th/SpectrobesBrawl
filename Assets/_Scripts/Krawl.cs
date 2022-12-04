@@ -64,7 +64,7 @@ public class Krawl : MonoBehaviour
             Instantiate(cloud, transform.position, Quaternion.identity);
             scripts.GetComponent<GameManager>().AddScore();
             //  scripts.GetComponent<GameManager>().ch += 10;
-            if (!player.GetComponent<SpikanControl>().evolved)
+            if (!player.GetComponent<SpectrobeController>().evolved)
             {
                 scripts.GetComponent<GameManager>().ev += 10;
             }
@@ -81,20 +81,13 @@ public class Krawl : MonoBehaviour
 
     public void Hit(Vector3 dir, float force, float dmg, bool giveCHXP)
     {
-        if (player.GetComponent<SpikanControl>() != null)
-        {
-            if (!player.GetComponent<SpikanControl>().evolved)
+      
+            if (!player.GetComponent<SpectrobeController>().evolved)
             {
                 scripts.GetComponent<GameManager>().ev += 10;
             }
-        }
-        else if (player.GetComponent<KomanotoControl>() != null) {
-
-            if (!player.GetComponent<KomanotoControl>().evolved)
-            {
-                scripts.GetComponent<GameManager>().ev += 10;
-            }
-        }
+       
+     
             if (giveCHXP)
             {
                 scripts.GetComponent<GameManager>().ch += 10;

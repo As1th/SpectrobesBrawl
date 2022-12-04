@@ -99,15 +99,16 @@ MonoBehaviour:
   turnSmoothTime: 0.39
   attackCoolDown: 0
   CHParts: {fileID: 1651746522653123420, guid: d711672efa6a600468dc8250b21bc8e4, type: 3}
-  tailball: {fileID: 192911760889969028}
+  normalAttackCollider: {fileID: 192911760889969028}
   stagger: 0
   iframe: 0
   permaGround: 0
   hurtbox: {fileID: 0}
   cloud: {fileID: 1520691996188032948, guid: a7118756efde7a343a6ad2ad3ad4413a, type: 3}
   scripts: {fileID: 0}
-  Spikanor: {fileID: 0}
+  EvolvedForm: {fileID: 3203851345011050413, guid: cd454736eedbdcf4cbd9e92f332bc8d3, type: 3}
   evolvePart: {fileID: 0}
+  groundFire: {fileID: 0}
   CHPartsEvolved: {fileID: 1442054980357783883, guid: e76f240c87f1a4e4dad750913542bc2d, type: 3}
   dashSound: {fileID: 5893865169277104114}
   swingSound: {fileID: 4169310948274650361}

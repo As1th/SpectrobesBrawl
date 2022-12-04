@@ -52,7 +52,7 @@ public class MoveAirProjectile : MonoBehaviour
             dead = true;
             Instantiate(defensePoof, transform.position, Quaternion.identity);
             scripts.GetComponent<GameManager>().ch += 1;
-            if (!other.gameObject.transform.root.GetComponent<SpikanControl>().evolved)
+            if (!other.gameObject.transform.root.GetComponent<SpectrobeController>().evolved)
             {
                 scripts.GetComponent<GameManager>().ev += 1;
             }
@@ -62,17 +62,17 @@ public class MoveAirProjectile : MonoBehaviour
         }
         else if (other.gameObject.layer == 8 && !dead)
         {
-            if (other.gameObject.transform.root.GetComponent<SpikanControl>().iframe == false)
+            if (other.gameObject.transform.root.GetComponent<SpectrobeController>().iframe == false)
             {
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-                other.gameObject.transform.root.GetComponent<SpikanControl>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, 100, dmg: 5);
+                other.gameObject.transform.root.GetComponent<SpectrobeController>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, 100, dmg: 5);
                 if (!playEffectOnCollision)
                 {
                     Instantiate(attackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
                 }
             }
 
-            if (other.gameObject.transform.root.GetComponent<SpikanControl>().iframe == true)
+            if (other.gameObject.transform.root.GetComponent<SpectrobeController>().iframe == true)
             { return; }
         }
         if (other.gameObject.layer == 6 && dead)
@@ -81,7 +81,7 @@ public class MoveAirProjectile : MonoBehaviour
             Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
             other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, force:300, dmg: 10, true);
             scripts.GetComponent<GameManager>().ch += 5;
-            if (!(other.gameObject.transform.root.GetComponent<Krawl>().player.GetComponent<SpikanControl>().evolved))
+            if (!(other.gameObject.transform.root.GetComponent<Krawl>().player.GetComponent<SpectrobeController>().evolved))
             {
                 scripts.GetComponent<GameManager>().ev += 5;
             }

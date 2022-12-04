@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikanCH : MonoBehaviour
+public class SpikanCHParticle : MonoBehaviour
 {
     CharacterController controller;
 

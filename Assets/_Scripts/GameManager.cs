@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(
                 countDownAndBegin());
         swarmCount = 3;
-        player.GetComponent<SpikanControl>().enabled = true;
+        player.GetComponent<SpectrobeController>().enabled = true;
     }
     public void startNormal()
     {
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(
                 countDownAndBegin());
         swarmCount = 3;
-        player.GetComponent<SpikanControl>().enabled = true;
+        player.GetComponent<SpectrobeController>().enabled = true;
     }
     IEnumerator setNewWarning(string w, bool permanent)
     {
