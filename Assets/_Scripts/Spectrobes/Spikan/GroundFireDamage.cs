@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GroundFireDamage : MonoBehaviour
 {
+    public float damage;
     public GameObject attackParticle;
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class GroundFireDamage : MonoBehaviour
                 GetComponent<AudioSource>().Play();
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
                 Instantiate(attackParticle, other.gameObject.transform.position, Quaternion.identity);
-                other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 23, hitDir.z)*Time.deltaTime, 825, dmg:20, true);
+                other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 23, hitDir.z)*Time.deltaTime, 825, dmg:damage, true);
                 other.gameObject.transform.root.GetComponent<Krawl>().iframe = true;
                
             }

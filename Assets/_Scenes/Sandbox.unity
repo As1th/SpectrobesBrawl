@@ -18029,6 +18029,7 @@ MonoBehaviour:
   turnSmoothTime: 0.39
   attackCoolDown: 0
   CHParts: {fileID: 1651746522653123420, guid: d711672efa6a600468dc8250b21bc8e4, type: 3}
+  forwardCHCharge: 0
   normalAttackCollider: {fileID: 714819455}
   stagger: 0
   iframe: 0
@@ -40910,6 +40911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9289649db9cc04c8000f7cdd5361aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   attackParticle: {fileID: 4697218109777110270, guid: 8f70d061242024a4a96296858b5aab51, type: 3}
 --- !u!135 &714819457
 SphereCollider:
@@ -61756,7 +61758,7 @@ MonoBehaviour:
   spawnLoci: []
   score: 0
   ch: 50
-  ev: 50
+  ev: 600
   health: 400
   healthStore: 0
   scoreIncrement: 0
@@ -78723,6 +78725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0341b23c574959a4b86181d6a29c049b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
   attackParticle: {fileID: 4697218109777110270, guid: 8f70d061242024a4a96296858b5aab51, type: 3}
 --- !u!1 &1972612212
 GameObject:
@@ -109414,6 +109417,7 @@ MonoBehaviour:
   turnSmoothTime: 0.39
   attackCoolDown: 0
   CHParts: {fileID: 3810798298747713207, guid: e81c55a76dd225c4b963008c744b9c3b, type: 3}
+  forwardCHCharge: 0
   normalAttackCollider: {fileID: 1951610455}
   stagger: 0
   iframe: 0

@@ -278,6 +278,12 @@ public class SpectrobeController : MonoBehaviour
         animator.SetTrigger("Hit");
 
     }
+    public void spawnCHPartsKomadoros()
+    {
+
+        Instantiate(CHParts, spawnPoint.transform.position, transform.rotation);
+       // Instantiate(CHParts, spawnPoint.transform.Find("SpawnPoint2").transform.position, transform.rotation);
+    }
 
 
     public void spawnCHPartsSpikan()
