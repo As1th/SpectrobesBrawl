@@ -3598,6 +3598,8 @@ MonoBehaviour:
   chSound: {fileID: 1226433415}
   evolved: 0
   touch: 0
+  spawnPoint: {fileID: 0}
+  CHGlowParticles: {fileID: 0}
 --- !u!95 &359283429
 Animator:
   serializedVersion: 4
@@ -6311,10 +6313,10 @@ RectTransform:
   m_Father: {fileID: 1451473775}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -639}
-  m_SizeDelta: {x: 1469.5203, y: 116.61301}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -689}
+  m_SizeDelta: {x: 1369.5203, y: 116.61301}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &619947444
 MonoBehaviour:
@@ -7157,7 +7159,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -1, y: 10, z: 7, w: -12}
+  m_BoundingSphereOverride: {x: 4.5905e-41, y: -13398.641, z: 4.5905e-41, w: 9.403955e-38}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -7209,6 +7211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9289649db9cc04c8000f7cdd5361aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
   attackParticle: {fileID: 4697218109777110270, guid: 8f70d061242024a4a96296858b5aab51, type: 3}
 --- !u!135 &714819457
 SphereCollider:
@@ -11875,7 +11878,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1217110870}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: startInfiniteWaveMode
+        m_MethodName: startInfiniteRandomMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12948,7 +12951,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1217110870}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: startInfiniteWaveMode
+        m_MethodName: startInfiniteRandomMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13636,7 +13639,7 @@ MonoBehaviour:
   difficultyMenu: {fileID: 1871888378}
   maxKrawlPerWave: 0
   player: {fileID: 359283426}
-  randomWaveMode: 0
+  randomWaveMode: 1
 --- !u!114 &1217110870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19997,7 +20000,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1217110870}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: startInfiniteWaveMode
+        m_MethodName: startInfiniteRandomMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

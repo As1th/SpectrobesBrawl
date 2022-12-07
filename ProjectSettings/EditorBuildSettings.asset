@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Intro.unity
+    path: Assets/_Scenes/Intro.unity
     guid: 6eea9c5064ae3c24f8f85ab7cf0d205f
   - enabled: 1
-    path: Assets/Scenes/InfiniteWaveMode.unity
+    path: Assets/_Scenes/InfiniteWaveMode.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/InfiniteRandomMode.unity
+    path: Assets/_Scenes/InfiniteRandomMode.unity
     guid: afacfdf6a860f1c45bb4336f36d13a24
   m_configObjects: {}

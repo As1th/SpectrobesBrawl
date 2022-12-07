@@ -1370,6 +1370,8 @@ MonoBehaviour:
   chSound: {fileID: 2990636069143812698}
   evolved: 0
   touch: 0
+  spawnPoint: {fileID: 0}
+  CHGlowParticles: {fileID: 0}
 --- !u!114 &3203851345011050412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1825,6 +1827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9289649db9cc04c8000f7cdd5361aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
   attackParticle: {fileID: 4697218109777110270, guid: 8f70d061242024a4a96296858b5aab51, type: 3}
 --- !u!82 &2963023698598647045
 AudioSource:

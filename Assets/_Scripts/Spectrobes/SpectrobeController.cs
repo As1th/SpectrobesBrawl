@@ -14,6 +14,7 @@ public class SpectrobeController : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     public float attackCoolDown = 0f;
     public GameObject CHParts;
+    public float forwardCHCharge;
     public GameObject normalAttackCollider;
     Vector3 velocity;
     public bool stagger;
@@ -32,6 +33,7 @@ public class SpectrobeController : MonoBehaviour
     public AudioSource chSound;
     public bool evolved=false;
     public bool touch;
+    
     public GameObject spawnPoint;
     public ParticleSystem CHGlowParticles;
 
@@ -129,10 +131,19 @@ public class SpectrobeController : MonoBehaviour
                     {
                         CHGlowParticles.Play();
                     }
+                    if (CHGlowParticles != null)
+                    {
+                        CHGlowParticles.Play();
+                    }
+                   
                     scripts.GetComponent<GameManager>().ch = 0;
                     iframe = true;
                     permaGround = true;
                     animator.SetTrigger("Attack2");
+                    if (forwardCHCharge > 0)
+                    {
+                        GetComponent<ImpactReceiver>().AddImpact(transform.forward, forwardCHCharge);
+                    }
                     isAttacking = true;
 
                 }

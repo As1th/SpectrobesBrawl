@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TailSwingDamage : MonoBehaviour
 {
+    public float damage;
     public GameObject attackParticle;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class TailSwingDamage : MonoBehaviour
             {
                 GetComponent<AudioSource>().Play();
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-                other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 17, hitDir.z)*Time.deltaTime, 850, dmg:20, true);
+                other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 17, hitDir.z)*Time.deltaTime, 850, dmg:damage, true);
                 other.gameObject.transform.root.GetComponent<Krawl>().iframe = true;
                 Instantiate(attackParticle, transform.position, Quaternion.identity);
             }
