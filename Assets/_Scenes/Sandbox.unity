@@ -165,7 +165,7 @@ Transform:
   - {fileID: 406836123}
   - {fileID: 920732400}
   m_Father: {fileID: 4464240759623652431}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &5216909
 ParticleSystemRenderer:
@@ -5507,7 +5507,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11251,7 +11251,7 @@ RectTransform:
   - {fileID: 1736664554}
   - {fileID: 1003355635}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -40877,7 +40877,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &714819455
 GameObject:
@@ -41386,7 +41386,7 @@ RectTransform:
   - {fileID: 254132789}
   - {fileID: 492539119}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -54629,7 +54629,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4464240759623652431}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1128824735
 GameObject:
@@ -61739,7 +61739,7 @@ Transform:
   - {fileID: 1008815379}
   - {fileID: 1110625414}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1217110869
 MonoBehaviour:
@@ -65952,7 +65952,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1744112223
 GameObject:
@@ -67417,7 +67417,7 @@ Transform:
   - {fileID: 444152301}
   - {fileID: 1402622495}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1868057981
 GameObject:
@@ -78586,7 +78586,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4464240759623652431}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1951610457
 SphereCollider:
@@ -79896,7 +79896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1930126002629718
 GameObject:
   m_ObjectHideFlags: 0
@@ -79941,15 +79941,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727626908397254}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.4, y: 0.01, z: 0}
-  m_LocalScale: {x: 15.727474, y: 15.727474, z: 15.727474}
+  m_LocalPosition: {x: -171.79999, y: -4.3760777, z: 11.141838}
+  m_LocalScale: {x: 15.727474, y: 15.727478, z: 15.727478}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4851461182395332}
   - {fileID: 4227749647641428}
   - {fileID: 4996446379889208}
-  m_Father: {fileID: 4464240759623652431}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4227749647641428
 Transform:
@@ -108388,7 +108388,7 @@ Transform:
   - {fileID: 612913324723089921}
   - {fileID: 4811369630984020708}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &543450652379608237
 Transform:
@@ -109342,12 +109342,11 @@ Transform:
   - {fileID: 3825029628658048928}
   - {fileID: 6096718506991892821}
   - {fileID: 1280313974}
-  - {fileID: 4159977473351638}
   - {fileID: 1951610456}
   - {fileID: 5216908}
   - {fileID: 1128755719}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4464240759623652432
 Animator:
@@ -109398,7 +109397,7 @@ CharacterController:
   m_StepOffset: 1
   m_SkinWidth: 1
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 12.5, z: 0}
+  m_Center: {x: 0, y: 12.75, z: 0}
 --- !u!114 &4464240759623652437
 MonoBehaviour:
   m_ObjectHideFlags: 0

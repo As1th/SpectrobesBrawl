@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3810798298733418103}
   - component: {fileID: 3810798298747546261}
   - component: {fileID: 3810798298747546260}
-  - component: {fileID: 3810798298747546258}
+  - component: {fileID: 8692723980892413362}
   m_Layer: 1
   m_Name: KomadorosFireball
   m_TagString: Untagged
@@ -4859,7 +4859,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3810798298747546258
+--- !u!114 &8692723980892413362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4868,12 +4868,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3810798298747713207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4455a1f45229bb4458b89c7939019a01, type: 3}
+  m_Script: {fileID: 11500000, guid: debf8a6539bcd0845889ede760ad1238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3000
   attackParticle: {fileID: 6791193647279498658, guid: 6fca76321d2346549ba44cc1c980f6dc, type: 3}
-  dontDestroy: 1
   damage: 50
   scripts: {fileID: 0}
   playEffectOnCollision: 0

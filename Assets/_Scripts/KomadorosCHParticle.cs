@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KomanotoCHParticle : MonoBehaviour
+public class KomadorosCHParticle : MonoBehaviour
 {
     Rigidbody rb;
     public float speed;
     public GameObject attackParticle;
-    
+   
     public float damage;
     public GameObject scripts;
   
@@ -44,15 +44,16 @@ public class KomanotoCHParticle : MonoBehaviour
         
         if (other.gameObject.layer == 6)
         {
-           
+            if (!other.gameObject.transform.root.GetComponent<Krawl>().iframe)
+            {
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
                 other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 1, hitDir.z) * Time.deltaTime, 150, dmg: damage, false);
                 if (!playEffectOnCollision)
                 {
                     Instantiate(attackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
                 }
-           
-            
+                other.gameObject.transform.root.GetComponent<Krawl>().iframe = true;
+            }
 
         }
 
@@ -66,8 +67,6 @@ public class KomanotoCHParticle : MonoBehaviour
             Destroy(this.gameObject);
         }
       
-            Destroy(this.gameObject);
-        
         
     }
 }
