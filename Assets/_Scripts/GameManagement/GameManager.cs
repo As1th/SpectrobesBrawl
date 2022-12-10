@@ -44,9 +44,15 @@ public class GameManager : MonoBehaviour
     public int maxKrawlPerWave;
     public GameObject player;
     public bool randomWaveMode;
+    public SceneDataSaver data;
     // Start is called before the first frame update
     void Start()
     {
+        data = GameObject.FindGameObjectWithTag("Data").GetComponent<SceneDataSaver>();
+        if (data.gameMode == 1)
+        {
+            randomWaveMode = true;
+        }
         health = 400;
         for (int i = 0; i < SpawnLociArray.transform.childCount; i++)
         {

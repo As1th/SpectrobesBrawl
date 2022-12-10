@@ -20194,6 +20194,7 @@ MonoBehaviour:
   maxKrawlPerWave: 0
   player: {fileID: 0}
   randomWaveMode: 0
+  data: {fileID: 0}
 --- !u!114 &1217110870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20206,6 +20207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f283cefd8bb1604f91776b239697545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneDataPrefab: {fileID: 4697454036271017100, guid: f96e6fd7f338bf24cb415394e9e0455b, type: 3}
+  data: {fileID: 0}
   initialDialog: {fileID: 383447948}
   pauseMenu: {fileID: 0}
   bgm: {fileID: 0}

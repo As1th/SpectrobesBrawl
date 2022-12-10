@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+	public GameObject sceneDataPrefab;
+	public SceneDataSaver data;
 	public TextMeshProUGUI initialDialog;
 	public GameObject pauseMenu;
 	public AudioSource bgm;
@@ -15,26 +17,50 @@ public class Menu : MonoBehaviour
 
 	public void Start()
     {
+		var dataHolder = GameObject.FindGameObjectWithTag("Data");
+		if (dataHolder != null)
+		{
+			data = dataHolder.GetComponent<SceneDataSaver>();
+		}
+		else
+		{ 
+			data = Instantiate(sceneDataPrefab,transform.position,Quaternion.identity).GetComponent<SceneDataSaver>();
+		}
+		
 		UI.ignoreListenerPause=true;
+		
+	}
+
+	public void selectNextSpectrobe()
+	{ 
+	
 	}
 
     public void startInfiniteWaveMode()
 	{
 		Time.timeScale = 1;
 		AudioListener.pause = false;
+		data.gameMode = 0;
 		SceneManager.LoadScene("InfiniteWaveMode", LoadSceneMode.Single);
 	}
 	public void startInfiniteRandomMode()
 	{
 		Time.timeScale = 1;
 		AudioListener.pause = false;
-		SceneManager.LoadScene("InfiniteRandomMode", LoadSceneMode.Single);
+		data.gameMode = 1;
+		SceneManager.LoadScene("InfiniteWaveMode", LoadSceneMode.Single);
 	}
 	public void startIntro()
 	{
 		Time.timeScale = 1;
 		AudioListener.pause = false;
 		SceneManager.LoadScene("Intro", LoadSceneMode.Single);
+	}
+	public void restart()
+	{
+		Time.timeScale = 1;
+		AudioListener.pause = false;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 	}
     public void pause()
     {
