@@ -5408,9 +5408,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f11db4559b3ffff45b62e9327fc5535d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e43423c36dfe1a246b8f6e25594c6539, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.45
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5506,7 +5506,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d18e66023ae4b754ea4eedc84c60ba5c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.45
+  m_Volume: 0.42
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5844,6 +5844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1795343579372473663}
   - component: {fileID: 3212390821300688683}
+  - component: {fileID: 6905962377498330996}
   m_Layer: 0
   m_Name: a_S210Ground
   m_TagString: Untagged
@@ -5877,10 +5878,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e8abd291ee0da824ea9eb5d9a7d2eb3f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6b8f9ac12e3e5a343b05d1e0213885fa, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
-  m_Pitch: 0.6
+  m_Volume: 0.82
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -5963,6 +5964,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!170 &6905962377498330996
+AudioDistortionFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4530960888333153815}
+  m_Enabled: 1
+  m_DistortionLevel: 0.5
 --- !u!1 &4606704726053393864
 GameObject:
   m_ObjectHideFlags: 0
