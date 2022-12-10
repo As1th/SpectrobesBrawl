@@ -61,7 +61,7 @@ public class KomanotoCHParticle : MonoBehaviour
                 Instantiate(attackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
 
             }
-        if (other.gameObject.layer == 3)
+        if (other.gameObject.layer == 3 || gameObject.layer == 16)
         {
             Destroy(this.gameObject);
         }

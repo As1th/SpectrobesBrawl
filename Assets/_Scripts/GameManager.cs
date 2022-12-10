@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(Time.deltaTime);
+      
         if (ch > 50)
         { ch = 50; }
 

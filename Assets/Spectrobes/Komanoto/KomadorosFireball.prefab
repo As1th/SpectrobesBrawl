@@ -4873,6 +4873,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3000
   attackParticle: {fileID: 6791193647279498658, guid: 6fca76321d2346549ba44cc1c980f6dc, type: 3}
-  damage: 50
+  damage: 999
   scripts: {fileID: 0}
   playEffectOnCollision: 0

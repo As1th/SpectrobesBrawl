@@ -44,16 +44,14 @@ public class KomadorosCHParticle : MonoBehaviour
         
         if (other.gameObject.layer == 6)
         {
-            if (!other.gameObject.transform.root.GetComponent<Krawl>().iframe)
-            {
+           
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
                 other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 1, hitDir.z) * Time.deltaTime, 150, dmg: damage, false);
                 if (!playEffectOnCollision)
                 {
                     Instantiate(attackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
                 }
-                other.gameObject.transform.root.GetComponent<Krawl>().iframe = true;
-            }
+              
 
         }
 
@@ -62,7 +60,7 @@ public class KomadorosCHParticle : MonoBehaviour
                 Instantiate(attackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
 
             }
-        if (other.gameObject.layer == 3)
+        if (other.gameObject.layer == 16)
         {
             Destroy(this.gameObject);
         }
