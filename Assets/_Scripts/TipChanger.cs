@@ -35,7 +35,7 @@ public class TipChanger : MonoBehaviour
                 text.text = "TIP: TIME YOUR NORMAL ATTACKS PROPERLY TO DEFLECT ENEMY PROJECTILES BACK AT THEM!";
                 break;
             case 3:
-                text.text = "TIP: THE EVOLVED FORM SPIKANOR IS COMPLETELY IMMUNE TO DAMAGE!";
+                text.text = "TIP: EVOLVED FORM SPECTROBES ARE COMPLETELY IMMUNE TO DAMAGE!";
                 break;
             case 4:
                 text.text = "TIP: DASH OFTEN TO DODGE ENEMY ATTACKS!";

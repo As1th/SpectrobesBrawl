@@ -255,9 +255,7 @@ public class UIManagerTech : MonoBehaviour
 	// Just for reloading the scene! You can delete this function entirely if you want to
 	void Update(){
 		if(reloadSceneButton){
-			if(Input.GetKeyDown(KeyCode.Delete)){
-				SceneManager.LoadScene("Tech Demo Scene");
-			}
+			
 		}
 
 		SetTint();

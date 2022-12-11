@@ -11,6 +11,7 @@ public class Menu : MonoBehaviour
 	public GameObject sceneDataPrefab;
 	public SceneDataSaver data;
 	public TextMeshProUGUI initialDialog;
+	public TextMeshProUGUI trobeName;
 	public GameObject pauseMenu;
 	public AudioSource bgm;
 	public AudioSource beepLoop;
@@ -21,6 +22,7 @@ public class Menu : MonoBehaviour
     {
 		gm = GetComponent<GameManager>();
 		var dataHolder = GameObject.FindGameObjectWithTag("Data");
+
 		if (dataHolder != null)
 		{
 			data = dataHolder.GetComponent<SceneDataSaver>();
@@ -38,6 +40,7 @@ public class Menu : MonoBehaviour
 			{
 				resummonSpectrobeIntro(data.playerSpectrobe);
 			}
+			trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
 		}
 	}
 
@@ -60,7 +63,7 @@ public class Menu : MonoBehaviour
 		{
 			data.playerSpectrobe = 0;
 		}
-
+		trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
 		resummonSpectrobeIntro(data.playerSpectrobe);
 	}
 
@@ -71,6 +74,8 @@ public class Menu : MonoBehaviour
 		{
 			data.playerSpectrobe = data.SpectrobeList.Length-1;
 		}
+		trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
+		resummonSpectrobeIntro(data.playerSpectrobe);
 	}
 
 	public void startInfiniteWaveMode()
