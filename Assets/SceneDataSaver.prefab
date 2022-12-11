@@ -46,4 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpectrobe: 0
   gameMode: 0
-  SpectrobeList: []
+  SpectrobeList:
+  - {fileID: 3203851345011050413, guid: cd454736eedbdcf4cbd9e92f332bc8d3, type: 3}
+  - {fileID: 5086714444946428332, guid: aec3650f8ea38004eb609b74fabd29ca, type: 3}

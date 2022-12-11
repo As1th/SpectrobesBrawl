@@ -1343,7 +1343,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3203851345011050413}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74b6f98b8bf2cfb449f43173874b9b39, type: 3}
   m_Name: 
@@ -1354,6 +1354,7 @@ MonoBehaviour:
   turnSmoothTime: 0.39
   attackCoolDown: 0
   CHParts: {fileID: 1651746522653123420, guid: d711672efa6a600468dc8250b21bc8e4, type: 3}
+  forwardCHCharge: 0
   normalAttackCollider: {fileID: 3203851345395972656}
   stagger: 0
   iframe: 0

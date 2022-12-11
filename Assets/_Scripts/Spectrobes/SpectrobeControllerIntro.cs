@@ -119,14 +119,8 @@ public class SpectrobeControllerIntro : MonoBehaviour
 
             }
             else if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
-            {
-               
-                    camAnchor.GetComponent<Rotate>().enabled = false;
-                    
-                    
-                   
-                
-
+            {        
+                camAnchor.GetComponent<Rotate>().enabled = false;
                 camAnchor.transform.rotation = Quaternion.RotateTowards(camAnchor.transform.rotation, transform.rotation, 5);//Quaternion.Lerp(camAnchor.transform.rotation, transform.rotation, 10000);
 
                 float horizontal = Input.GetAxisRaw("Horizontal");

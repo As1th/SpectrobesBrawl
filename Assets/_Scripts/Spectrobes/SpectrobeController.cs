@@ -123,7 +123,7 @@ public class SpectrobeController : MonoBehaviour
             }
             else if (Input.GetButtonDown("Attack2"))
             {
-                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >= 0) //used to be && controller.isGrounded instead of && !stagger
+                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >= 50) //used to be && controller.isGrounded instead of && !stagger
                 {
 
                     chSound.Play();
@@ -171,6 +171,12 @@ public class SpectrobeController : MonoBehaviour
             }
             else if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
             {
+                if (scripts.GetComponent<Menu>().introScene)
+                {
+                    Camera.main.transform.parent.GetComponent<Rotate>().enabled = false;
+                    Camera.main.transform.parent.transform.rotation = Quaternion.RotateTowards(Camera.main.transform.parent.transform.rotation, transform.rotation, 5);//Quaternion.Lerp(camAnchor.transform.rotation, transform.rotation, 10000);
+                }
+
                 float horizontal = Input.GetAxisRaw("Horizontal");
                 float vertical = Input.GetAxisRaw("Vertical");
 
@@ -224,7 +230,10 @@ public class SpectrobeController : MonoBehaviour
             }
             else
             {
-
+                if (scripts.GetComponent<Menu>().introScene)
+                {
+                    Camera.main.transform.parent.GetComponent<Rotate>().enabled = true;
+                }
                 animator.SetBool("IsRunning", false);
             }
 

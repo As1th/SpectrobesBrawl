@@ -53,6 +53,18 @@ public class GameManager : MonoBehaviour
         {
             randomWaveMode = true;
         }
+
+
+        if (data.playerSpectrobe == 1)
+        {
+            var trobe = Instantiate(data.SpectrobeList[data.playerSpectrobe], player.transform.position, player.transform.rotation);
+
+            Camera.main.transform.parent = trobe.transform;
+            
+            trobe.GetComponent<SpectrobeController>().scripts = this.gameObject;
+            Destroy(player);
+            player = trobe;
+        }
         health = 400;
         for (int i = 0; i < SpawnLociArray.transform.childCount; i++)
         {
@@ -61,8 +73,6 @@ public class GameManager : MonoBehaviour
         }
         minKrawl = 0;
         maxKrawl = 2;
-
-
     }
 
    

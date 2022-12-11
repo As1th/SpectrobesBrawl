@@ -29,6 +29,7 @@ public class SpikanorCountdown : MonoBehaviour
             var var = Instantiate(spikan, transform.position, transform.rotation);
             var.GetComponent<SpectrobeController>().scripts = GetComponent<SpectrobeController>().scripts;
             var.GetComponent<SpectrobeController>().evolved = false;
+            var.GetComponent<SpectrobeController>().enabled = true;
             eff.transform.parent = var.transform;
             Camera.main.transform.parent = var.transform;
             foreach (GameObject k in scripts.GetComponent<GameManager>().currentKrawl)

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+	public bool introScene;
 	public GameObject sceneDataPrefab;
 	public SceneDataSaver data;
 	public TextMeshProUGUI initialDialog;
@@ -14,9 +15,11 @@ public class Menu : MonoBehaviour
 	public AudioSource bgm;
 	public AudioSource beepLoop;
 	public AudioSource UI;
+	GameManager gm;
 
 	public void Start()
     {
+		gm = GetComponent<GameManager>();
 		var dataHolder = GameObject.FindGameObjectWithTag("Data");
 		if (dataHolder != null)
 		{
@@ -28,15 +31,47 @@ public class Menu : MonoBehaviour
 		}
 		
 		UI.ignoreListenerPause=true;
-		
+
+		if (introScene)
+		{
+			if (data.playerSpectrobe == 1)
+			{
+				resummonSpectrobeIntro(data.playerSpectrobe);
+			}
+		}
+	}
+
+	public void resummonSpectrobeIntro(int i)
+	{
+		var trobe = Instantiate(data.SpectrobeList[i], gm.player.transform.position, gm.player.transform.rotation);
+		Camera.main.transform.parent.transform.parent = trobe.transform;
+		trobe.GetComponent<SpectrobeController>().scripts = this.gameObject;
+		Destroy(gm.player);
+		gm.player = trobe;
+		gm.player.GetComponent<SpectrobeController>().enabled = true;
 	}
 
 	public void selectNextSpectrobe()
-	{ 
-	
+	{
+		data.playerSpectrobe++;
+		if (data.playerSpectrobe >= data.SpectrobeList.Length)
+		{
+			data.playerSpectrobe = 0;
+		}
+
+		resummonSpectrobeIntro(data.playerSpectrobe);
 	}
 
-    public void startInfiniteWaveMode()
+	public void selectPreviousSpectrobe()
+	{
+		data.playerSpectrobe--;
+		if (data.playerSpectrobe <=-1)
+		{
+			data.playerSpectrobe = data.SpectrobeList.Length-1;
+		}
+	}
+
+	public void startInfiniteWaveMode()
 	{
 		Time.timeScale = 1;
 		AudioListener.pause = false;

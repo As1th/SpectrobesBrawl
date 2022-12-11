@@ -12952,7 +12952,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1217110870}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: startInfiniteWaveMode
+        m_MethodName: restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13654,6 +13654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f283cefd8bb1604f91776b239697545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneDataPrefab: {fileID: 0}
   data: {fileID: 0}
   initialDialog: {fileID: 1183923788}
   pauseMenu: {fileID: 1451473774}
