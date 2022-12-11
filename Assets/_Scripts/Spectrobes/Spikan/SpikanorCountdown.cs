@@ -13,6 +13,10 @@ public class SpikanorCountdown : MonoBehaviour
     {
         scripts =  GetComponent<SpectrobeController>().scripts;
         count = 2000;
+        if (scripts.GetComponent<Menu>().introScene)
+        {
+            count = 1400;
+        }
     }
 
     // Update is called once per frame
@@ -30,8 +34,20 @@ public class SpikanorCountdown : MonoBehaviour
             var.GetComponent<SpectrobeController>().scripts = GetComponent<SpectrobeController>().scripts;
             var.GetComponent<SpectrobeController>().evolved = false;
             var.GetComponent<SpectrobeController>().enabled = true;
+            scripts.GetComponent<GameManager>().player = var;
+            if (scripts.GetComponent<Menu>().introScene)
+            {
+                var.GetComponent<SpectrobeController>().EVCost = 0;
+                var.GetComponent<SpectrobeController>().CHCost = 0;
+                Camera.main.transform.parent.transform.parent = var.transform;
+            }
+            else
+            {
+                Camera.main.transform.parent = var.transform;
+
+            }
             eff.transform.parent = var.transform;
-            Camera.main.transform.parent = var.transform;
+           
             foreach (GameObject k in scripts.GetComponent<GameManager>().currentKrawl)
             {
                 k.GetComponent<Krawl>().player = var;

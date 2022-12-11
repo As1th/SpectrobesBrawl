@@ -94,11 +94,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+  CHCost: 50
+  EVCost: 400
   isAttacking: 0
   cam: {fileID: 0}
   turnSmoothTime: 0.39
   attackCoolDown: 0
   CHParts: {fileID: 1651746522653123420, guid: d711672efa6a600468dc8250b21bc8e4, type: 3}
+  forwardCHCharge: 0
   normalAttackCollider: {fileID: 192911760889969028}
   stagger: 0
   iframe: 0

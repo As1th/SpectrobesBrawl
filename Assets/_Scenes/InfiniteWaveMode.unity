@@ -3577,6 +3577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 26
+  CHCost: 50
+  EVCost: 400
   isAttacking: 0
   cam: {fileID: 1280313974}
   turnSmoothTime: 0.39
@@ -13654,6 +13656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f283cefd8bb1604f91776b239697545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introScene: 0
   sceneDataPrefab: {fileID: 0}
   data: {fileID: 0}
   initialDialog: {fileID: 1183923788}

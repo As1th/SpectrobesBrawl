@@ -796,6 +796,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+  CHCost: 50
+  EVCost: 400
   isAttacking: 0
   cam: {fileID: 0}
   turnSmoothTime: 0.39

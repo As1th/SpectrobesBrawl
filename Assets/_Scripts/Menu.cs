@@ -48,6 +48,8 @@ public class Menu : MonoBehaviour
 		trobe.GetComponent<SpectrobeController>().scripts = this.gameObject;
 		Destroy(gm.player);
 		gm.player = trobe;
+		gm.player.GetComponent<SpectrobeController>().EVCost = 0;
+		gm.player.GetComponent<SpectrobeController>().CHCost = 0;
 		gm.player.GetComponent<SpectrobeController>().enabled = true;
 	}
 

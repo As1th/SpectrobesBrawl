@@ -7,6 +7,8 @@ public class SpectrobeController : MonoBehaviour
     private CharacterController controller;
     private Animator animator;
     public float speed;
+    public float CHCost;
+    public float EVCost;
     public bool isAttacking;
     float turnSmoothVelocity;
     float dashcooldown = 0;
@@ -123,7 +125,7 @@ public class SpectrobeController : MonoBehaviour
             }
             else if (Input.GetButtonDown("Attack2"))
             {
-                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >= 50) //used to be && controller.isGrounded instead of && !stagger
+                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >= CHCost)//used to be && controller.isGrounded instead of && !stagger
                 {
 
                     chSound.Play();
@@ -131,10 +133,7 @@ public class SpectrobeController : MonoBehaviour
                     {
                         CHGlowParticles.Play();
                     }
-                    if (CHGlowParticles != null)
-                    {
-                        CHGlowParticles.Play();
-                    }
+                   
                    
                     scripts.GetComponent<GameManager>().ch = 0;
                     iframe = true;
@@ -151,16 +150,28 @@ public class SpectrobeController : MonoBehaviour
             }
             else if (Input.GetButtonDown("Evolve"))
             {
-                if (attackCoolDown == 0 && !stagger && !evolved && scripts.GetComponent<GameManager>().ev >= 400) //used to be && controller.isGrounded instead of && !stagger
+                if (attackCoolDown == 0 && !stagger && !evolved && scripts.GetComponent<GameManager>().ev >= EVCost) //used to be && controller.isGrounded instead of && !stagger
                 {
                     var eff = Instantiate(evolvePart, new Vector3(transform.position.x, transform.position.y + 18f, transform.position.z), Quaternion.identity);
                     scripts.GetComponent<GameManager>().ev = 0;
                     scripts.GetComponent<GameManager>().healthStore = scripts.GetComponent<GameManager>().health;
                     var var = Instantiate(EvolvedForm, transform.position, transform.rotation);
                     eff.transform.parent = var.transform;
-                    Camera.main.transform.parent = var.transform;
+                    scripts.GetComponent<GameManager>().player = var;
+                    if (scripts.GetComponent<Menu>().introScene)
+                    {
+                        var.GetComponent<SpectrobeController>().EVCost = 0;
+                        var.GetComponent<SpectrobeController>().CHCost = 0;
+                        Camera.main.transform.parent.transform.parent = var.transform;
+                        var.GetComponent<SpikanorCountdown>().count = 1500;
+                    }
+                    else
+                    {
+                        Camera.main.transform.parent = var.transform;
+                    }
                     var.GetComponent<SpectrobeController>().scripts = scripts;
                     var.GetComponent<SpectrobeController>().evolved = true;
+                    
                     foreach (GameObject k in scripts.GetComponent<GameManager>().currentKrawl)
                     {
                         k.GetComponent<Krawl>().player = var;
