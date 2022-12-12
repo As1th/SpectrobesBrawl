@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
 public class Menu : MonoBehaviour
 {
+	public Sprite[] spectrobeStyles;
+	public Image styleIcon;
 	public bool introScene;
 	public GameObject sceneDataPrefab;
 	public SceneDataSaver data;
@@ -54,6 +57,9 @@ public class Menu : MonoBehaviour
 		gm.player.GetComponent<SpectrobeController>().EVCost = 0;
 		gm.player.GetComponent<SpectrobeController>().CHCost = 0;
 		gm.player.GetComponent<SpectrobeController>().enabled = true;
+		trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
+		trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
+		styleIcon.sprite = spectrobeStyles[data.playerSpectrobe];
 	}
 
 	public void selectNextSpectrobe()
@@ -63,7 +69,7 @@ public class Menu : MonoBehaviour
 		{
 			data.playerSpectrobe = 0;
 		}
-		trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
+		
 		resummonSpectrobeIntro(data.playerSpectrobe);
 	}
 
@@ -74,7 +80,7 @@ public class Menu : MonoBehaviour
 		{
 			data.playerSpectrobe = data.SpectrobeList.Length-1;
 		}
-		trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
+		
 		resummonSpectrobeIntro(data.playerSpectrobe);
 	}
 
