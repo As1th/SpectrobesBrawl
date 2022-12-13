@@ -736,6 +736,7 @@ GameObject:
   - component: {fileID: 5610486207215635208}
   - component: {fileID: 5610486207215635214}
   - component: {fileID: 5610486207215635215}
+  - component: {fileID: 5908856791732410304}
   m_Layer: 11
   m_Name: Komanoto
   m_TagString: Player
@@ -1044,6 +1045,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5908856791732410304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5086714444946428332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b6fa025b9cef44cae4f27c3b6705ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  style: {fileID: 21300000, guid: a87d3f5c2a6e0844d8970e928c3fadac, type: 3}
+  BasicDmg: 4
+  CHDmg: 6
+  Speed: 5
 --- !u!1 &5150861587727641730
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-	public Sprite[] spectrobeStyles;
+	public GameObject BasicDmgBar;
+	public GameObject CHDmgBar;
+	public GameObject speedBar;
 	public Image styleIcon;
 	public bool introScene;
 	public GameObject sceneDataPrefab;
@@ -43,10 +45,33 @@ public class Menu : MonoBehaviour
 			{
 				resummonSpectrobeIntro(data.playerSpectrobe);
 			}
-			trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
+			UpdateStats();
 		}
 	}
+	public void UpdateStats()
+	{
+		trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
+		styleIcon.sprite = data.SpectrobeList[data.playerSpectrobe].GetComponent<DisplayStats>().style;
+		for (int i = 0; i < 6; i++)
+		{
+			BasicDmgBar.transform.GetChild(i).gameObject.SetActive(false);
+			CHDmgBar.transform.GetChild(i).gameObject.SetActive(false);
+			speedBar.transform.GetChild(i).gameObject.SetActive(false);
+		}
+		for (int i = 0; i < data.SpectrobeList[data.playerSpectrobe].GetComponent<DisplayStats>().BasicDmg; i++)
+		{
+			BasicDmgBar.transform.GetChild(i).gameObject.SetActive(true);
+		}
+		for (int i = 0; i < data.SpectrobeList[data.playerSpectrobe].GetComponent<DisplayStats>().CHDmg; i++)
+		{
+			CHDmgBar.transform.GetChild(i).gameObject.SetActive(true);
+		}
+		for (int i = 0; i < data.SpectrobeList[data.playerSpectrobe].GetComponent<DisplayStats>().Speed; i++)
+		{
+			speedBar.transform.GetChild(i).gameObject.SetActive(true);
+		}
 
+	}
 	public void resummonSpectrobeIntro(int i)
 	{
 		var trobe = Instantiate(data.SpectrobeList[i], gm.player.transform.position, gm.player.transform.rotation);
@@ -57,9 +82,7 @@ public class Menu : MonoBehaviour
 		gm.player.GetComponent<SpectrobeController>().EVCost = 0;
 		gm.player.GetComponent<SpectrobeController>().CHCost = 0;
 		gm.player.GetComponent<SpectrobeController>().enabled = true;
-		trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
-		trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
-		styleIcon.sprite = spectrobeStyles[data.playerSpectrobe];
+		UpdateStats();
 	}
 
 	public void selectNextSpectrobe()
