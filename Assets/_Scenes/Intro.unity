@@ -42430,6 +42430,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   turnSmoothTime: 0.39
   attackCoolDown: 0
+  iframeCountdown: 0
+  isAttackingCountDown: 0
   CHParts: {fileID: 1651746522653123420, guid: d711672efa6a600468dc8250b21bc8e4, type: 3}
   forwardCHCharge: 0
   normalAttackCollider: {fileID: 3016505247636250872}

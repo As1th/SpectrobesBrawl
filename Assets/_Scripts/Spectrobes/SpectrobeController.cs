@@ -15,6 +15,8 @@ public class SpectrobeController : MonoBehaviour
     public Transform cam;
     public float turnSmoothTime = 0.1f;
     public float attackCoolDown = 0f;
+    public float iframeCountdown=0f;
+    public float isAttackingCountDown=0f;
     public GameObject CHParts;
     public float forwardCHCharge;
     public GameObject normalAttackCollider;
@@ -112,6 +114,7 @@ public class SpectrobeController : MonoBehaviour
                    
                     animator.SetTrigger("Attack");
                     isAttacking = true;
+                    isAttackingCountDown = 70;
                     if (groundFire != null)
                     {
                         groundFire.Play();                   
@@ -137,6 +140,8 @@ public class SpectrobeController : MonoBehaviour
                    
                     scripts.GetComponent<GameManager>().ch = 0;
                     iframe = true;
+
+                    iframeCountdown = 70;
                     permaGround = true;
                     animator.SetTrigger("Attack2");
                     if (forwardCHCharge > 0)
@@ -144,7 +149,7 @@ public class SpectrobeController : MonoBehaviour
                         GetComponent<ImpactReceiver>().AddImpact(transform.forward, forwardCHCharge);
                     }
                     isAttacking = true;
-
+                    isAttackingCountDown = 70;
                 }
 
             }
@@ -230,8 +235,10 @@ public class SpectrobeController : MonoBehaviour
                     {
                         dashSound.Play();
                         iframe = true;
+                        iframeCountdown = 70;
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;
+                        isAttackingCountDown = 70;
                         GetComponent<ImpactReceiver>().AddImpact(moveDir, 500);
                         dashcooldown = 36;
 
@@ -263,7 +270,22 @@ public class SpectrobeController : MonoBehaviour
         {
             attackCoolDown--;
         }
-
+        if (isAttackingCountDown > 0)
+        {
+            isAttackingCountDown--;
+        }
+        else
+        {
+            isAttacking = false;
+        }
+        if (iframeCountdown > 0)
+        {
+            iframeCountdown--;
+        }
+        else
+        {
+            iframe = false;
+        }
 
         if (dashcooldown > 0)
         {
@@ -285,6 +307,7 @@ public class SpectrobeController : MonoBehaviour
     }
     public void Hit(Vector3 dir, float force, float dmg)
     {
+       // iframeCountdown = 75;
         scripts.GetComponent<GameManager>().ch += 5;
         if (!evolved)
         {

@@ -6,6 +6,7 @@ public class Krawl : MonoBehaviour
 {
     public bool iframe = false;
     public bool stagger = false;
+    public float iframeCountdown;
     private CharacterController controller;
     private Animator animator;
     private ImpactReceiver impact;
@@ -34,6 +35,17 @@ public class Krawl : MonoBehaviour
             {
                 touch = true;
             }
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (iframeCountdown > 0)
+        {
+            iframeCountdown--;
+        }
+        else
+        {
+            iframe = false;
         }
     }
     // Update is called once per frame
@@ -81,7 +93,7 @@ public class Krawl : MonoBehaviour
 
     public void Hit(Vector3 dir, float force, float dmg, bool giveCHXP)
     {
-      
+        iframeCountdown = 75;
             if (!player.GetComponent<SpectrobeController>().evolved)
             {
                 scripts.GetComponent<GameManager>().ev += 10;

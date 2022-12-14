@@ -32,7 +32,7 @@ public class TipChanger : MonoBehaviour
                 text.text = "TIP: YOUR DASH AND ATTACKS ARE SUBJECT TO A BRIEF COOLDOWN.";
                 break;
             case 2:
-                text.text = "TIP: TIME YOUR NORMAL ATTACKS PROPERLY TO DEFLECT ENEMY PROJECTILES BACK AT THEM!";
+                text.text = "TIP: TIME YOUR BASIC ATTACKS PROPERLY TO DEFLECT ENEMY PROJECTILES BACK AT THEM!";
                 break;
             case 3:
                 text.text = "TIP: EVOLVED FORM SPECTROBES ARE COMPLETELY IMMUNE TO DAMAGE!";
