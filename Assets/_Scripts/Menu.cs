@@ -13,6 +13,8 @@ public class Menu : MonoBehaviour
 	public GameObject speedBar;
 	public Image styleIcon;
 	public bool introScene;
+	public GameObject ControlsMode;
+	public GameObject SelectMode;
 	public GameObject sceneDataPrefab;
 	public SceneDataSaver data;
 	public TextMeshProUGUI initialDialog;
@@ -24,7 +26,7 @@ public class Menu : MonoBehaviour
 	GameManager gm;
 
 	public void Start()
-    {
+	{
 		gm = GetComponent<GameManager>();
 		var dataHolder = GameObject.FindGameObjectWithTag("Data");
 
@@ -33,11 +35,11 @@ public class Menu : MonoBehaviour
 			data = dataHolder.GetComponent<SceneDataSaver>();
 		}
 		else
-		{ 
-			data = Instantiate(sceneDataPrefab,transform.position,Quaternion.identity).GetComponent<SceneDataSaver>();
+		{
+			data = Instantiate(sceneDataPrefab, transform.position, Quaternion.identity).GetComponent<SceneDataSaver>();
 		}
-		
-		UI.ignoreListenerPause=true;
+
+		UI.ignoreListenerPause = true;
 
 		if (introScene)
 		{
@@ -48,6 +50,20 @@ public class Menu : MonoBehaviour
 			UpdateStats();
 		}
 	}
+
+	public void displaySelectMode()
+	{
+		ControlsMode.SetActive(false);
+		SelectMode.SetActive(true);
+
+	}
+	public void displayControlsMode()
+	{
+		SelectMode.SetActive(false);
+		ControlsMode.SetActive(true);
+
+	}
+
 	public void UpdateStats()
 	{
 		trobeName.text = data.SpectrobeList[data.playerSpectrobe].name;
