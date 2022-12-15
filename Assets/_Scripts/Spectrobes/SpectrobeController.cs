@@ -16,6 +16,7 @@ public class SpectrobeController : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     public float attackCoolDown = 0f;
     public float iframeCountdown=0f;
+    public float staggerCountdown = 0f;
     public float isAttackingCountDown=0f;
     public GameObject CHParts;
     public float forwardCHCharge;
@@ -141,7 +142,7 @@ public class SpectrobeController : MonoBehaviour
                     scripts.GetComponent<GameManager>().ch = 0;
                     iframe = true;
 
-                    iframeCountdown = 70;
+                    iframeCountdown = 65;
                     permaGround = true;
                     animator.SetTrigger("Attack2");
                     if (forwardCHCharge > 0)
@@ -149,7 +150,7 @@ public class SpectrobeController : MonoBehaviour
                         GetComponent<ImpactReceiver>().AddImpact(transform.forward, forwardCHCharge);
                     }
                     isAttacking = true;
-                    isAttackingCountDown = 70;
+                    isAttackingCountDown = 65;
                 }
 
             }
@@ -235,10 +236,10 @@ public class SpectrobeController : MonoBehaviour
                     {
                         dashSound.Play();
                         iframe = true;
-                        iframeCountdown = 70;
+                        iframeCountdown = 65;
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;
-                        isAttackingCountDown = 70;
+                        isAttackingCountDown = 65;
                         GetComponent<ImpactReceiver>().AddImpact(moveDir, 500);
                         dashcooldown = 36;
 
@@ -278,6 +279,14 @@ public class SpectrobeController : MonoBehaviour
         {
             isAttacking = false;
         }
+        if (staggerCountdown > 0)
+        {
+            staggerCountdown--;
+        }
+        else
+        {
+            stagger = false;
+        }
         if (iframeCountdown > 0)
         {
             iframeCountdown--;
@@ -307,7 +316,7 @@ public class SpectrobeController : MonoBehaviour
     }
     public void Hit(Vector3 dir, float force, float dmg)
     {
-       // iframeCountdown = 75;
+       // iframeCountdown = 65;
         scripts.GetComponent<GameManager>().ch += 5;
         if (!evolved)
         {
@@ -315,6 +324,7 @@ public class SpectrobeController : MonoBehaviour
         }
             deactivateHurtBox();
         stagger = true;
+        staggerCountdown = 65;
         GetComponent<ImpactReceiver>().AddImpact(dir, force);
         // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
         scripts.GetComponent<GameManager>().health -= dmg;
