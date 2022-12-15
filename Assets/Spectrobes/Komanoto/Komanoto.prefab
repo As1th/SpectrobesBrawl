@@ -803,6 +803,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   turnSmoothTime: 0.39
   attackCoolDown: 0
+  iframeCountdown: 0
+  isAttackingCountDown: 0
   CHParts: {fileID: 3810798298747713207, guid: e81c55a76dd225c4b963008c744b9c3b, type: 3}
   forwardCHCharge: 0
   normalAttackCollider: {fileID: 8081806476767799566}
@@ -1060,7 +1062,7 @@ MonoBehaviour:
   style: {fileID: 21300000, guid: a87d3f5c2a6e0844d8970e928c3fadac, type: 3}
   BasicDmg: 4
   CHDmg: 6
-  Speed: 5
+  Speed: 4
 --- !u!1 &5150861587727641730
 GameObject:
   m_ObjectHideFlags: 0

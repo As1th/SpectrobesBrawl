@@ -91,7 +91,16 @@ public class GameManager : MonoBehaviour
         difficultyMenu.SetActive(false);
         StartCoroutine(
                 countDownAndBegin());
-        swarmCount = 3;
+        swarmCount = 4;
+        player.GetComponent<SpectrobeController>().enabled = true;
+    }
+    public void startHard()
+    {
+        maxKrawlPerWave = 4;
+        difficultyMenu.SetActive(false);
+        StartCoroutine(
+                countDownAndBegin());
+        swarmCount = 5;
         player.GetComponent<SpectrobeController>().enabled = true;
     }
     IEnumerator setNewWarning(string w, bool permanent)

@@ -5238,6 +5238,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   turnSmoothTime: 0.39
   attackCoolDown: 0
+  iframeCountdown: 0
+  isAttackingCountDown: 0
   CHParts: {fileID: 3810798298747713207, guid: 5ff21efaf7f614e4cb7e01e01121a0b6, type: 3}
   forwardCHCharge: 750
   normalAttackCollider: {fileID: 4891831470894466197}
@@ -11087,7 +11089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0341b23c574959a4b86181d6a29c049b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 23
+  damage: 24
   attackParticle: {fileID: 4697218109777110270, guid: 8f70d061242024a4a96296858b5aab51, type: 3}
 --- !u!1 &4891831471048962398
 GameObject:
