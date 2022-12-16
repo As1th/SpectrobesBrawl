@@ -121,7 +121,7 @@ public class SpectrobeController : MonoBehaviour
                    
                     animator.SetTrigger("Attack");
                     isAttacking = true;
-                    isAttackingCountDown = 70;
+                    isAttackingCountDown = 50;
                     if (groundFire != null)
                     {
                         groundFire.Play();                   
@@ -148,7 +148,7 @@ public class SpectrobeController : MonoBehaviour
                   gm.ch = 0;
                     iframe = true;
 
-                    iframeCountdown = 65;
+                    iframeCountdown = 50;
                     permaGround = true;
                     animator.SetTrigger("Attack2");
                     if (forwardCHCharge > 0)
@@ -156,7 +156,7 @@ public class SpectrobeController : MonoBehaviour
                         impactReciever.AddImpact(transform.forward, forwardCHCharge);
                     }
                     isAttacking = true;
-                    isAttackingCountDown = 65;
+                    isAttackingCountDown = 50;
                 }
 
             }
@@ -242,10 +242,10 @@ public class SpectrobeController : MonoBehaviour
                     {
                         dashSound.Play();
                         iframe = true;
-                        iframeCountdown = 65;
+                        iframeCountdown = 50;
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;
-                        isAttackingCountDown = 65;
+                        isAttackingCountDown = 50;
                         impactReciever.AddImpact(moveDir, 500);
                         dashcooldown = 36;
 
@@ -330,7 +330,7 @@ public class SpectrobeController : MonoBehaviour
         }
             deactivateHurtBox();
         stagger = true;
-        staggerCountdown = 65;
+        staggerCountdown = 50;
         impactReciever.AddImpact(dir, force);
         // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
       gm.health -= dmg;
