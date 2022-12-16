@@ -44,14 +44,22 @@ public class GameManager : MonoBehaviour
     public int maxKrawlPerWave;
     public GameObject player;
     public bool randomWaveMode;
+    public bool spectrobeSwitchMode;
     public SceneDataSaver data;
+    Menu menu;
     // Start is called before the first frame update
     void Start()
     {
+        menu = GetComponent<Menu>();
         data = GameObject.FindGameObjectWithTag("Data").GetComponent<SceneDataSaver>();
         if (data.gameMode == 1)
         {
             randomWaveMode = true;
+        }
+        else if (data.gameMode == 2)
+        {
+            randomWaveMode = false;
+            spectrobeSwitchMode = true;
         }
 
 
@@ -74,34 +82,83 @@ public class GameManager : MonoBehaviour
         minKrawl = 0;
         maxKrawl = 2;
     }
-
-   
-    public void startEasy()
+    // Update is called once per frame
+    void Update()
     {
-        maxKrawlPerWave = 2;
+
+        if (ch > 50)
+        { ch = 50; }
+
+        if (health < 0)
+        {
+            health = 0;
+        }
+
+        if (ev >= 400)
+        {
+            ev = 400;
+            if (!beepLoop.isPlaying)
+            {
+                beepLoop.Play();
+            }
+        }
+        else
+        {
+            beepLoop.Stop();
+        }
+        evBar.UpdateValue((int)ev, 400);
+        chBar.UpdateValue((int)ch, 50);
+        healthBar.UpdateValue((int)health, 400);
+        pointCounter.GetComponent<Text>().text = score.ToString();
+
+        if (Input.GetButtonDown("Pause") && !lost)
+        {
+            if (Time.timeScale == 1)
+            {
+               menu.pause();
+            }
+            else
+            {
+               menu.resume();
+            }
+        }
+
+        /*
+        if (Input.GetButtonDown("1") && !lost)
+        { 
+        
+        }
+        */
+
+    }
+
+    void beginGame()
+    {
         difficultyMenu.SetActive(false);
         StartCoroutine(
                 countDownAndBegin());
-        swarmCount = 3;
+       
         player.GetComponent<SpectrobeController>().enabled = true;
+    }
+
+    public void startEasy()
+    {
+        maxKrawlPerWave = 2;
+        swarmCount = 3;
+        beginGame();
+
     }
     public void startNormal()
     {
         maxKrawlPerWave = 3;
-        difficultyMenu.SetActive(false);
-        StartCoroutine(
-                countDownAndBegin());
         swarmCount = 4;
-        player.GetComponent<SpectrobeController>().enabled = true;
+        beginGame();
     }
     public void startHard()
     {
         maxKrawlPerWave = 4;
-        difficultyMenu.SetActive(false);
-        StartCoroutine(
-                countDownAndBegin());
         swarmCount = 5;
-        player.GetComponent<SpectrobeController>().enabled = true;
+        beginGame();
     }
     IEnumerator setNewWarning(string w, bool permanent)
     {
@@ -152,47 +209,7 @@ public class GameManager : MonoBehaviour
         beepCountdown.pitch = 1f;
         InvokeRepeating("spawn", 0, 2);
     }
-    // Update is called once per frame
-    void Update()
-    {
-      
-        if (ch > 50)
-        { ch = 50; }
-
-        if (health < 0)
-        {
-            health = 0;
-        }
-
-        if (ev >= 400)
-        {
-            ev = 400;
-            if (!beepLoop.isPlaying)
-            {
-                beepLoop.Play();
-            }
-        }
-        else {
-            beepLoop.Stop();
-        }
-        evBar.UpdateValue((int)ev, 400);
-        chBar.UpdateValue((int)ch,50);
-        healthBar.UpdateValue((int)health,400);
-        pointCounter.GetComponent<Text>().text = score.ToString();
-
-        if (Input.GetButtonDown("Pause")  && !lost)
-        {
-            if (Time.timeScale == 1)
-            {
-                GetComponent<Menu>().pause();
-            }
-            else
-            {
-                GetComponent<Menu>().resume();
-            }
-        }
-
-    }
+ 
 
     public void defeatSequence()
     {
@@ -203,7 +220,7 @@ public class GameManager : MonoBehaviour
         scoreTextDefeatMenu.text = score.ToString();
         int waves = (int)(score / 100);
         wavesTextDefeatMenu.text = waves.ToString();
-        GetComponent<Menu>().resume();
+       menu.resume();
     }
     public void AddScore()
     {

@@ -17,14 +17,19 @@ public class Krawl : MonoBehaviour
     public float health = 50f;
     public GameObject scripts;
     public bool touch;
+    GameManager gm;
+    SpectrobeController playerSpectrobeController;
     // Start is called before the first frame update
     void Start()
     {
-        scripts = GameObject.Find("Scripts");
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerSpectrobeController = player.GetComponent<SpectrobeController>();
+        scripts = playerSpectrobeController.scripts;
+        gm = scripts.GetComponent<GameManager>();
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         impact = GetComponent<ImpactReceiver>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        
     }
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -62,7 +67,7 @@ public class Krawl : MonoBehaviour
     {
         if (touch)
         {
-            gameObject.GetComponent<CharacterController>().SimpleMove(transform.right * 80);
+           controller.SimpleMove(transform.right * 80);
         }
         touch = false;
     }
@@ -83,14 +88,14 @@ public class Krawl : MonoBehaviour
         if (health <= 0)
         {
             Instantiate(cloud, transform.position, Quaternion.identity);
-            scripts.GetComponent<GameManager>().AddScore();
-            //  scripts.GetComponent<GameManager>().ch += 10;
-            if (!player.GetComponent<SpectrobeController>().evolved)
+            gm.AddScore();
+            //  gm.ch += 10;
+            if (!playerSpectrobeController.evolved)
             {
-                scripts.GetComponent<GameManager>().ev += 10;
+                gm.ev += 10;
             }
-           scripts.GetComponent<GameManager>().currentKrawl.Remove(this.gameObject);
-           scripts.GetComponent<GameManager>().spawnKrawl();
+           gm.currentKrawl.Remove(this.gameObject);
+           gm.spawnKrawl();
 
             Destroy(this.gameObject);
             
@@ -103,15 +108,15 @@ public class Krawl : MonoBehaviour
     public void Hit(Vector3 dir, float force, float dmg, bool giveCHXP)
     {
         iframeCountdown = 65;
-            if (!player.GetComponent<SpectrobeController>().evolved)
+            if (!playerSpectrobeController.evolved)
             {
-                scripts.GetComponent<GameManager>().ev += 10;
+                gm.ev += 10;
             }
        
      
             if (giveCHXP)
             {
-                scripts.GetComponent<GameManager>().ch += 10;
+                gm.ch += 10;
             }
         
 

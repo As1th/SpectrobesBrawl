@@ -36,14 +36,14 @@ public class SwarController : MonoBehaviour
             controller.Move(Vector3.down * 90.81f * Time.deltaTime);
         }
 
-        if (!krawl.stagger && !isAttacking && GetComponent<Krawl>().player.activeSelf == true)
+        if (!krawl.stagger && !isAttacking && krawl.player.activeSelf == true)
         {
-            transform.LookAt(GetComponent<Krawl>().player.transform);
+            transform.LookAt(krawl.player.transform);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
             if (!inRange)
             {
                 animator.SetBool("IsRunning", true);
-                Vector3 dir = (GetComponent<Krawl>().player.transform.position - transform.position).normalized;
+                Vector3 dir = (krawl.player.transform.position - transform.position).normalized;
                 controller.Move(new Vector3(dir.x, 0, dir.z) * speed * Time.deltaTime);
             }
             else
@@ -51,7 +51,7 @@ public class SwarController : MonoBehaviour
                 animator.SetBool("IsRunning", false);
             }
         }
-        if (GetComponent<Krawl>().player.activeSelf == false)
+        if (krawl.player.activeSelf == false)
         {
             animator.SetBool("IsRunning", false);
             animator.SetTrigger("Idle");
@@ -62,7 +62,7 @@ public class SwarController : MonoBehaviour
             if (!krawl.stagger && !isAttacking && inRange && attackCoolDown==0)
             {
                 isAttacking = true;
-                transform.LookAt(GetComponent<Krawl>().player.transform);
+                transform.LookAt(krawl.player.transform);
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
                 animator.SetTrigger("Attack");
             }

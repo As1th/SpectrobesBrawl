@@ -41,9 +41,15 @@ public class SpectrobeController : MonoBehaviour
     
     public GameObject spawnPoint;
     public ParticleSystem CHGlowParticles;
+    GameManager gm;
+    Menu menu;
+    ImpactReceiver impactReciever;
 
     void Start()
     {
+        menu = scripts.GetComponent<Menu>();
+        impactReciever = GetComponent<ImpactReceiver>();
+        gm = scripts.GetComponent<GameManager>();
         cam = Camera.main.transform;
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
@@ -81,7 +87,7 @@ public class SpectrobeController : MonoBehaviour
     {
         if (touch)
         {
-            gameObject.GetComponent<CharacterController>().SimpleMove(transform.forward * 100);
+           controller.SimpleMove(transform.forward * 100);
         }
         touch = false;
         if (!controller.isGrounded)
@@ -129,7 +135,7 @@ public class SpectrobeController : MonoBehaviour
             }
             else if (Input.GetButtonDown("Attack2"))
             {
-                if (attackCoolDown == 0 && !stagger && scripts.GetComponent<GameManager>().ch >= CHCost)//used to be && controller.isGrounded instead of && !stagger
+                if (attackCoolDown == 0 && !stagger && gm.ch >= CHCost)//used to be && controller.isGrounded instead of && !stagger
                 {
 
                     chSound.Play();
@@ -139,7 +145,7 @@ public class SpectrobeController : MonoBehaviour
                     }
                    
                    
-                    scripts.GetComponent<GameManager>().ch = 0;
+                  gm.ch = 0;
                     iframe = true;
 
                     iframeCountdown = 65;
@@ -147,7 +153,7 @@ public class SpectrobeController : MonoBehaviour
                     animator.SetTrigger("Attack2");
                     if (forwardCHCharge > 0)
                     {
-                        GetComponent<ImpactReceiver>().AddImpact(transform.forward, forwardCHCharge);
+                        impactReciever.AddImpact(transform.forward, forwardCHCharge);
                     }
                     isAttacking = true;
                     isAttackingCountDown = 65;
@@ -156,15 +162,15 @@ public class SpectrobeController : MonoBehaviour
             }
             else if (Input.GetButtonDown("Evolve"))
             {
-                if (attackCoolDown == 0 && !stagger && !evolved && scripts.GetComponent<GameManager>().ev >= EVCost) //used to be && controller.isGrounded instead of && !stagger
+                if (attackCoolDown == 0 && !stagger && !evolved && gm.ev >= EVCost) //used to be && controller.isGrounded instead of && !stagger
                 {
                     var eff = Instantiate(evolvePart, new Vector3(transform.position.x, transform.position.y + 18f, transform.position.z), Quaternion.identity);
-                    scripts.GetComponent<GameManager>().ev = 0;
-                    scripts.GetComponent<GameManager>().healthStore = scripts.GetComponent<GameManager>().health;
+                  gm.ev = 0;
+                  gm.healthStore = gm.health;
                     var var = Instantiate(EvolvedForm, transform.position, transform.rotation);
                     eff.transform.parent = var.transform;
-                    scripts.GetComponent<GameManager>().player = var;
-                    if (scripts.GetComponent<Menu>().introScene)
+                  gm.player = var;
+                    if (menu.introScene)
                     {
                         var.GetComponent<SpectrobeController>().EVCost = 0;
                         var.GetComponent<SpectrobeController>().CHCost = 0;
@@ -178,7 +184,7 @@ public class SpectrobeController : MonoBehaviour
                     var.GetComponent<SpectrobeController>().scripts = scripts;
                     var.GetComponent<SpectrobeController>().evolved = true;
                     
-                    foreach (GameObject k in scripts.GetComponent<GameManager>().currentKrawl)
+                    foreach (GameObject k in gm.currentKrawl)
                     {
                         k.GetComponent<Krawl>().player = var;
                     }
@@ -188,7 +194,7 @@ public class SpectrobeController : MonoBehaviour
             }
             else if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
             {
-                if (scripts.GetComponent<Menu>().introScene)
+                if (menu.introScene)
                 {
                     Camera.main.transform.parent.GetComponent<Rotate>().enabled = false;
                     Camera.main.transform.parent.transform.rotation = Quaternion.RotateTowards(Camera.main.transform.parent.transform.rotation, transform.rotation, 5);//Quaternion.Lerp(camAnchor.transform.rotation, transform.rotation, 10000);
@@ -240,7 +246,7 @@ public class SpectrobeController : MonoBehaviour
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;
                         isAttackingCountDown = 65;
-                        GetComponent<ImpactReceiver>().AddImpact(moveDir, 500);
+                        impactReciever.AddImpact(moveDir, 500);
                         dashcooldown = 36;
 
                     }
@@ -249,7 +255,7 @@ public class SpectrobeController : MonoBehaviour
             }
             else
             {
-                if (scripts.GetComponent<Menu>().introScene)
+                if (menu.introScene)
                 {
                     Camera.main.transform.parent.GetComponent<Rotate>().enabled = true;
                 }
@@ -303,13 +309,13 @@ public class SpectrobeController : MonoBehaviour
     }
     public void deathCheck()
     {
-        if (scripts.GetComponent<GameManager>().health <= 0)
+        if ( gm.health <= 0)
         {
             Instantiate(cloud, transform.position, Quaternion.identity);
             Camera.main.gameObject.transform.parent = null;
             Camera.main.gameObject.GetComponent<Rotate>().enabled = true;
-            scripts.GetComponent<GameManager>().lost = true;
-            scripts.GetComponent<GameManager>().defeatSequence();
+          gm.lost = true;
+          gm.defeatSequence();
             this.gameObject.SetActive(false);
             
         }
@@ -317,17 +323,17 @@ public class SpectrobeController : MonoBehaviour
     public void Hit(Vector3 dir, float force, float dmg)
     {
        // iframeCountdown = 65;
-        scripts.GetComponent<GameManager>().ch += 5;
+      gm.ch += 5;
         if (!evolved)
         {
-            scripts.GetComponent<GameManager>().ev += 5;
+          gm.ev += 5;
         }
             deactivateHurtBox();
         stagger = true;
         staggerCountdown = 65;
-        GetComponent<ImpactReceiver>().AddImpact(dir, force);
+        impactReciever.AddImpact(dir, force);
         // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
-        scripts.GetComponent<GameManager>().health -= dmg;
+      gm.health -= dmg;
         animator.SetTrigger("Hit");
 
     }

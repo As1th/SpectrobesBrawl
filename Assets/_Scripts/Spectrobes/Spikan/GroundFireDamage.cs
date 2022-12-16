@@ -6,10 +6,11 @@ public class GroundFireDamage : MonoBehaviour
 {
     public float damage;
     public GameObject attackParticle;
+    SpectrobeController controller;
     // Start is called before the first frame update
     void Start()
     {
-        
+        controller = transform.root.gameObject.GetComponent<SpectrobeController>();
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class GroundFireDamage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (transform.root.gameObject.GetComponent<SpectrobeController>().isAttacking)
+        if (controller.isAttacking)
         {
             
             if (other.gameObject.layer == 6 && other.gameObject.transform.root.GetComponent<Krawl>().iframe == false)
