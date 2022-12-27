@@ -11791,15 +11791,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 5a75a9e9a7bf7eb4d9c0cdd23f039ecd, type: 2}
-  m_Color: {r: 0.26415092, g: 0.242969, b: 0.242969, a: 0.392}
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.045656823, g: 0.30696505, b: 0.3584906, a: 0.72156864}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23006,7 +23006,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280313973}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42cd8dcae69d178488f5efa28e7c7e78, type: 3}
   m_Name: 
@@ -42561,10 +42561,12 @@ MonoBehaviour:
   CHParts: {fileID: 1651746522653123420, guid: d711672efa6a600468dc8250b21bc8e4, type: 3}
   forwardCHCharge: 0
   normalAttackCollider: {fileID: 3016505247636250872}
+  normalAttackCollider2: {fileID: 0}
   stagger: 0
   iframe: 0
   permaGround: 0
   hurtbox: {fileID: 0}
+  hurtbox2: {fileID: 0}
   cloud: {fileID: 1520691996188032948, guid: a7118756efde7a343a6ad2ad3ad4413a, type: 3}
   scripts: {fileID: 1217110867}
   EvolvedForm: {fileID: 192911760238613120, guid: 96b52465b25ee1845aa6d971524000c0, type: 3}

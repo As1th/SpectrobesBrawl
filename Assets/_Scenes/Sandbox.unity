@@ -3646,10 +3646,12 @@ MonoBehaviour:
   CHParts: {fileID: 1651746522653123420, guid: d711672efa6a600468dc8250b21bc8e4, type: 3}
   forwardCHCharge: 0
   normalAttackCollider: {fileID: 714819455}
+  normalAttackCollider2: {fileID: 0}
   stagger: 0
   iframe: 0
   permaGround: 0
   hurtbox: {fileID: 0}
+  hurtbox2: {fileID: 0}
   cloud: {fileID: 1520691996188032948, guid: a7118756efde7a343a6ad2ad3ad4413a, type: 3}
   scripts: {fileID: 1217110867}
   EvolvedForm: {fileID: 192911760238613120, guid: 96b52465b25ee1845aa6d971524000c0, type: 3}
@@ -4528,7 +4530,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421202386}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42cd8dcae69d178488f5efa28e7c7e78, type: 3}
   m_Name: 
@@ -52664,11 +52666,13 @@ MonoBehaviour:
   isAttackingCountDown: 0
   CHParts: {fileID: 3810798298747713207, guid: e81c55a76dd225c4b963008c744b9c3b, type: 3}
   forwardCHCharge: 0
-  normalAttackCollider: {fileID: 8054869566551495706}
+  normalAttackCollider: {fileID: 919132148834012899}
+  normalAttackCollider2: {fileID: 0}
   stagger: 0
   iframe: 0
   permaGround: 0
   hurtbox: {fileID: 0}
+  hurtbox2: {fileID: 0}
   cloud: {fileID: 1520691996188032948, guid: a7118756efde7a343a6ad2ad3ad4413a, type: 3}
   scripts: {fileID: 1217110867}
   EvolvedForm: {fileID: 2366967529529592293, guid: f6a8923576f5bf344ba67f40c97e7eb9, type: 3}

@@ -21,11 +21,13 @@ public class SpectrobeController : MonoBehaviour
     public GameObject CHParts;
     public float forwardCHCharge;
     public GameObject normalAttackCollider;
+    public GameObject normalAttackCollider2;
     Vector3 velocity;
     public bool stagger;
     public bool iframe = false;
     public bool permaGround;
     public Collider hurtbox;
+    public Collider hurtbox2;
     //public float health = 20;
     public GameObject cloud;
     public GameObject scripts;
@@ -54,7 +56,10 @@ public class SpectrobeController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         hurtbox = normalAttackCollider.GetComponent<Collider>();
-      
+        if (normalAttackCollider2 != null)
+        { 
+            hurtbox2 = normalAttackCollider2.GetComponent<Collider>();
+        }
     }
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -385,11 +390,19 @@ public class SpectrobeController : MonoBehaviour
     public void activateHurtBox()
     {
         hurtbox.enabled = true;
+        if (hurtbox2 != null)
+        {
+            hurtbox2.enabled = true;
+        }
     }
 
     public void deactivateHurtBox()
     {
         hurtbox.enabled = false;
+        if (hurtbox2 != null)
+        {
+            hurtbox2.enabled = true;
+        }
     }
 
 
