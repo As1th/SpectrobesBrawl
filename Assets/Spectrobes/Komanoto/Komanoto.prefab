@@ -810,10 +810,12 @@ MonoBehaviour:
   CHParts: {fileID: 3810798298747713207, guid: e81c55a76dd225c4b963008c744b9c3b, type: 3}
   forwardCHCharge: 0
   normalAttackCollider: {fileID: 8081806476767799566}
+  normalAttackCollider2: {fileID: 0}
   stagger: 0
   iframe: 0
   permaGround: 0
   hurtbox: {fileID: 0}
+  hurtbox2: {fileID: 0}
   cloud: {fileID: 1520691996188032948, guid: a7118756efde7a343a6ad2ad3ad4413a, type: 3}
   scripts: {fileID: 0}
   EvolvedForm: {fileID: 2366967529529592293, guid: f6a8923576f5bf344ba67f40c97e7eb9, type: 3}
@@ -1063,7 +1065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   style: {fileID: 21300000, guid: a87d3f5c2a6e0844d8970e928c3fadac, type: 3}
   BasicDmg: 4
-  CHDmg: 6
+  CHDmg: 5
   Speed: 4
 --- !u!82 &6876167127193128580
 AudioSource:

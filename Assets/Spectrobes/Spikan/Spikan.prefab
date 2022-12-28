@@ -1356,13 +1356,18 @@ MonoBehaviour:
   cam: {fileID: 0}
   turnSmoothTime: 0.39
   attackCoolDown: 0
+  iframeCountdown: 0
+  staggerCountdown: 0
+  isAttackingCountDown: 0
   CHParts: {fileID: 1651746522653123420, guid: d711672efa6a600468dc8250b21bc8e4, type: 3}
   forwardCHCharge: 0
   normalAttackCollider: {fileID: 3203851345395972656}
+  normalAttackCollider2: {fileID: 0}
   stagger: 0
   iframe: 0
   permaGround: 0
   hurtbox: {fileID: 0}
+  hurtbox2: {fileID: 0}
   cloud: {fileID: 1520691996188032948, guid: a7118756efde7a343a6ad2ad3ad4413a, type: 3}
   scripts: {fileID: 0}
   EvolvedForm: {fileID: 192911760238613120, guid: 96b52465b25ee1845aa6d971524000c0, type: 3}
@@ -1689,7 +1694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   style: {fileID: 21300000, guid: 9493da9fa4c1c3f49bebe7217f911c04, type: 3}
-  BasicDmg: 6
+  BasicDmg: 5
   CHDmg: 4
   Speed: 3
 --- !u!1 &3203851345190510745
