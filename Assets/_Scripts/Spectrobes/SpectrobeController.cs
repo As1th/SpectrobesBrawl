@@ -19,6 +19,7 @@ public class SpectrobeController : MonoBehaviour
     public float staggerCountdown = 0f;
     public float isAttackingCountDown=0f;
     public GameObject CHParts;
+    public GameObject normalAttackParts;
     public float forwardCHCharge;
     public GameObject normalAttackCollider;
     public GameObject normalAttackCollider2;
@@ -348,7 +349,12 @@ public class SpectrobeController : MonoBehaviour
         Instantiate(CHParts, spawnPoint.transform.position, transform.rotation);
        // Instantiate(CHParts, spawnPoint.transform.Find("SpawnPoint2").transform.position, transform.rotation);
     }
+    public void spawnNormalAttackPartsSamugeki()
+    {
 
+        Instantiate(normalAttackParts, spawnPoint.transform.position, transform.rotation);
+       
+    }
 
     public void spawnCHPartsSpikan()
     {

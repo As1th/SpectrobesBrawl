@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <created>2022-12-31T15:02:13Z</created>
+    <modified>2022-12-31T15:02:13Z</modified>
+  </asset>
+  <library_images>
+    <image id="image-E321A_A5">
+      <init_from>E321A_A5.png</init_from>
+    </image>
+    <image id="image-E321B_A5">
+      <init_from>E321B_A5.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="material0" name="E321ArrowAMat">
+      <instance_effect url="#effect0"/>
+    </material>
+    <material id="material1" name="E321ArrowBMat">
+      <instance_effect url="#effect1"/>
+    </material>
+    <material id="material2" name="E321ThunderAMat">
+      <instance_effect url="#effect2"/>
+    </material>
+    <material id="material3" name="E321ThunderBMat">
+      <instance_effect url="#effect3"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="effect0" name="E321ArrowAMat">
+      <profile_COMMON>
+        <newparam sid="Image-surface">
+          <surface type="2D">
+            <init_from>image-E321A_A5</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Image-sampler">
+          <sampler2D>
+            <source>Image-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NEAREST</minfilter>
+            <magfilter>NEAREST</magfilter>
+            <mipfilter>NEAREST</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Image-sampler" texcoord="tc"/>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <transparent>
+              <texture texture="Image-sampler" texcoord="tc"/>
+            </transparent>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="effect1" name="E321ArrowBMat">
+      <profile_COMMON>
+        <newparam sid="Image-surface">
+          <surface type="2D">
+            <init_from>image-E321A_A5</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Image-sampler">
+          <sampler2D>
+            <source>Image-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NEAREST</minfilter>
+            <magfilter>NEAREST</magfilter>
+            <mipfilter>NEAREST</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Image-sampler" texcoord="tc"/>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <transparent>
+              <texture texture="Image-sampler" texcoord="tc"/>
+            </transparent>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="effect2" name="E321ThunderAMat">
+      <profile_COMMON>
+        <newparam sid="Image-surface">
+          <surface type="2D">
+            <init_from>image-E321B_A5</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Image-sampler">
+          <sampler2D>
+            <source>Image-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NEAREST</minfilter>
+            <magfilter>NEAREST</magfilter>
+            <mipfilter>NEAREST</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Image-sampler" texcoord="tc"/>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <transparent>
+              <texture texture="Image-sampler" texcoord="tc"/>
+            </transparent>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="effect3" name="E321ThunderBMat">
+      <profile_COMMON>
+        <newparam sid="Image-surface">
+          <surface type="2D">
+            <init_from>image-E321B_A5</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Image-sampler">
+          <sampler2D>
+            <source>Image-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NEAREST</minfilter>
+            <magfilter>NEAREST</magfilter>
+            <mipfilter>NEAREST</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Image-sampler" texcoord="tc"/>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <transparent>
+              <texture texture="Image-sampler" texcoord="tc"/>
+            </transparent>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="geometry" name="E321">
+      <mesh>
+        <source id="positions">
+          <float_array id="positions-array" count="120">7.5 0 0 7.5 0 -15 0 0 0 0 0 -15 -7.5 0 0 -7.5 0 -15 7.5 0 15 7.5 0 0 0 0 15 0 0 0 -7.5 0 15 -7.5 0 0 0 7.5 0 0 7.5 -15 0 0 0 0 0 -15 0 -7.5 0 0 -7.5 -15 0 7.5 15 0 7.5 0 0 0 15 0 0 0 0 -7.5 15 0 -7.5 0 0 5.625 -15 0 -5.625 -15 0 -5.625 -3.75 0 5.625 -3.75 0 -5.625 -3.75 0 -5.625 7.5 0 5.625 7.5 0 5.625 -3.75 -5.625 0 -15 5.625 0 -15 5.625 0 -3.75 -5.625 0 -3.75 5.625 0 -3.75 5.625 0 7.5 -5.625 0 7.5 -5.625 0 -3.75 </float_array>
+          <technique_common>
+            <accessor source="#positions-array" count="40" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="texcoords">
+          <float_array id="texcoords-array" count="80">0.5 1 1 1 0.5 0.5 1 0.5 0.5 0 1 0 0 1 0.5 1 0 0.5 0.5 0.5 0 0 0.5 0 0.5 1 1 1 0.5 0.5 1 0.5 0.5 0 1 0 0 1 0.5 1 0 0.5 0.5 0.5 0 0 0.5 0 0.015625 0.5 0.015625 0.984375 0.984375 0.984375 0.984375 0.5 0.015625 0.5 0.984375 0.5 0.984375 0.015625 0.015625 0.015625 0.015625 0.5 0.015625 0.984375 0.984375 0.984375 0.984375 0.5 0.015625 0.5 0.984375 0.5 0.984375 0.015625 0.015625 0.015625 </float_array>
+          <technique_common>
+            <accessor source="#texcoords-array" count="40" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="colors">
+          <float_array id="colors-array" count="120">1 0.41935483 0 1 0.9677419 0 1 1 1 1 1 1 1 0.41935483 0 1 0.9677419 0 1 0 0 1 0.41935483 0 1 1 1 1 1 1 1 0 0 1 0.41935483 0 1 0.41935483 0 1 0.9677419 0 1 1 1 1 1 1 1 0.41935483 0 1 0.9677419 0 1 0 0 1 0.41935483 0 1 1 1 1 1 1 1 0 0 1 0.41935483 0 0 0.032258064 1 0 0.032258064 1 0 0.83870965 1 0 0.83870965 1 0 0.83870965 1 1 1 1 1 1 1 0 0.83870965 1 0 0.032258064 1 0 0.032258064 1 0 0.83870965 1 0 0.83870965 1 0 0.83870965 1 1 1 1 1 1 1 0 0.83870965 1 </float_array>
+          <technique_common>
+            <accessor source="#colors-array" count="40" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="vertices">
+          <input semantic="POSITION" source="#positions"/>
+          <input semantic="TEXCOORD" source="#texcoords"/>
+          <input semantic="COLOR" source="#colors"/>
+        </vertices>
+        <polylist material="material0" count="4">
+          <input semantic="VERTEX" source="#vertices" offset="0"/>
+          <vcount>4 4 4 4 </vcount>
+          <p>0 1 3 2 2 3 5 4 6 7 9 8 8 9 11 10 </p>
+        </polylist>
+        <polylist material="material1" count="4">
+          <input semantic="VERTEX" source="#vertices" offset="0"/>
+          <vcount>4 4 4 4 </vcount>
+          <p>12 13 15 14 14 15 17 16 18 19 21 20 20 21 23 22 </p>
+        </polylist>
+        <polylist material="material3" count="2">
+          <input semantic="VERTEX" source="#vertices" offset="0"/>
+          <vcount>4 4 </vcount>
+          <p>24 25 26 27 28 29 30 31 </p>
+        </polylist>
+        <polylist material="material2" count="2">
+          <input semantic="VERTEX" source="#vertices" offset="0"/>
+          <vcount>4 4 </vcount>
+          <p>32 33 34 35 36 37 38 39 </p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers>
+    <controller id="controller">
+      <skin source="#geometry">
+        <source id="controller-joints">
+          <Name_array id="controller-joints-array" count="5">joint0 joint1 joint2 joint3 joint4 </Name_array>
+          <technique_common>
+            <accessor source="#controller-joints-array" count="5">
+              <param name="JOINT" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="controller-bind-poses">
+          <float_array id="controller-bind-poses-array" count="80">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.3333333333333333 0 0 0 0 1.3333333333333333 0 0 0 0 1.3333333333333333 20 0 0 0 1 0 1.3333333333333333 0 0 -1.3333333333333333 0 0 0 0 0 1.3333333333333333 20 0 0 0 1 </float_array>
+          <technique_common>
+            <accessor source="#controller-bind-poses-array" count="5" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="controller-weights">
+          <float_array id="controller-weights-array" count="1">1 </float_array>
+          <technique_common>
+            <accessor source="#controller-weights-array" count="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#controller-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#controller-bind-poses"/>
+        </joints>
+        <vertex_weights count="40">
+          <input semantic="JOINT" source="#controller-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#controller-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 </v>
+        </vertex_weights>
+      </skin>
+    </controller>
+  </library_controllers>
+  <library_visual_scenes>
+    <visual_scene id="scene0" name="E321">
+      <node id="joint0" sid="joint0" name="world_root" type="JOINT">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <node id="joint1" sid="joint1" name="E321_1ArrowA" type="JOINT">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        </node>
+        <node id="joint2" sid="joint2" name="E321_1ArrowB" type="JOINT">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        </node>
+        <node id="joint3" sid="joint3" name="E321_2ThunderA" type="JOINT">
+          <matrix sid="transform">0.75 0 0 0 0 0.75 0 0 0 0 0.75 -15 0 0 0 1</matrix>
+        </node>
+        <node id="joint4" sid="joint4" name="E321_2ThunderB" type="JOINT">
+          <matrix sid="transform">0 -0.75 0 0 0.75 0 0 0 0 0 0.75 -15 0 0 0 1</matrix>
+        </node>
+      </node>
+      <node id="node" name="E321" type="NODE">
+        <instance_controller url="#controller">
+          <skeleton>#joint0</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="material0" target="#material0">
+                <bind_vertex_input semantic="tc" input_semantic="TEXCOORD"/>
+              </instance_material>
+              <instance_material symbol="material1" target="#material1">
+                <bind_vertex_input semantic="tc" input_semantic="TEXCOORD"/>
+              </instance_material>
+              <instance_material symbol="material2" target="#material2">
+                <bind_vertex_input semantic="tc" input_semantic="TEXCOORD"/>
+              </instance_material>
+              <instance_material symbol="material3" target="#material3">
+                <bind_vertex_input semantic="tc" input_semantic="TEXCOORD"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#scene0"/>
+  </scene>
+</COLLADA>
