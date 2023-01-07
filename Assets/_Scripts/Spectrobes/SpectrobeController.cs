@@ -19,6 +19,7 @@ public class SpectrobeController : MonoBehaviour
     public float staggerCountdown = 0f;
     public float isAttackingCountDown=0f;
     public GameObject CHParts;
+    public GameObject CHParts2;
     public GameObject normalAttackParts;
     public float forwardCHCharge;
     public GameObject normalAttackCollider;
@@ -127,7 +128,7 @@ public class SpectrobeController : MonoBehaviour
                    
                     animator.SetTrigger("Attack");
                     isAttacking = true;
-                    isAttackingCountDown = 50;
+                    isAttackingCountDown = 60;
                     if (groundFire != null)
                     {
                         groundFire.Play();                   
@@ -154,7 +155,7 @@ public class SpectrobeController : MonoBehaviour
                   gm.ch = 0;
                     iframe = true;
 
-                    iframeCountdown = 50;
+                    iframeCountdown = 60;
                     permaGround = true;
                     animator.SetTrigger("Attack2");
                     if (forwardCHCharge > 0)
@@ -162,7 +163,7 @@ public class SpectrobeController : MonoBehaviour
                         impactReciever.AddImpact(transform.forward, forwardCHCharge);
                     }
                     isAttacking = true;
-                    isAttackingCountDown = 50;
+                    isAttackingCountDown = 60;
                 }
 
             }
@@ -248,10 +249,10 @@ public class SpectrobeController : MonoBehaviour
                     {
                         dashSound.Play();
                         iframe = true;
-                        iframeCountdown = 50;
+                        iframeCountdown = 60;
                         animator.SetTrigger("ForwardDash");
                         isAttacking = true;
-                        isAttackingCountDown = 50;
+                        isAttackingCountDown = 60;
                         impactReciever.AddImpact(moveDir, 500);
                         dashcooldown = 36;
 
@@ -360,6 +361,23 @@ public class SpectrobeController : MonoBehaviour
         Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 135, transform.eulerAngles.z));
         Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 135, transform.eulerAngles.z));
         Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 180, transform.eulerAngles.z));
+        // Instantiate(CHParts, spawnPoint.transform.Find("SpawnPoint2").transform.position, transform.rotation);
+    }
+
+    public void spawnCHPartsSamugeki()
+    {
+
+        Instantiate(CHParts, spawnPoint.transform.position, transform.rotation);
+        Instantiate(CHParts2, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 45, transform.eulerAngles.z));
+        Instantiate(CHParts2, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 45, transform.eulerAngles.z));
+        Instantiate(CHParts2, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 35, transform.eulerAngles.z));
+        Instantiate(CHParts2, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 35, transform.eulerAngles.z));
+        Instantiate(CHParts2, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 25, transform.eulerAngles.z));
+        Instantiate(CHParts2, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 25, transform.eulerAngles.z));
+        Instantiate(CHParts2, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 15, transform.eulerAngles.z));
+        Instantiate(CHParts2, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 15, transform.eulerAngles.z));
+        Instantiate(CHParts2, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 5, transform.eulerAngles.z));
+        Instantiate(CHParts2, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 5, transform.eulerAngles.z));
         // Instantiate(CHParts, spawnPoint.transform.Find("SpawnPoint2").transform.position, transform.rotation);
     }
     public void spawnNormalAttackPartsSamugeki()
