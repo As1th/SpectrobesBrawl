@@ -349,6 +349,19 @@ public class SpectrobeController : MonoBehaviour
         Instantiate(CHParts, spawnPoint.transform.position, transform.rotation);
        // Instantiate(CHParts, spawnPoint.transform.Find("SpawnPoint2").transform.position, transform.rotation);
     }
+    public void spawnCHPartsSamurite()
+    {
+
+        Instantiate(CHParts, spawnPoint.transform.position, transform.rotation);
+        Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 45, transform.eulerAngles.z));
+        Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 45, transform.eulerAngles.z));
+        Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 90, transform.eulerAngles.z));
+        Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 90, transform.eulerAngles.z));
+        Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 135, transform.eulerAngles.z));
+        Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 135, transform.eulerAngles.z));
+        Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 180, transform.eulerAngles.z));
+        // Instantiate(CHParts, spawnPoint.transform.Find("SpawnPoint2").transform.position, transform.rotation);
+    }
     public void spawnNormalAttackPartsSamugeki()
     {
 
