@@ -438,7 +438,7 @@ public class SpectrobeController : MonoBehaviour
         hurtbox.enabled = false;
         if (hurtbox2 != null)
         {
-            hurtbox2.enabled = true;
+            hurtbox2.enabled = false;
         }
     }
 

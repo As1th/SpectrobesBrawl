@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (data.playerSpectrobe == 1)
+        if (data.playerSpectrobe != 0)
         {
             var trobe = Instantiate(data.SpectrobeList[data.playerSpectrobe], player.transform.position, player.transform.rotation);
 

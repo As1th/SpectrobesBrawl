@@ -49,3 +49,4 @@ MonoBehaviour:
   SpectrobeList:
   - {fileID: 3203851345011050413, guid: cd454736eedbdcf4cbd9e92f332bc8d3, type: 3}
   - {fileID: 5086714444946428332, guid: aec3650f8ea38004eb609b74fabd29ca, type: 3}
+  - {fileID: 2589435662510103012, guid: 6dfbdf9de71431346960b5eff62f4833, type: 3}
