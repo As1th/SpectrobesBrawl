@@ -7,6 +7,7 @@ public class SceneDataSaver : MonoBehaviour
     public int playerSpectrobe;
     public int gameMode;
     public GameObject[] SpectrobeList;
+    public bool pixelate;
     // Start is called before the first frame update
     void Start()
     {

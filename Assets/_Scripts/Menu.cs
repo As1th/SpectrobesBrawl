@@ -4,10 +4,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Assets.Pixelation.Scripts;
 
 
 public class Menu : MonoBehaviour
 {
+	public Pixelation pixelate;
 	public GameObject BasicDmgBar;
 	public GameObject CHDmgBar;
 	public GameObject speedBar;
@@ -28,6 +30,7 @@ public class Menu : MonoBehaviour
 	public void Start()
 	{
 		gm = GetComponent<GameManager>();
+		pixelate = Camera.main.gameObject.GetComponent<Pixelation>();
 		var dataHolder = GameObject.FindGameObjectWithTag("Data");
 
 		if (dataHolder != null)
@@ -40,10 +43,10 @@ public class Menu : MonoBehaviour
 		}
 
 		UI.ignoreListenerPause = true;
-
+		pixelate.enabled = data.pixelate;
 		if (introScene)
 		{
-			if (data.playerSpectrobe == 1)
+			if (data.playerSpectrobe != 0)
 			{
 				resummonSpectrobeIntro(data.playerSpectrobe);
 			}
@@ -51,7 +54,16 @@ public class Menu : MonoBehaviour
 		}
 	}
 
-	public void displaySelectMode()
+    public void Update()
+    {
+		if (Input.GetButtonDown("g"))
+		{
+			ToggleRetroGraphics();		
+		}
+
+	}
+
+    public void displaySelectMode()
 	{
 		ControlsMode.SetActive(false);
 		SelectMode.SetActive(true);
@@ -121,6 +133,20 @@ public class Menu : MonoBehaviour
 		}
 		
 		resummonSpectrobeIntro(data.playerSpectrobe);
+	}
+
+	public void ToggleRetroGraphics()
+	{
+		if (pixelate.enabled)
+		{
+			pixelate.enabled = false;
+			data.pixelate = false;
+		}
+		else
+		{
+			pixelate.enabled = true;
+			data.pixelate = true;
+		}
 	}
 
 	public void startInfiniteWaveMode()
