@@ -77,6 +77,28 @@ public class SpectrobeController : MonoBehaviour
         }
     }
 
+    public void switchSpectrobe(int n)
+    {
+        var eff = Instantiate(evolvePart, new Vector3(transform.position.x, transform.position.y + 18f, transform.position.z), Quaternion.identity);
+        
+       
+        var var = Instantiate(gm.data.SpectrobeList[n], transform.position, transform.rotation);
+        eff.transform.parent = var.transform;
+        gm.player = var;
+       
+       
+            Camera.main.transform.parent = var.transform;
+        var.GetComponent<SpectrobeController>().enabled = true;
+        var.GetComponent<SpectrobeController>().scripts = scripts;
+        gm.data.playerSpectrobe = n;
+
+        foreach (GameObject k in gm.currentKrawl)
+        {
+            k.GetComponent<Krawl>().player = var;
+        }
+        Destroy(this.gameObject);
+    }
+
     public static bool IsBAboveA(Transform A, Transform B, float Ra, float Rb)
     {
         Vector3 Vab = (B.position - A.position) - Vector3.Dot(B.position - A.position, A.up) * A.up;
@@ -116,7 +138,28 @@ public class SpectrobeController : MonoBehaviour
 
             controller.Move(new Vector3(0, verticalVelosity, 0));
         }
-        
+        if (Time.timeScale != 0 && !menu.introScene && !isAttacking)
+        {
+            if (Input.GetButtonDown("1") && gm.data.playerSpectrobe != 0 && !evolved)
+            {
+                switchSpectrobe(0);
+                isAttacking = true;
+                isAttackingCountDown = 60;
+            }
+            else if (Input.GetButtonDown("2")&& gm.data.playerSpectrobe != 1 && !evolved)
+            {
+                switchSpectrobe(1);
+                isAttacking = true;
+                isAttackingCountDown = 60;
+            }
+            else if (Input.GetButtonDown("3")&& gm.data.playerSpectrobe != 2 && !evolved)
+            {
+                switchSpectrobe(2);
+                isAttacking = true;
+                isAttackingCountDown = 60;
+            }
+
+        }
         if (!isAttacking && Time.timeScale != 0)
         {
 

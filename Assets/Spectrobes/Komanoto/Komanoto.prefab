@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b6f98b8bf2cfb449f43173874b9b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 32
   CHCost: 50
   EVCost: 400
   isAttacking: 0
@@ -808,6 +808,8 @@ MonoBehaviour:
   staggerCountdown: 0
   isAttackingCountDown: 0
   CHParts: {fileID: 3810798298747713207, guid: e81c55a76dd225c4b963008c744b9c3b, type: 3}
+  CHParts2: {fileID: 0}
+  normalAttackParts: {fileID: 0}
   forwardCHCharge: 0
   normalAttackCollider: {fileID: 8081806476767799566}
   normalAttackCollider2: {fileID: 0}
