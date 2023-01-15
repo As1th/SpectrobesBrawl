@@ -198,7 +198,7 @@ public class Menu : MonoBehaviour
 	}
 	public void initSpectrobeSwitchDialogText()
 	{
-		initialDialog.text = "USE THE 1, 2, & 3 KEYS TO SWITCH YOUR SPECTROBE AT ANY TIME DURING BATTLE!";
+		initialDialog.text = "USE THE 1, 2, & 3 KEYS TO SWITCH YOUR ACTIVE SPECTROBE AT ANY TIME DURING BATTLE!";
 	}
 
 	public void initKrawlSpeedrunDialogText()
