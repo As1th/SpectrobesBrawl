@@ -196,6 +196,15 @@ public class Menu : MonoBehaviour
 	{
 		initialDialog.text = "BATTLE INFINITE WAVES OF INCREASINGLY DIFFICULT KRAWL AND GET THE HIGHEST SCORE!";
 	}
+	public void initSpectrobeSwitchDialogText()
+	{
+		initialDialog.text = "USE THE 1, 2, & 3 KEYS TO SWITCH YOUR SPECTROBE AT ANY TIME DURING BATTLE!";
+	}
+
+	public void initKrawlSpeedrunDialogText()
+	{
+		initialDialog.text = "DEFEAT 50 ONCOMING KRAWL AS QUICKLY AS YOU CAN AND GET THE BEST TIME!";
+	}
 	public void initQuitDialogText()
 	{
 		initialDialog.text = "EXIT THE GAME AND RETURN TO THE DESKTOP.";
