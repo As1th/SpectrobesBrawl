@@ -3354,7 +3354,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.1974986
+  m_Radius: 2
   m_Height: 4.993536
   m_Direction: 0
   m_Center: {x: -1.743117, y: 0, z: 0}
@@ -5435,7 +5435,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.3628786
+  m_Radius: 2
   m_Height: 8.49224
   m_Direction: 0
   m_Center: {x: -1.89303, y: 0, z: 0}
@@ -7369,7 +7369,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 9
   m_Center: {x: 0, y: -0.5, z: -3.4}
 --- !u!54 &714819458
 Rigidbody:
@@ -7395,7 +7395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 714819455}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -4.2, y: 0.1, z: -0.068626404}
+  m_LocalPosition: {x: -5.75, y: 0.1, z: -0.068626404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10884,7 +10884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1109621091}
   - component: {fileID: 1109621092}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: a_S104TailB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10916,7 +10916,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1109621090}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1.8049994
   m_Height: 13.249763
   m_Direction: 0
@@ -14025,7 +14025,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.1974986
+  m_Radius: 2
   m_Height: 4.993536
   m_Direction: 0
   m_Center: {x: 1.7431172, y: -0.07842211, z: 0.38467565}
@@ -15732,8 +15732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1423498128}
   - component: {fileID: 1423498130}
-  - component: {fileID: 1423498129}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: S104_10A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15755,19 +15754,6 @@ Transform:
   m_Father: {fileID: 714819459}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1423498129
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423498127}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 5.5
-  m_Center: {x: 0, y: -0.5, z: -3.2}
 --- !u!137 &1423498130
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -20504,7 +20490,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.3628786
+  m_Radius: 2
   m_Height: 8.49224
   m_Direction: 0
   m_Center: {x: 1.8930303, y: 0.55166835, z: 0.08477073}
