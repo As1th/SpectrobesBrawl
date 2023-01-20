@@ -138,7 +138,7 @@ public class SpectrobeController : MonoBehaviour
 
             controller.Move(new Vector3(0, verticalVelosity, 0));
         }
-        if (Time.timeScale != 0 && !menu.introScene && !isAttacking)
+        if (Time.timeScale != 0 && !menu.introScene && !isAttacking && gm.spectrobeSwitchMode)
         {
             if (Input.GetButtonDown("1") && gm.data.playerSpectrobe != 0 && !evolved)
             {

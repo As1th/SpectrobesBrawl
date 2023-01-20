@@ -55,10 +55,11 @@ public class GameManager : MonoBehaviour
         if (data.gameMode == 1)
         {
             randomWaveMode = true;
+            spectrobeSwitchMode = false;
         }
         else if (data.gameMode == 2)
         {
-            randomWaveMode = false;
+            randomWaveMode = true;
             spectrobeSwitchMode = true;
         }
 

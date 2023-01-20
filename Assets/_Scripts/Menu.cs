@@ -163,6 +163,13 @@ public class Menu : MonoBehaviour
 		data.gameMode = 1;
 		SceneManager.LoadScene("InfiniteWaveMode", LoadSceneMode.Single);
 	}
+	public void startSpectrobeSwitchMode()
+	{
+		Time.timeScale = 1;
+		AudioListener.pause = false;
+		data.gameMode = 2;
+		SceneManager.LoadScene("InfiniteWaveMode", LoadSceneMode.Single);
+	}
 	public void startIntro()
 	{
 		Time.timeScale = 1;
