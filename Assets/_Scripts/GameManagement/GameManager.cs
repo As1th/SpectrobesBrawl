@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
             Destroy(player);
             player = trobe;
         }
-        health = 400;
+        health = 300;
         for (int i = 0; i < SpawnLociArray.transform.childCount; i++)
         {
             
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         }
         evBar.UpdateValue((int)ev, 400);
         chBar.UpdateValue((int)ch, 50);
-        healthBar.UpdateValue((int)health, 400);
+        healthBar.UpdateValue((int)health, 300);
         pointCounter.GetComponent<Text>().text = score.ToString();
 
         if (Input.GetButtonDown("Pause") && !lost)
