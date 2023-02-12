@@ -154,21 +154,21 @@ public class Menu : MonoBehaviour
 		Time.timeScale = 1;
 		AudioListener.pause = false;
 		data.gameMode = 0;
-		SceneManager.LoadScene("InfiniteWaveMode", LoadSceneMode.Single);
+		SceneManager.LoadScene("Battle", LoadSceneMode.Single);
 	}
 	public void startInfiniteRandomMode()
 	{
 		Time.timeScale = 1;
 		AudioListener.pause = false;
 		data.gameMode = 1;
-		SceneManager.LoadScene("InfiniteWaveMode", LoadSceneMode.Single);
+		SceneManager.LoadScene("Battle", LoadSceneMode.Single);
 	}
 	public void startSpectrobeSwitchMode()
 	{
 		Time.timeScale = 1;
 		AudioListener.pause = false;
 		data.gameMode = 2;
-		SceneManager.LoadScene("InfiniteWaveMode", LoadSceneMode.Single);
+		SceneManager.LoadScene("Battle", LoadSceneMode.Single);
 	}
 	public void startIntro()
 	{
