@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     public float healthStore;
     public float scoreIncrement;
     public bool upgradeKrawl;
-    int minKrawl;
-    int maxKrawl;
+    public int minKrawl;
+    public int maxKrawl;
     public bool lost = false;
     public UIBarScript chBar;
     public UIBarScript healthBar;
