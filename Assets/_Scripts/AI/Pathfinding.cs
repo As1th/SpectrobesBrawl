@@ -6,16 +6,18 @@ using System.Linq;
 public class Pathfinding : MonoBehaviour
 {
 	public Transform seeker, target; // references to the seeker and target GameObjects
-	Grid grid; // reference to the grid
-
+	public Grid grid; // reference to the grid
+	public GameManager gm;
 	void Awake()
 	{
+		
 		grid = GetComponent<Grid>();
 	}
 
 	void Update()
 	{
-		FindPath(seeker.position, target.position);
+        target = gm.player.transform;
+        FindPath(seeker.position, target.position);
 	}
 
 	void FindPath(Vector3 startPos, Vector3 targetPos)
@@ -106,6 +108,7 @@ public class Pathfinding : MonoBehaviour
 
 		path.Reverse();
 		grid.path = path;
+		
 	}
 
 	public List<Node> GetNeighbours(Node node) // returns a list of all the nearest neighbours of a given node

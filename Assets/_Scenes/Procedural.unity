@@ -982,6 +982,8 @@ GameObject:
   - component: {fileID: 85258101}
   - component: {fileID: 85258100}
   - component: {fileID: 85258099}
+  - component: {fileID: 85258102}
+  - component: {fileID: 85258103}
   m_Layer: 0
   m_Name: Seeker
   m_TagString: Untagged
@@ -997,7 +999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85258097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -137, y: 0, z: 18.6}
+  m_LocalPosition: {x: -137, y: 34, z: 18.6}
   m_LocalScale: {x: 21.612, y: 21.612, z: 21.612}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1055,7 +1057,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 85258097}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -1068,6 +1070,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85258097}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &85258102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85258097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb0f734c93ce13408bd5d5690ed9e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathfinding: {fileID: 330316368}
+  moveSpeed: 0.3
+  controller: {fileID: 0}
+--- !u!143 &85258103
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85258097}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &93952621
 GameObject:
   m_ObjectHideFlags: 0
@@ -3840,7 +3875,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330316366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -72, y: 0, z: -45}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 21.612, y: 21.612, z: 21.612}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3860,7 +3895,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seeker: {fileID: 85258098}
-  target: {fileID: 1379415773}
+  target: {fileID: 1577260601285603243}
+  grid: {fileID: 0}
+  gm: {fileID: 1217110869}
 --- !u!114 &330316369
 MonoBehaviour:
   m_ObjectHideFlags: 0
