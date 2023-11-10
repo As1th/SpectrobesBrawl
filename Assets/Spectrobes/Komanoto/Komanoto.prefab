@@ -797,7 +797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b6f98b8bf2cfb449f43173874b9b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 32
+  rearAnchor: {fileID: 0}
+  speed: 40
   CHCost: 50
   EVCost: 400
   isAttacking: 0

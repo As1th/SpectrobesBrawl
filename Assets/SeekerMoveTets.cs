@@ -20,8 +20,8 @@ public class SeekerMoveTets : MonoBehaviour
     {
 
         var target = pathfinding.grid.path[0].worldPosition;
-        print(target);
-        transform.LookAt(target);
+        
+        transform.LookAt(new Vector3 (target.x, this.transform.position.y, target.z));
         controller.Move(((target - transform.position).normalized)*moveSpeed);
     }
 
@@ -29,25 +29,5 @@ public class SeekerMoveTets : MonoBehaviour
   
 
 
-    bool MoveTowardsTarget(Vector3 target)
-    {
-        
-        var offset = target - transform.position;
-        //Get the difference.
-        if (offset.magnitude > .1f)
-        {
-            //If we're further away than .1 unit, move towards the target.
-            //The minimum allowable tolerance varies with the speed of the object and the framerate. 
-            // 2 * tolerance must be >= moveSpeed / framerate or the object will jump right over the stop.
-            offset = offset.normalized * moveSpeed;
-            //normalize it and account for movement speed.
-            controller.Move(offset * Time.deltaTime);
-            //actually move the character.
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
+   
 }

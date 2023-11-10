@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SpectrobeController : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class SpectrobeController : MonoBehaviour
     // Start is called before the first frame update
     private CharacterController controller;
     private Animator animator;
+    public Transform rearAnchor;
     public float speed;
     public float CHCost;
     public float EVCost;
@@ -58,6 +60,7 @@ public class SpectrobeController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         hurtbox = normalAttackCollider.GetComponent<Collider>();
+        rearAnchor = GameObject.Find("RearAnchor").transform;
         if (normalAttackCollider2 != null)
         { 
             hurtbox2 = normalAttackCollider2.GetComponent<Collider>();
@@ -258,11 +261,11 @@ public class SpectrobeController : MonoBehaviour
                 if (direction.magnitude >= 0.1f && !stagger)
                 {
                     float targetAngle;
-                    if (vertical >= 0)
+                    if (vertical >= 0 && cam.localRotation.y>=90)
                     {
                         targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                        //transform.rotation = Quaternion.Euler(0f, angle, 0f);
                         animator.SetFloat("WalkCycleMultiplier", 1);
                     }
                     else {
@@ -274,7 +277,7 @@ public class SpectrobeController : MonoBehaviour
                         {
                             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                           // transform.rotation = Quaternion.Euler(0f, angle, 0f);
                         }
 
                         // transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -283,6 +286,7 @@ public class SpectrobeController : MonoBehaviour
 
                     moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                     controller.Move(moveDir.normalized * speed * Time.deltaTime);
+                    transform.rotation = Quaternion.EulerAngles(transform.rotation.x, cam.transform.rotation.y, transform.rotation.z);
                 }
 
                 animator.SetBool("IsRunning", true);
