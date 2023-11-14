@@ -5217,7 +5217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rearAnchor: {fileID: 0}
-  speed: 50
+  speed: 48
   CHCost: 50
   EVCost: 400
   isAttacking: 0
@@ -5272,7 +5272,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 30
   m_Radius: 7
-  m_SlopeLimit: 45
+  m_SlopeLimit: 55
   m_StepOffset: 1
   m_SkinWidth: 1
   m_MinMoveDistance: 0.001
