@@ -35,7 +35,7 @@ public class TerrainGenerator : MonoBehaviour
     Vector2[] uvs;
     Color[] colors;
     private Mesh mesh;
-    private MeshFilter meshFilter;
+    //private MeshFilter meshFilter;
     private float minHeight;
     private float maxHeight;
     // Start is called before the first frame update
@@ -43,16 +43,17 @@ public class TerrainGenerator : MonoBehaviour
     {
         mesh = new Mesh();
         mesh.name = "Procedural Terrain";
-        meshFilter = GetComponent<MeshFilter>();
-        meshFilter.mesh = mesh;
+      //  meshFilter = GetComponent<MeshFilter>();
+       // meshFilter.mesh = mesh;
         Seed = Random.Range(0,999999);
-        CreateMesh();
-        UpdateMesh();
+       CreateMesh();
+        //UpdateMesh();
         if (VisualizeVertices)
         {
             DrawVertices();
         }
         this.gameObject.transform.localScale = new Vector3(25, 25, 25);
+        this.transform.position = new Vector3(-868, -188, -675);
     }
 
     private void DrawVertices()
@@ -65,12 +66,12 @@ public class TerrainGenerator : MonoBehaviour
 
     private void UpdateMesh()
     {
-        mesh.Clear();
-        mesh.vertices = vertices;
-        mesh.triangles = trianglePoints;
-        mesh.uv = uvs;
-        mesh.colors = colors;
-        mesh.RecalculateNormals();
+      //  mesh.Clear();
+     //   mesh.vertices = vertices;
+       // mesh.triangles = trianglePoints;
+      //  mesh.uv = uvs;
+       // mesh.colors = colors;
+       // mesh.RecalculateNormals();
     }
 
     void CreateMesh()
@@ -87,7 +88,7 @@ public class TerrainGenerator : MonoBehaviour
                 var currentHeight = noiseArray[i];
                 currentHeight *= 10;
                 currentHeight = MathF.Round(currentHeight);
-                if (currentHeight > 5)
+                if (currentHeight > 6)
                 {
                     currentHeight *= HeightMultiplier;
                 }
@@ -97,6 +98,7 @@ public class TerrainGenerator : MonoBehaviour
         }
 
         //Triangles
+        /*
         trianglePoints = new int[Width * Depth * 6];
         int currentTrianglePoint = 0;
         int currentVertexPoint = 0;
@@ -117,7 +119,8 @@ public class TerrainGenerator : MonoBehaviour
             }
             currentVertexPoint++;
         }
-
+        
+        
         //UVs
         uvs = new Vector2[vertices.Length];
         i = 0;
@@ -142,6 +145,7 @@ public class TerrainGenerator : MonoBehaviour
                 i++;
             }
         }
+        */
     }
 
     float[] PerlinNoise()
@@ -207,7 +211,7 @@ public class TerrainGenerator : MonoBehaviour
                 k++;
             }
         }
-        print(noiseArray[1]);
+        //print(noiseArray[1]);
         return noiseArray;
     }
 }
