@@ -20,7 +20,7 @@ public class Grid : MonoBehaviour
 		CreateGrid();
 	}
 
-	void CreateGrid() // creates the grid of nodes
+	public void CreateGrid() // creates the grid of nodes
 	{
 		nodeGrid = new Node[gridSizeX, gridSizeY];
 		Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2;
@@ -30,7 +30,7 @@ public class Grid : MonoBehaviour
 			for (int y = 0; y < gridSizeY; y++)
 			{
 				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-				bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
+				bool walkable = !(Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y-200, worldPoint.z),nodeRadius, layerMask:unwalkableMask));
 				nodeGrid[x, y] = new Node(walkable, worldPoint, x, y);
 			}
 		}

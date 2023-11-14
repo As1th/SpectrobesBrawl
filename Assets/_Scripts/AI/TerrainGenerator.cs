@@ -28,7 +28,7 @@ public class TerrainGenerator : MonoBehaviour
 
     [Header("Vertex visualization")]
     public GameObject VertexObject;
-    public bool VisualizeVertices;
+  //  public bool VisualizeVertices;
 
     private Vector3[] vertices;
     private int[] trianglePoints;
@@ -38,30 +38,37 @@ public class TerrainGenerator : MonoBehaviour
     //private MeshFilter meshFilter;
     private float minHeight;
     private float maxHeight;
+
+    public GameObject AStar;
     // Start is called before the first frame update
     void Start()
     {
-        mesh = new Mesh();
-        mesh.name = "Procedural Terrain";
+        //mesh = new Mesh();
+       // mesh.name = "Procedural Terrain";
       //  meshFilter = GetComponent<MeshFilter>();
        // meshFilter.mesh = mesh;
         Seed = Random.Range(0,999999);
        CreateMesh();
         //UpdateMesh();
-        if (VisualizeVertices)
-        {
-            DrawVertices();
-        }
+        
+        DrawVertices();
+       
         this.gameObject.transform.localScale = new Vector3(25, 25, 25);
-        this.transform.position = new Vector3(-868, -188, -675);
+        this.transform.position = new Vector3(-639, -343, -603);
+        
     }
 
     private void DrawVertices()
     {
         for (int i = 0; i < vertices.Length; i++)
         {
-            Instantiate(VertexObject, vertices[i], Quaternion.Euler(-90,0,0), transform);
+            var tile = Instantiate(VertexObject, vertices[i], Quaternion.Euler(-90,0,0), transform);
+            if (vertices[i].y > 6)
+            {
+                tile.layer = 17;
+            }
         }
+        
     }
 
     private void UpdateMesh()

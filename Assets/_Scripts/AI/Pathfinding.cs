@@ -17,14 +17,15 @@ public class Pathfinding : MonoBehaviour
 	void Update()
 	{
         target = gm.player.transform;
+      
         FindPath(seeker.position, target.position);
 	}
 
 	void FindPath(Vector3 startPos, Vector3 targetPos)
 	{
 		var timer = System.Diagnostics.Stopwatch.StartNew(); // start a new stopwatch timer (this is just for diagnostics and nothing to do with the A* algorithm)
-
-		Node startNode = grid.NodeFromWorldPoint(startPos); // starting point
+        grid = GetComponent<Grid>();
+        Node startNode = grid.NodeFromWorldPoint(startPos); // starting point
 		Node targetNode = grid.NodeFromWorldPoint(targetPos); // destination
 
 		// Your code below.
