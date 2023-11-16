@@ -20,7 +20,8 @@ public class KrawlSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!character.isGrounded)
+     //   if (!character.isGrounded)
+     if(false)
         {
             character.Move(Vector3.down / 3);
         }

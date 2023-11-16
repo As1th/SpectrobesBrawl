@@ -13,6 +13,8 @@ public class CameraControl : MonoBehaviour
         //float rotateVertical = Input.GetAxis("Mouse Y");
         transform.RotateAround(gm.player.transform.position, -Vector3.up, rotateHorizontal * sensitivity); //use transform.Rotate(-transform.up * rotateHorizontal * sensitivity) instead if you dont want the camera to rotate around the player
         //transform.RotateAround(Vector3.zero, transform.up, rotateVertical * sensitivity); // again, use transform.Rotate(transform.right * rotateVertical * sensitivity) if you don't want the camera to rotate around the player
+             
+       // gm.player.transform.rotation = Quaternion.EulerAngles(gm.player.transform.rotation.x, transform.rotation.y, gm.player.transform.rotation.z);
     }
     void Start()
     {

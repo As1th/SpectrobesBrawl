@@ -248,6 +248,7 @@ public class GameManager : MonoBehaviour
     public void generateAndSummonSetAmountOfTimes(int x)
     {
         int y;
+        print(x);
         for (y = x; y > 0; y--)
         {
             int i = Random.Range(minKrawl, maxKrawl);

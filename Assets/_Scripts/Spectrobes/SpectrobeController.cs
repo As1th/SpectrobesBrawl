@@ -14,6 +14,7 @@ public class SpectrobeController : MonoBehaviour
     public bool isAttacking;
     float turnSmoothVelocity;
     float dashcooldown = 0;
+    public GameObject skin;
     public Transform cam;
     public float turnSmoothTime = 0.1f;
     public float attackCoolDown = 0f;
@@ -286,7 +287,8 @@ public class SpectrobeController : MonoBehaviour
 
                     moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                     controller.Move(moveDir.normalized * speed * Time.deltaTime);
-                    transform.rotation = Quaternion.EulerAngles(transform.rotation.x, cam.transform.rotation.y, transform.rotation.z);
+                    //  skin.transform.for = Quaternion.Euler(transform.rotation.x, cam.transform.rotation.y, transform.rotation.z);
+                    skin.transform.LookAt(rearAnchor);
                 }
 
                 animator.SetBool("IsRunning", true);
@@ -437,15 +439,15 @@ public class SpectrobeController : MonoBehaviour
     public void spawnCHPartsSpikan()
     {
        
-        Instantiate(CHParts, normalAttackCollider.transform.position, transform.rotation);
-        Instantiate(CHParts, normalAttackCollider.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y+35, transform.eulerAngles.z));
-        Instantiate(CHParts, normalAttackCollider.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 35, transform.eulerAngles.z));
+        Instantiate(CHParts, normalAttackCollider.transform.position, skin.transform.rotation);
+        Instantiate(CHParts, normalAttackCollider.transform.position, Quaternion.Euler(skin.transform.eulerAngles.x, skin.transform.eulerAngles.y+35, skin.transform.eulerAngles.z));
+        Instantiate(CHParts, normalAttackCollider.transform.position, Quaternion.Euler(skin.transform.eulerAngles.x, skin.transform.eulerAngles.y - 35, skin.transform.eulerAngles.z));
     }
 
     public void spawnCHPartsKomanoto()
     {
 
-        Instantiate(CHParts, spawnPoint.transform.position, transform.rotation);
+        Instantiate(CHParts, spawnPoint.transform.position, skin.transform.rotation);
         Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 35, transform.eulerAngles.z));
         Instantiate(CHParts, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 35, transform.eulerAngles.z));
     }
@@ -453,7 +455,7 @@ public class SpectrobeController : MonoBehaviour
 
     public void spawnSpikanorCH()
     {
-        Instantiate(CHPartsEvolved, transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
+        Instantiate(CHPartsEvolved, skin.transform.position, Quaternion.Euler(0, skin.transform.rotation.eulerAngles.y, skin.transform.rotation.eulerAngles.z));
 
        
     }

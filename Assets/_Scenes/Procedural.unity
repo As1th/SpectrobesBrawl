@@ -1562,7 +1562,7 @@ GameObject:
   - component: {fileID: 85258099}
   - component: {fileID: 85258102}
   - component: {fileID: 85258103}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Seeker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1578,7 +1578,7 @@ Transform:
   m_GameObject: {fileID: 85258097}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -137, y: -138, z: 18.6}
+  m_LocalPosition: {x: 194, y: -138, z: 305}
   m_LocalScale: {x: 21.612, y: 21.612, z: 21.612}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2283,75 +2283,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117084502}
   m_CullTransparentMesh: 1
---- !u!1001 &129703529
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1483007813246143001, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_Name
-      value: allTerrain
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.16935
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.16935
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.16935
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -98.16596
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 47.150257
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 58.78935
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296663268927344803, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 73d14dbfb741ab648bb03c376d169fe1, type: 3}
 --- !u!1 &131041056
 GameObject:
   m_ObjectHideFlags: 0
@@ -5481,8 +5412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceccdd2eca5974089b87e95c761e83d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seeker: {fileID: 85258098}
-  target: {fileID: 1577260601285603243}
   grid: {fileID: 0}
   gm: {fileID: 1217110869}
 --- !u!114 &330316369
@@ -5499,7 +5428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unwalkableMask:
     serializedVersion: 2
-    m_Bits: 132096
+    m_Bits: 131136
   gridWorldSize: {x: 1400, y: 1400}
   nodeRadius: 18
   nodeDiameter: 0
@@ -5720,6 +5649,7 @@ MonoBehaviour:
   CHCost: 50
   EVCost: 400
   isAttacking: 0
+  skin: {fileID: 1226433413}
   cam: {fileID: 1280313974}
   turnSmoothTime: 0.39
   attackCoolDown: 0
@@ -5792,7 +5722,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 25
   m_Radius: 7
-  m_SlopeLimit: 45
+  m_SlopeLimit: 55
   m_StepOffset: 1
   m_SkinWidth: 1
   m_MinMoveDistance: 0.001
@@ -5812,9 +5742,9 @@ Transform:
   m_Children:
   - {fileID: 1226433414}
   - {fileID: 240407653}
-  - {fileID: 1280313974}
   - {fileID: 1241128189}
   - {fileID: 1542234286}
+  - {fileID: 1280313974}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &359283432
@@ -21270,7 +21200,9 @@ MonoBehaviour:
   countdown: {fileID: 1650638984}
   defeat: {fileID: 694115081}
   bgm: {fileID: 1874337600}
-  currentKrawl: []
+  currentKrawl:
+  - {fileID: 85258097}
+  - {fileID: 1717104035}
   defeatPopup: {fileID: 492539118}
   scoreTextDefeatMenu: {fileID: 1189439262}
   wavesTextDefeatMenu: {fileID: 1143574343}
@@ -27357,8 +27289,8 @@ Transform:
   - {fileID: 1172125721}
   - {fileID: 186590398}
   - {fileID: 330316367}
-  - {fileID: 85258098}
   - {fileID: 1717104036}
+  - {fileID: 85258098}
   - {fileID: 1465897445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28933,7 +28865,7 @@ GameObject:
   - component: {fileID: 1717104039}
   - component: {fileID: 1717104038}
   - component: {fileID: 1717104037}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Seeker (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31440,7 +31372,7 @@ Transform:
   m_GameObject: {fileID: 1836786679}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -75.2, y: 20.442892, z: -5}
+  m_LocalPosition: {x: -75.2, y: 768, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36800,6 +36732,7 @@ MonoBehaviour:
   CHCost: 50
   EVCost: 400
   isAttacking: 0
+  skin: {fileID: 0}
   cam: {fileID: 0}
   turnSmoothTime: 0.39
   attackCoolDown: 0
@@ -97156,10 +97089,8 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1577260601285603243}
   - {fileID: 7082393951545250198}
   - {fileID: 753723305}
-  - {fileID: 359283431}
   - {fileID: 543450652243351276}
   - {fileID: 705507995}
   - {fileID: 1217110868}
@@ -97171,4 +97102,5 @@ SceneRoots:
   - {fileID: 41512057}
   - {fileID: 166586234}
   - {fileID: 1592619407}
-  - {fileID: 129703529}
+  - {fileID: 1577260601285603243}
+  - {fileID: 359283431}

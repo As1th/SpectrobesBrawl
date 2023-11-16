@@ -7,7 +7,7 @@ using System.IO;
 public class Pathfinding : MonoBehaviour
 {
   
-    public Transform seeker, target; // references to the seeker and target GameObjects
+   // public Transform seeker, target; // references to the seeker and target GameObjects
 	public Grid grid; // reference to the grid
 	public GameManager gm;
 	void Awake()
@@ -18,9 +18,9 @@ public class Pathfinding : MonoBehaviour
 
 	void LateUpdate()
 	{
-        target = gm.player.transform;
+       // target = gm.player.transform;
       
-        FindPath(seeker.position, target.position);
+      //  FindPath(seeker.position, target.position);
 	}
 
 	public List<Node> FindPath(Vector3 startPos, Vector3 targetPos)
@@ -92,7 +92,7 @@ public class Pathfinding : MonoBehaviour
 		long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
 		long numberOfTicks = timer.ElapsedTicks;
 		long nanoseconds = numberOfTicks * nanosecondsPerTick;
-		Debug.Log(string.Format("The A* Search from {0} to {1} took {2} nanoseconds to complete.", startPos.ToString(), targetPos.ToString(), nanoseconds.ToString()));
+		//Debug.Log(string.Format("The A* Search from {0} to {1} took {2} nanoseconds to complete.", startPos.ToString(), targetPos.ToString(), nanoseconds.ToString()));
         return RetracePath(startNode, currentNode);
     }
 
