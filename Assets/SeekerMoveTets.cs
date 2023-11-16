@@ -10,8 +10,7 @@ public class SeekerMoveTets : MonoBehaviour
     public float moveSpeed;
     public CharacterController controller;
     public GameObject player;
-    
-    // Start is called before the first frame update
+    Vector3 target;    // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -22,17 +21,16 @@ public class SeekerMoveTets : MonoBehaviour
     void Update()
     {
         path = pathfinding.FindPath(this.transform.position, player.transform.position);
-        var target = new Vector3 (path[0].worldPosition.x, this.transform.position.y, path[0].worldPosition.z);
+        if (path.Count > 0)
+        {
+            target = new Vector3(path[0].worldPosition.x, this.transform.position.y, path[0].worldPosition.z);
+        }
          
         transform.LookAt(target);
         controller.SimpleMove(((target - transform.position).normalized)*moveSpeed);
     }
 
 
-    void OnDrawGizmos() // draw path in debug view
-    {
-
-    }
 
 
 

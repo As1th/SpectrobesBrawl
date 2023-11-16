@@ -40,7 +40,7 @@ public class UpdateGrid : MonoBehaviour
             {
                 SeekerMoveTets seekerMove = krawl.GetComponent<SeekerMoveTets>();
 
-                if (seekerMove != null && seekerMove.path != null)
+                if (seekerMove != null && seekerMove.path != null && seekerMove.path.Count > 0)
                 {
                     DrawPathGizmo(seekerMove.path, 20f); // Adjust the thickness as needed
                 }
