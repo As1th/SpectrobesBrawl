@@ -175,6 +175,7 @@ public class SpectrobeController : MonoBehaviour
                    
                     animator.SetTrigger("Attack");
                     isAttacking = true;
+                    spawn1CHPartsSpikan();
                     isAttackingCountDown = 60;
                     if (groundFire != null)
                     {
@@ -435,7 +436,13 @@ public class SpectrobeController : MonoBehaviour
         Instantiate(normalAttackParts, spawnPoint.transform.position, transform.rotation);
        
     }
+    public void spawn1CHPartsSpikan()
+    {
 
+        Instantiate(CHParts, skin.transform.position, skin.transform.rotation);
+       
+       
+    }
     public void spawnCHPartsSpikan()
     {
        
