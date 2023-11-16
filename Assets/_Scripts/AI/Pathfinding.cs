@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 public class Pathfinding : MonoBehaviour
 {
-	public Transform seeker, target; // references to the seeker and target GameObjects
+  
+    public Transform seeker, target; // references to the seeker and target GameObjects
 	public Grid grid; // reference to the grid
 	public GameManager gm;
 	void Awake()
@@ -14,30 +16,30 @@ public class Pathfinding : MonoBehaviour
 		grid = GetComponent<Grid>();
 	}
 
-	void Update()
+	void LateUpdate()
 	{
         target = gm.player.transform;
       
         FindPath(seeker.position, target.position);
 	}
 
-	void FindPath(Vector3 startPos, Vector3 targetPos)
+	public List<Node> FindPath(Vector3 startPos, Vector3 targetPos)
 	{
 		var timer = System.Diagnostics.Stopwatch.StartNew(); // start a new stopwatch timer (this is just for diagnostics and nothing to do with the A* algorithm)
         grid = GetComponent<Grid>();
         Node startNode = grid.NodeFromWorldPoint(startPos); // starting point
 		Node targetNode = grid.NodeFromWorldPoint(targetPos); // destination
 
-		// Your code below.
-		////////////////////////////////////////
+	
 
 		List<Node> openSet = new List<Node>();
 		HashSet<Node> closedSet = new HashSet<Node>();
 		openSet.Add(startNode);
+        Node currentNode = null;
 
-		while (openSet.Count > 0)
+        while (openSet.Count > 0)
 		{
-			Node currentNode = openSet.First();
+			currentNode = openSet.First();
 			foreach (Node n in openSet)
 			{
 				if (n.fCost <= currentNode.fCost)
@@ -50,9 +52,9 @@ public class Pathfinding : MonoBehaviour
 
 			if (currentNode == targetNode)
 			{
-				RetracePath(startNode, currentNode);
-				return;
-			}
+				
+				return RetracePath(startNode, currentNode);
+            }
 			List<Node> currentNeighbours = GetNeighbours(currentNode);
 			foreach (Node neighbour in currentNeighbours)
 			{
@@ -86,20 +88,18 @@ public class Pathfinding : MonoBehaviour
         }
 
 
-		////////////////////////////////////////
-		// Your code above.
-
 		timer.Stop();
 		long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
 		long numberOfTicks = timer.ElapsedTicks;
 		long nanoseconds = numberOfTicks * nanosecondsPerTick;
 		Debug.Log(string.Format("The A* Search from {0} to {1} took {2} nanoseconds to complete.", startPos.ToString(), targetPos.ToString(), nanoseconds.ToString()));
-	}
+        return RetracePath(startNode, currentNode);
+    }
 
-	void RetracePath(Node startNode, Node endNode) // retraces the path by using the parent property stored in each node, saves this path in a list and passes it to the grid class to be handled
+	public List<Node> RetracePath(Node startNode, Node endNode) // retraces the path by using the parent property stored in each node, saves this path in a list and passes it to the grid class to be handled
 	{
-		List<Node> path = new List<Node>();
-		Node currentNode = endNode;
+        List<Node> path = new List<Node>();
+        Node currentNode = endNode;
 
 		while (currentNode != startNode)
 		{
@@ -108,11 +108,12 @@ public class Pathfinding : MonoBehaviour
 		}
 
 		path.Reverse();
-		grid.path = path;
+		return path;
+		//path = path;
 		
 	}
-
-	public List<Node> GetNeighbours(Node node) // returns a list of all the nearest neighbours of a given node
+   
+    public List<Node> GetNeighbours(Node node) // returns a list of all the nearest neighbours of a given node
 	{
 		List<Node> neighbours = new List<Node>();
 

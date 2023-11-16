@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     public bool spectrobeSwitchMode;
     public SceneDataSaver data;
     Menu menu;
-    public Grid AStar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,10 +89,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if (AStar != null)
-        {
-            AStar.CreateGrid();
-        }
+       
         if (ch > 50)
         { ch = 50; }
 

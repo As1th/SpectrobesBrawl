@@ -8,9 +8,9 @@ public class Grid : MonoBehaviour
 	public Vector2 gridWorldSize;
 	public float nodeRadius;
 	public Node[,] nodeGrid;
-	float nodeDiameter;
+	public float nodeDiameter;
 	public int gridSizeX, gridSizeY;
-	public List<Node> path;
+	//public List<Node> path;
 
 	void Awake()
 	{
@@ -30,7 +30,7 @@ public class Grid : MonoBehaviour
 			for (int y = 0; y < gridSizeY; y++)
 			{
 				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-				bool walkable = !(Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y-200, worldPoint.z),nodeRadius, layerMask:unwalkableMask));
+				bool walkable = !(Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y-350, worldPoint.z),nodeRadius, layerMask:unwalkableMask));
 				nodeGrid[x, y] = new Node(walkable, worldPoint, x, y);
 			}
 		}
@@ -48,20 +48,5 @@ public class Grid : MonoBehaviour
 		return nodeGrid[x, y];
 	}
 
-	void OnDrawGizmos() // draw path in debug view
-	{
-		Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
-
-		if (nodeGrid != null)
-		{
-			foreach (Node n in nodeGrid)
-			{
-				Gizmos.color = (n.walkable) ? Color.white : Color.red;
-				if (path != null)
-					if (path.Contains(n))
-						Gizmos.color = Color.black;
-				Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
-			}
-		}
-	}
+	
 }
