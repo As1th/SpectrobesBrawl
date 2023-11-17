@@ -92,7 +92,7 @@ public class Pathfinding : MonoBehaviour
 		long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
 		long numberOfTicks = timer.ElapsedTicks;
 		long nanoseconds = numberOfTicks * nanosecondsPerTick;
-		Debug.Log(string.Format("The A* Search from {0} to {1} took {2} nanoseconds to complete.", startPos.ToString(), targetPos.ToString(), nanoseconds.ToString()));
+		//Debug.Log(string.Format("The A* Search from {0} to {1} took {2} nanoseconds to complete.", startPos.ToString(), targetPos.ToString(), nanoseconds.ToString()));
         return RetracePath(startNode, currentNode);
     }
 

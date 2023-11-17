@@ -79,25 +79,27 @@ public class CacswarController : MonoBehaviour
 
     public void spawnProjectiles()
     {
-     
+     /*
         
         var var = Instantiate(projectiles, spawnPoint.transform.position, transform.rotation);
         var.transform.LookAt(new Vector3(GetComponent<Krawl>().player.transform.position.x , GetComponent<Krawl>().player.transform.position.y+10f, GetComponent<Krawl>().player.transform.position.z));
         Instantiate(projectiles, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 35, transform.eulerAngles.z));
         Instantiate(projectiles, spawnPoint.transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 35, transform.eulerAngles.z));
+        */
     }
 
     public void startIdle()
     {
-       
-       // attackCoolDown = 100;
-        //attackCoolDown = 30;
-       // animator.SetTrigger("Idle");
-       // krawl.iframe = false;
-      ////  krawl.stagger = false;
-      //  isAttacking = false;
-     //   krawl.deathCheck();
-        //inRange = false;
-      //  isAttacking = false;
+       /*
+        attackCoolDown = 100;
+       attackCoolDown = 30;
+       animator.SetTrigger("Idle");
+        krawl.iframe = false;
+        krawl.stagger = false;
+        isAttacking = false;
+        krawl.deathCheck();
+        inRange = false;
+        isAttacking = false;
+       */
     }
 }
