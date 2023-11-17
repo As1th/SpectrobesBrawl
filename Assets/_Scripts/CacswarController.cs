@@ -29,7 +29,9 @@ public class CacswarController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+
     {
+        /*
         if (!controller.isGrounded)
         {
             controller.Move(Vector3.down * 90.81f * Time.deltaTime);
@@ -72,7 +74,7 @@ public class CacswarController : MonoBehaviour
         {
             attackCoolDown--;
         }
-
+        */
     }
 
     public void spawnProjectiles()
@@ -88,13 +90,13 @@ public class CacswarController : MonoBehaviour
     public void startIdle()
     {
        
-        attackCoolDown = 100;
+       // attackCoolDown = 100;
         //attackCoolDown = 30;
-        animator.SetTrigger("Idle");
-        krawl.iframe = false;
-        krawl.stagger = false;
-        isAttacking = false;
-        krawl.deathCheck();
+       // animator.SetTrigger("Idle");
+       // krawl.iframe = false;
+      ////  krawl.stagger = false;
+      //  isAttacking = false;
+     //   krawl.deathCheck();
         //inRange = false;
       //  isAttacking = false;
     }

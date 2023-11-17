@@ -32,13 +32,27 @@ public class UpdateGrid : MonoBehaviour
             foreach (Node n in AStar.nodeGrid)
             {
                 Gizmos.color = (n.walkable) ? Color.white : Color.red;
+                switch (n.currentState)  
+                {
+                    case Grid.tileStates.player:
+                        Gizmos.color = Color.green;
+                        break;
+                    case Grid.tileStates.krawl:
+                        Gizmos.color = Color.magenta;
+                        break;
+                    case Grid.tileStates.powerup:
+                        Gizmos.color = Color.cyan;
+                        break;
+
+
+                }
 
 
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (AStar.nodeDiameter - .1f));
             }
             foreach (GameObject krawl in gm.currentKrawl)
             {
-                SeekerMoveTets seekerMove = krawl.GetComponent<SeekerMoveTets>();
+                AIKrawlController seekerMove = krawl.GetComponent<AIKrawlController>();
 
                 if (seekerMove != null && seekerMove.path != null && seekerMove.path.Count > 0)
                 {

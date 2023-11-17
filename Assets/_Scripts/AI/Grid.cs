@@ -5,11 +5,24 @@ using System.Collections.Generic;
 public class Grid : MonoBehaviour 
 {
 	public LayerMask unwalkableMask;
-	public Vector2 gridWorldSize;
-	public float nodeRadius;
+    public LayerMask powerupMask;
+    public LayerMask playerMask;
+    public LayerMask krawlMask;
+    public Vector2 gridWorldSize;
+    public enum tileStates
+    {
+        free,
+        unwalkable,
+        player,
+        powerup,
+        krawl
+    }
+
+    public float nodeRadius;
 	public Node[,] nodeGrid;
 	public float nodeDiameter;
 	public int gridSizeX, gridSizeY;
+	
 	//public List<Node> path;
 
 	void Awake()
@@ -24,14 +37,38 @@ public class Grid : MonoBehaviour
 	{
 		nodeGrid = new Node[gridSizeX, gridSizeY];
 		Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2;
-
-		for (int x = 0; x < gridSizeX; x++)
+        bool walkable;
+        tileStates currentState;
+        for (int x = 0; x < gridSizeX; x++)
 		{
 			for (int y = 0; y < gridSizeY; y++)
 			{
 				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-				bool walkable = !(Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y-350, worldPoint.z),nodeRadius, layerMask:unwalkableMask));
-				nodeGrid[x, y] = new Node(walkable, worldPoint, x, y);
+
+                currentState = tileStates.free;
+                walkable = true;
+
+                if (Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y - 350, worldPoint.z), nodeRadius, layerMask: powerupMask))
+                {
+                    currentState = tileStates.powerup;
+                }
+                if (Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y - 350, worldPoint.z), nodeRadius, layerMask: krawlMask))
+                {
+                    currentState = tileStates.krawl;
+                }
+                if (Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y - 350, worldPoint.z), nodeRadius, layerMask: playerMask))
+				{
+                    currentState = tileStates.player;
+					
+                }
+                if ((Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y - 350, worldPoint.z), nodeRadius, layerMask: unwalkableMask)))
+                {
+					currentState = tileStates.unwalkable;
+					walkable = false;
+				}
+				
+               
+				nodeGrid[x, y] = new Node(walkable, worldPoint, x, y, currentState);
 			}
 		}
 	}

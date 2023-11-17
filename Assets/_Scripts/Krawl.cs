@@ -118,9 +118,9 @@ public class Krawl : MonoBehaviour
             {
                 gm.ch += 10;
             }
-        
 
-        
+
+        this.gameObject.GetComponent<AIKrawlController>().currentState = AIKrawlController.NPCStates.Stagger;
             stagger = true;
         staggerCountdown = 65;
         impact.AddImpact(dir, force);
