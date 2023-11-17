@@ -80,9 +80,15 @@ public class AIKrawlController : MonoBehaviour
         {
             target = new Vector3(path[0].worldPosition.x, this.transform.position.y, path[0].worldPosition.z);
         }
-
+        if (!GetComponent<Animator>().GetBool("IsRunning"))
+        {
+            
+           GetComponent<Animator>().SetTrigger("Idle");
+        }
+        GetComponent<Animator>().SetBool("IsRunning", true);
         transform.LookAt(target);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+
         controller.SimpleMove(((target - transform.position).normalized) * moveSpeed);
 
     }
@@ -102,6 +108,7 @@ public class AIKrawlController : MonoBehaviour
         //  transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         if (attackCooldown == 0)
         {
+            GetComponent<Animator>().SetBool("IsRunning", false);
             GetComponent<Animator>().SetTrigger("Attack");
             attackCooldown = 100;
         }
@@ -113,7 +120,8 @@ public class AIKrawlController : MonoBehaviour
 
     private void Stagger()
     {
-        if(GetComponent<Krawl>().staggerCountdown <= 0)
+        GetComponent<Animator>().SetBool("IsRunning", false);
+        if (GetComponent<Krawl>().staggerCountdown <= 0)
         {
             currentState = NPCStates.Chase;
             
