@@ -69,7 +69,10 @@ public class AIKrawlController : MonoBehaviour
 
     private void Chase()
     {
-      
+        if (GetComponent<Krawl>().gm.player.GetComponent<SpectrobeController>().evolved)
+        {
+            currentState = NPCStates.Retreat;
+        }
         if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
         {
             currentState = NPCStates.Attack;
@@ -95,7 +98,10 @@ public class AIKrawlController : MonoBehaviour
 
     private void Attack()
     {
-
+        if (GetComponent<Krawl>().gm.player.GetComponent<SpectrobeController>().evolved)
+        {
+            currentState = NPCStates.Retreat;
+        }
         if (Vector3.Distance(player.transform.position, transform.position) > attackRange)
         {
             currentState = NPCStates.Chase;

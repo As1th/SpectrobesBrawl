@@ -8,6 +8,7 @@ public class UpdateGrid : MonoBehaviour
 {
     public Grid AStar;
     GameManager gm;
+    public SpawnPoints spawnObjects;
     // Start is called before the first frame update
     void Start()
     {

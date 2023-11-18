@@ -11,7 +11,7 @@ public class Node
 	public int gCost; // gCost is distance from starting node
 	public int hCost; // hCost is distance from end node
 	public Node parent;
-    
+    public bool visited;
     public Node(bool _walkable, Vector3 _worldPos, int _gridX, int _gridY, Grid.tileStates currentState)
     {
         walkable = _walkable;
