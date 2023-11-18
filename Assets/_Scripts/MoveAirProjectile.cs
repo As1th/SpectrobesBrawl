@@ -13,6 +13,9 @@ public class MoveAirProjectile : MonoBehaviour
     public AudioSource blocksound;
     public GameObject defensePoof;
     public bool playEffectOnCollision = false;
+    public float mainDamage;
+    public float deflectedDamage;
+    public float dmgMultiplier;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,9 @@ public class MoveAirProjectile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * speed);
         scripts = GameObject.Find("Scripts");
+        dmgMultiplier = Random.Range(0.7f, 1.1f);
+        mainDamage *= dmgMultiplier;
+        deflectedDamage *= dmgMultiplier;
     }
 
     // Update is called once per frame
@@ -65,7 +71,7 @@ public class MoveAirProjectile : MonoBehaviour
             if (other.gameObject.transform.root.GetComponent<SpectrobeController>().iframe == false)
             {
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-                other.gameObject.transform.root.GetComponent<SpectrobeController>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, 100, dmg: 5);
+                other.gameObject.transform.root.GetComponent<SpectrobeController>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, 100, dmg: deflectedDamage);
                 if (!playEffectOnCollision)
                 {
                     Instantiate(attackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
@@ -79,7 +85,7 @@ public class MoveAirProjectile : MonoBehaviour
         {
             Instantiate(reverseAttackParticle, this.gameObject.transform.position + (transform.forward * 10), Quaternion.identity);
             Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-            other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, force:300, dmg: 10, true);
+            other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 7, hitDir.z) * Time.deltaTime, force:300, dmg: mainDamage, true);
             scripts.GetComponent<GameManager>().ch += 5;
             if (!(other.gameObject.transform.root.GetComponent<Krawl>().player.GetComponent<SpectrobeController>().evolved))
             {

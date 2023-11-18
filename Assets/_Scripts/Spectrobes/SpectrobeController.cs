@@ -129,10 +129,11 @@ public class SpectrobeController : MonoBehaviour
         }
         if (permaGround)
         {
-            float verticalVelosity = 0;
+            float verticalVelosity = -50;
             if (controller.isGrounded)
             {
                 verticalVelosity -= 0;
+                permaGround = false;
             }
             else
             {

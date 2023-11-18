@@ -66,6 +66,7 @@ public class TerrainGenerator : MonoBehaviour
             if (vertices[i].y > 6)
             {
                 tile.layer = 17;
+                
             }
         }
         

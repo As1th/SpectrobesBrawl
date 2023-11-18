@@ -123,7 +123,9 @@ public class AIKrawlController : MonoBehaviour
         GetComponent<Animator>().SetBool("IsRunning", false);
         if (GetComponent<Krawl>().staggerCountdown <= 0)
         {
+            GetComponent<Krawl>().deathCheck();
             currentState = NPCStates.Chase;
+
             
         }
     }

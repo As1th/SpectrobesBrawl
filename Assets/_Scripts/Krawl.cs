@@ -17,7 +17,7 @@ public class Krawl : MonoBehaviour
     public float health = 50f;
     public GameObject scripts;
     public bool touch;
-    GameManager gm;
+    public GameManager gm;
     SpectrobeController playerSpectrobeController;
     // Start is called before the first frame update
     void Start()
