@@ -264,7 +264,7 @@ public class SpectrobeController : MonoBehaviour
                 if (direction.magnitude >= 0.1f && !stagger)
                 {
                     float targetAngle;
-                    if (vertical >= 0 && cam.localRotation.y>=90)
+                    if (vertical >= 0)
                     {
                         targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);

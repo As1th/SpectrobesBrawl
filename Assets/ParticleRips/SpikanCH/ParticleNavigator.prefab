@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackParticle: {fileID: 4697218109777110270, guid: f2aec409037c1a04abb7cff16d4a70b9, type: 3}
+  damage: 15
 --- !u!54 &7867525623881922168
 Rigidbody:
   m_ObjectHideFlags: 0

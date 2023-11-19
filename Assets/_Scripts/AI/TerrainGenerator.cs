@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class TerrainGenerator : MonoBehaviour
 {
+    public CustomPerlinNoise customPerlinNoise;
     [Header("Terrain generation")]
     public int Width;
     public int Depth;
@@ -189,7 +190,7 @@ public class TerrainGenerator : MonoBehaviour
                     float sampleX = (x - halfWidth) / NoiseScale * frequency + octaveOffsets[i].x;
                     float sampleY = (z - halfDepth) / NoiseScale * frequency + octaveOffsets[i].y;
 
-                    float perlinValue = Mathf.PerlinNoise(sampleX, sampleY) * 2 - 1;
+                    float perlinValue = CustomPerlinNoise.Noise(sampleX, sampleY) * 2 - 1;
                     noiseHeight += perlinValue * amplitude;
 
                     amplitude *= Persistance;

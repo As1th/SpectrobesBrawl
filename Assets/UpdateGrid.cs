@@ -38,11 +38,16 @@ public class UpdateGrid : MonoBehaviour
                     case Grid.tileStates.player:
                         Gizmos.color = Color.green;
                         break;
-                    case Grid.tileStates.krawl:
+                   
+                   
+                    case Grid.tileStates.vortex:
                         Gizmos.color = Color.magenta;
                         break;
                     case Grid.tileStates.powerup:
                         Gizmos.color = Color.cyan;
+                        break;
+                    case Grid.tileStates.krawl:
+                        Gizmos.color = Color.black;
                         break;
 
 

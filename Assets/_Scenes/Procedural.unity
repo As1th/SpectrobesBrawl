@@ -5341,13 +5341,16 @@ MonoBehaviour:
     m_Bits: 131072
   powerupMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 524288
   playerMask:
     serializedVersion: 2
     m_Bits: 2048
   krawlMask:
     serializedVersion: 2
     m_Bits: 1024
+  vortexMask:
+    serializedVersion: 2
+    m_Bits: 262144
   gridWorldSize: {x: 1400, y: 1400}
   nodeRadius: 18
   nodeDiameter: 0

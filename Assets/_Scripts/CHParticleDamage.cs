@@ -5,6 +5,7 @@ using UnityEngine;
 public class CHParticleDamage : MonoBehaviour
 {
     public GameObject attackParticle;
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class CHParticleDamage : MonoBehaviour
         {
             Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
           
-            other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 8, hitDir.z) * Time.deltaTime, 200, dmg:15, false);
+            other.gameObject.transform.root.GetComponent<Krawl>().Hit(new Vector3(hitDir.x, 8, hitDir.z) * Time.deltaTime, 200, dmg:damage, false);
 
             Instantiate(attackParticle, transform.position, Quaternion.identity);
             Destroy(transform.root.gameObject);

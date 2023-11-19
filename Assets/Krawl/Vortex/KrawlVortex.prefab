@@ -172,7 +172,8 @@ GameObject:
   - component: {fileID: -8284759199332694149}
   - component: {fileID: 9210408440659645124}
   - component: {fileID: 70246383666723999}
-  m_Layer: 0
+  - component: {fileID: 3282480649334554517}
+  m_Layer: 18
   m_Name: KrawlVortex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +252,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 1.98
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -284,7 +285,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -292,6 +293,24 @@ CapsuleCollider:
   m_Height: 36.39
   m_Direction: 1
   m_Center: {x: 0, y: 17.7, z: 0}
+--- !u!114 &3282480649334554517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3044050469279974113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd30041c1f7bf34188d0e2c291d6886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 500
+  detectRange: 100
+  cloud: {fileID: 8013741707763146875, guid: bc810e53da8d80d41be2d86e19e4fe60, type: 3}
+  gm: {fileID: 0}
+  defendSpawn: {fileID: 0}
+  currentState: 0
 --- !u!1 &3061342499749799240
 GameObject:
   m_ObjectHideFlags: 0

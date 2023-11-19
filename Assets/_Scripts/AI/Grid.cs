@@ -9,6 +9,8 @@ public class Grid : MonoBehaviour
     public LayerMask powerupMask;
     public LayerMask playerMask;
     public LayerMask krawlMask;
+    public LayerMask vortexMask;
+
     public Vector2 gridWorldSize;
     
     public enum tileStates
@@ -17,7 +19,8 @@ public class Grid : MonoBehaviour
         unwalkable,
         player,
         powerup,
-        krawl
+        krawl,
+        vortex
     }
 
     public float nodeRadius;
@@ -63,14 +66,18 @@ public class Grid : MonoBehaviour
                     currentState = tileStates.player;
 					
                 }
+                if (Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y - 350, worldPoint.z), nodeRadius, layerMask: vortexMask))
+                {
+                    currentState = tileStates.vortex;
+
+                }
                 if ((Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y - 350, worldPoint.z), nodeRadius, layerMask: unwalkableMask)))
                 {
 					currentState = tileStates.unwalkable;
 					walkable = false;
 				}
-				
-               
-				nodeGrid[x, y] = new Node(walkable, worldPoint, x, y, currentState);
+              
+                nodeGrid[x, y] = new Node(walkable, worldPoint, x, y, currentState);
 			}
 		}
 
