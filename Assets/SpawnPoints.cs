@@ -8,6 +8,7 @@ public class SpawnPoints : MonoBehaviour
     GameObject player;
     bool done = false;
     List<Node> nodes;
+    
     public GameObject krawlVortex;
     public GameObject powerup;
     // Start is called before the first frame update
@@ -58,14 +59,14 @@ public class SpawnPoints : MonoBehaviour
         //print(points.Count);
         foreach (Node node in points)
         {
-            Instantiate(krawlVortex, node.worldPosition, Quaternion.identity);
+           GetComponent<GameManager>().spawnLoci.Add( Instantiate(krawlVortex, node.worldPosition, Quaternion.identity));
         }
 
     }
 
     public void SpawnPowerups()
     {
-        List<Node> points = grid.GetEvenlySpacedNodes(nodes, player.transform.position, 1000, 500,8);
+        List<Node> points = grid.GetEvenlySpacedNodes(nodes, player.transform.position, 1000, 500,6);
         //print(points.Count);
         foreach (Node node in points)
         {

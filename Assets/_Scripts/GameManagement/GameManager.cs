@@ -147,21 +147,21 @@ public class GameManager : MonoBehaviour
 
     public void startEasy()
     {
-        maxKrawlPerWave = 2;
-        swarmCount = 3;
+        maxKrawlPerWave = 4;
+        swarmCount = 5;
         beginGame();
 
     }
     public void startNormal()
     {
-        maxKrawlPerWave = 3;
-        swarmCount = 4;
+        maxKrawlPerWave = 5;
+        swarmCount = 6;
         beginGame();
     }
     public void startHard()
     {
-        maxKrawlPerWave = 4;
-        swarmCount = 5;
+        maxKrawlPerWave = 6;
+        swarmCount = 7;
         beginGame();
     }
     IEnumerator setNewWarning(string w, bool permanent)
@@ -248,7 +248,7 @@ public class GameManager : MonoBehaviour
     public void generateAndSummonSetAmountOfTimes(int x)
     {
         int y;
-        print(x);
+      //  print(x);
         for (y = x; y > 0; y--)
         {
             int i = Random.Range(minKrawl, maxKrawl);
