@@ -7,6 +7,9 @@ public class SpawnPoints : MonoBehaviour
     Grid grid;
     GameObject player;
     bool done = false;
+    List<Node> nodes;
+    public GameObject krawlVortex;
+    public GameObject powerup;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +22,14 @@ public class SpawnPoints : MonoBehaviour
     {
        if(!done)
         {
-
+            nodes = grid.GetLargestWhiteArea();
             SpawnPlayer();
+            SpawnKrawlVortexes();
+
+            SpawnPowerups();
+
+
+            done = true;
         } 
     }
 
@@ -35,10 +44,32 @@ public class SpawnPoints : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        List<Node> nodes = grid.GetLargestWhiteArea();
-       
-        player.transform.position = nodes[5].worldPosition;
-       
-        done = true;
+     
+
+        player.transform.position = grid.GetMostCentralNode(nodes).worldPosition;
+
+        
+    }
+
+    public void SpawnKrawlVortexes()
+    {
+
+        List<Node> points = grid.GetMaxSeparationFlushBorderNodes(nodes,  4);
+        //print(points.Count);
+        foreach (Node node in points)
+        {
+            Instantiate(krawlVortex, node.worldPosition, Quaternion.identity);
+        }
+
+    }
+
+    public void SpawnPowerups()
+    {
+        List<Node> points = grid.GetEvenlySpacedNodes(nodes, player.transform.position, 1000, 500,8);
+        //print(points.Count);
+        foreach (Node node in points)
+        {
+            Instantiate(powerup, node.worldPosition, Quaternion.identity);
+        }
     }
 }

@@ -5695,7 +5695,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359283426}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74b6f98b8bf2cfb449f43173874b9b39, type: 3}
   m_Name: 
@@ -5744,7 +5744,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359283426}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d63470cf19227ca4f84910a73d989f2d, type: 2}
   m_CullingMode: 0
@@ -5792,7 +5792,7 @@ Transform:
   m_GameObject: {fileID: 359283426}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3813744, y: 10, z: -0.35786533}
+  m_LocalPosition: {x: -466, y: 10, z: 407}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21588,6 +21588,7 @@ GameObject:
   - component: {fileID: 1217110869}
   - component: {fileID: 1217110870}
   - component: {fileID: 1217110871}
+  - component: {fileID: 1217110872}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -21728,6 +21729,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AStar: {fileID: 330316369}
+  spawnObjects: {fileID: 0}
+--- !u!114 &1217110872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217110867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e3c4ecdea01e3441ab8a75d38502514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  krawlVortex: {fileID: 9072179488819217843, guid: 54685f1486d569146b98ac05947de5c5, type: 3}
+  powerup: {fileID: 7817974446037984582, guid: 55cb807849c98f54e890680c1df7ccfe, type: 3}
 --- !u!1 &1218802083
 GameObject:
   m_ObjectHideFlags: 0

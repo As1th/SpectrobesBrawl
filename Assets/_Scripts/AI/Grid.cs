@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Grid : MonoBehaviour 
 {
@@ -177,4 +178,183 @@ public class Grid : MonoBehaviour
             }
         }
     }
+
+    public Node GetMostCentralNode(List<Node> nodes)
+    {
+        if (nodes.Count == 0)
+        {
+            Debug.LogError("Node list is empty.");
+            return null;
+        }
+
+        // Calculate the average position
+        Vector3 averagePosition = Vector3.zero;
+        foreach (Node node in nodes)
+        {
+            averagePosition += node.worldPosition;
+        }
+        averagePosition /= nodes.Count;
+
+        // Find the node closest to the average position
+        Node mostCentralNode = nodes[0];
+        float closestDistance = Vector3.Distance(averagePosition, mostCentralNode.worldPosition);
+
+        for (int i = 1; i < nodes.Count; i++)
+        {
+            float distance = Vector3.Distance(averagePosition, nodes[i].worldPosition);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                mostCentralNode = nodes[i];
+            }
+        }
+
+        return mostCentralNode;
+    }
+
+    public List<Node> GetEvenlySpacedNodes(List<Node> nodes, Vector3 center, float radius, float initialMinRadius, int numberOfNodes)
+    {
+        List<Node> evenlySpacedNodes = new List<Node>();
+
+        if (numberOfNodes <= 0)
+        {
+            Debug.LogWarning("Number of nodes must be greater than zero.");
+            return evenlySpacedNodes;
+        }
+
+        float minRadius = initialMinRadius;
+
+        while (minRadius <= radius)
+        {
+            // Filter nodes within the specified radius and outside the minimum radius
+            List<Node> nodesWithinRadius = nodes.FindAll(node =>
+            {
+                float distance = Vector3.Distance(node.worldPosition, center);
+                return distance <= radius && distance >= minRadius;
+            });
+
+            if (nodesWithinRadius.Count >= numberOfNodes)
+            {
+                // Distribute nodes evenly in a circular pattern
+                float angleIncrement = 360f / numberOfNodes;
+
+                for (int i = 0; i < numberOfNodes; i++)
+                {
+                    float targetAngle = (angleIncrement * i) % 360f;
+                    float closestAngle = Mathf.Infinity;
+                    Node closestNode = null;
+
+                    foreach (Node node in nodesWithinRadius)
+                    {
+                        float distanceToCenter = Vector3.Distance(node.worldPosition, center);
+
+                        // Skip nodes within the minimum radius
+                        if (distanceToCenter < minRadius)
+                        {
+                            continue;
+                        }
+
+                        float angle = Mathf.Atan2(node.worldPosition.z - center.z, node.worldPosition.x - center.x) * Mathf.Rad2Deg;
+
+                        // Ensure the angle is in the [0, 360) range
+                        angle = (angle + 360f) % 360f;
+
+                        float angleDifference = Mathf.Abs(targetAngle - angle);
+
+                        if (angleDifference < closestAngle)
+                        {
+                            closestAngle = angleDifference;
+                            closestNode = node;
+                        }
+                    }
+
+                    if (closestNode != null)
+                    {
+                        evenlySpacedNodes.Add(closestNode);
+                        nodesWithinRadius.Remove(closestNode);
+                    }
+                }
+
+                if (evenlySpacedNodes.Count >= numberOfNodes)
+                {
+                    break; // Stop if enough nodes are found
+                }
+            }
+
+            // Reduce the minimum radius and try again
+            minRadius += 1f; // Adjust this value based on your needs
+        }
+
+        return evenlySpacedNodes;
+    }
+
+    public List<Node> GetMaxSeparationFlushBorderNodes(List<Node> largestWhiteArea, int numberOfNodes)
+    {
+        List<Node> evenlySpacedNodes = new List<Node>();
+
+        if (numberOfNodes <= 0)
+        {
+            Debug.LogWarning("Number of nodes must be greater than zero.");
+            return evenlySpacedNodes;
+        }
+
+        // If there are not enough nodes in the largestWhiteArea, return an empty list
+        if (largestWhiteArea.Count < numberOfNodes)
+        {
+            Debug.LogWarning("Not enough nodes in the largestWhiteArea.");
+            return evenlySpacedNodes;
+        }
+
+        // Sort nodes based on their coordinates to find the outermost border
+        largestWhiteArea.Sort((a, b) =>
+        {
+            if (a.gridX == b.gridX)
+                return a.gridY.CompareTo(b.gridY);
+            return a.gridX.CompareTo(b.gridX);
+        });
+
+        int n = largestWhiteArea.Count;
+
+        // Calculate the maximum possible separation
+        int maxSeparation = Mathf.FloorToInt(n / (float)numberOfNodes);
+
+        // Calculate the remaining space after placing the nodes
+        int remainingSpace = n % numberOfNodes;
+
+        // Initialize with the maximum possible separation
+        int separation = maxSeparation;
+
+        // Iterate until a valid set of nodes is found
+        while (separation > 0)
+        {
+            evenlySpacedNodes.Clear();
+
+            // Traverse the outermost border and select evenly spaced nodes with separation
+            for (int i = 0; i < n; i += separation)
+            {
+                evenlySpacedNodes.Add(largestWhiteArea[i]);
+            }
+
+            // Distribute the remaining space by adding one more node at a time
+            for (int i = 0; i < remainingSpace; i++)
+            {
+                evenlySpacedNodes.Add(largestWhiteArea[i * (maxSeparation + 1)]);
+            }
+
+            // If the number of selected nodes is equal to or greater than the required number, break the loop
+            if (evenlySpacedNodes.Count >= numberOfNodes)
+            {
+                break;
+            }
+
+            // Decrease the separation and try again
+            separation--;
+        }
+
+        // Trim the result list to the desired number of nodes
+        evenlySpacedNodes = evenlySpacedNodes.Take(numberOfNodes).ToList();
+
+        return evenlySpacedNodes;
+    }
+
 }
