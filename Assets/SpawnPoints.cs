@@ -70,7 +70,7 @@ public class SpawnPoints : MonoBehaviour
         //print(points.Count);
         foreach (Node node in points)
         {
-            Instantiate(powerup, node.worldPosition, Quaternion.identity);
+            GetComponent<GameManager>().powerupLoci.Add(  Instantiate(powerup, node.worldPosition, Quaternion.identity));
         }
     }
 }

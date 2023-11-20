@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject KrawlSpawner;
     public GameObject SpawnLociArray;
     public List<GameObject> spawnLoci = new List<GameObject>();
+    public List<GameObject> powerupLoci = new List<GameObject>();
+    public List<GameObject> currrentPowerups = new List<GameObject>();
     public float score = 0;
     public float ch = 0;
     public float ev = 0;
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool lost = false;
     public UIBarScript chBar;
     public UIBarScript healthBar;
+    public RawImage shieldIcon;
     public UIBarScript evBar;
     public GameObject pointCounter;
     public GameObject[] KrawlList;
@@ -113,6 +116,14 @@ public class GameManager : MonoBehaviour
         evBar.UpdateValue((int)ev, 400);
         chBar.UpdateValue((int)ch, 50);
         healthBar.UpdateValue((int)health, 300);
+        if (player.GetComponent<SpectrobeController>().shield)
+        {
+            shieldIcon.enabled = true;
+        }
+        else
+        {
+            shieldIcon.enabled = false;
+        }
         pointCounter.GetComponent<Text>().text = score.ToString();
 
         if (Input.GetButtonDown("Pause") && !lost)

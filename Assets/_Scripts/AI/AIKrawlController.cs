@@ -9,6 +9,7 @@ public class AIKrawlController : MonoBehaviour
     public List<Node> path = new List<Node>();
     public float moveSpeed;
     public CharacterController controller;
+   
     public GameObject player;
     Vector3 target;
     public NPCStates currentState = NPCStates.Chase;
@@ -26,6 +27,7 @@ public class AIKrawlController : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         controller = GetComponent<CharacterController>();
         pathfinding = GameObject.Find("A*").GetComponent<Pathfinding>();
     }

@@ -5,6 +5,7 @@ public class SpectrobeController : MonoBehaviour
 {
 
     // Start is called before the first frame update
+    public bool shield;
     private CharacterController controller;
     private Animator animator;
     public Transform rearAnchor;
@@ -48,7 +49,7 @@ public class SpectrobeController : MonoBehaviour
     
     public GameObject spawnPoint;
     public ParticleSystem CHGlowParticles;
-    GameManager gm;
+    public GameManager gm;
     Menu menu;
     ImpactReceiver impactReciever;
 
@@ -380,19 +381,26 @@ public class SpectrobeController : MonoBehaviour
     }
     public void Hit(Vector3 dir, float force, float dmg)
     {
-       // iframeCountdown = 65;
-      gm.ch += 5;
-        if (!evolved)
+        if (!shield)
         {
-          gm.ev += 5;
-        }
+            // iframeCountdown = 65;
+            gm.ch += 5;
+            if (!evolved)
+            {
+                gm.ev += 5;
+            }
             deactivateHurtBox();
-        stagger = true;
-        staggerCountdown = 50;
-        impactReciever.AddImpact(dir, force);
-        // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
-      gm.health -= dmg;
-        animator.SetTrigger("Hit");
+            stagger = true;
+            staggerCountdown = 50;
+            impactReciever.AddImpact(dir, force);
+            // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
+            gm.health -= dmg;
+            animator.SetTrigger("Hit");
+        }
+        else
+        {
+            shield = false;
+        }
 
     }
     public void spawnCHPartsKomadoros()
