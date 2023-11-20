@@ -37,7 +37,7 @@ public class HealthPickup : MonoBehaviour
                 other.gameObject.transform.root.GetComponent<SpectrobeController>().gm.health += addHealth;
             }
 
-          
+            other.gameObject.transform.root.GetComponent<SpectrobeController>().gm.currentPowerups.Remove(this.gameObject);
             Destroy(this.gameObject);
         }
 

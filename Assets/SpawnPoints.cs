@@ -66,11 +66,15 @@ public class SpawnPoints : MonoBehaviour
 
     public void SpawnPowerups()
     {
-        List<Node> points = grid.GetEvenlySpacedNodes(nodes, player.transform.position, 1000, 500,6);
+        List<Node> points = grid.GetEvenlySpacedNodes(nodes, player.transform.position, 1000, 500,7);
         //print(points.Count);
         foreach (Node node in points)
         {
-            GetComponent<GameManager>().powerupLoci.Add(  Instantiate(powerup, node.worldPosition, Quaternion.identity));
+            var p = Instantiate(powerup, node.worldPosition, Quaternion.identity);
+            p.GetComponent<PowerupSpawner>().gm = this.gameObject.GetComponent<GameManager>();
+           
+            GetComponent<GameManager>().powerupLoci.Add( p );
+
         }
     }
 }

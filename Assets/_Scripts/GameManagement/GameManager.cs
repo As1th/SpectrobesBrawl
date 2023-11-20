@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     public GameObject SpawnLociArray;
     public List<GameObject> spawnLoci = new List<GameObject>();
     public List<GameObject> powerupLoci = new List<GameObject>();
-    public List<GameObject> currrentPowerups = new List<GameObject>();
+    public List<GameObject> PowerupsList = new List<GameObject>();
+    public List<GameObject> currentPowerups = new List<GameObject>();
+   
     public float score = 0;
     public float ch = 0;
     public float ev = 0;
@@ -271,6 +273,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void winCheck()
+    {
+         if (spawnLoci.Count == 0)
+        {
+            print("v");
+        }
+    }
     public void spawn()
     {
         int i = 0;
@@ -331,9 +340,11 @@ public class GameManager : MonoBehaviour
 
     public void summon(int i)
     {
+       
         int random = Random.Range(0, spawnLoci.Count);
-        var var = Instantiate(KrawlSpawner, spawnLoci[random].transform.position, Quaternion.Euler(90, 0, 0));
-        var.GetComponent<KrawlSpawner>().krawl = KrawlList[i];
+        var var = Instantiate(KrawlList[i], spawnLoci[random].transform.position, Quaternion.identity);
+        currentKrawl.Add(var);
+
         
     }
 

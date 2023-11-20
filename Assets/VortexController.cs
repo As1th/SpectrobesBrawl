@@ -57,6 +57,7 @@ public class VortexController : MonoBehaviour
             {
                 gm.ev += 10;
             }
+            gm.winCheck();
         }
     }
     private void Wait()

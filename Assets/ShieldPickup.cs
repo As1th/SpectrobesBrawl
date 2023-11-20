@@ -29,9 +29,18 @@ public class ShieldPickup : MonoBehaviour
 
 
             other.gameObject.transform.root.GetComponent<SpectrobeController>().shield = true;
-            
 
 
+            other.gameObject.transform.root.GetComponent<SpectrobeController>().gm.currentPowerups.Remove(this.gameObject);
+            foreach (GameObject p in other.gameObject.transform.root.GetComponent<SpectrobeController>().gm.powerupLoci)
+            {
+                if (p.GetComponent<PowerupSpawner>().currentPower == this.gameObject)
+                {
+                    p.GetComponent<PowerupSpawner>().currentPower = null;
+                }
+
+
+            }
             Destroy(this.gameObject);
         }
 

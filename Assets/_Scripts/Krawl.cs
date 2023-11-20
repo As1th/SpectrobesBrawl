@@ -95,13 +95,13 @@ public class Krawl : MonoBehaviour
                 gm.ev += 10;
             }
            gm.currentKrawl.Remove(this.gameObject);
-           gm.spawnKrawl();
+          //  gm.spawnKrawl();
             foreach (GameObject v in gm.spawnLoci)
             {
                if(v.GetComponent<VortexController>().defendSpawn ==  this.gameObject)
                 {
                     v.GetComponent<VortexController>().defendSpawn = null;
-                }
+                } 
             }
             Destroy(this.gameObject);
             
