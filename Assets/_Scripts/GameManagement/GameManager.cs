@@ -304,7 +304,8 @@ public class GameManager : MonoBehaviour
             generateAndSummonSetAmountOfTimes(maxKrawlPerWave - currentKrawl.Count);
 
         }
-        if (upgradeKrawl)
+        //if (upgradeKrawl)
+        if(false)
         {
             if (maxKrawl <= 18)
             {
