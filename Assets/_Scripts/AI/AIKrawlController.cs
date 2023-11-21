@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class AIKrawlController : MonoBehaviour
 {
     public Pathfinding pathfinding;
+    public PathfindingD pathfindingD;
+    public bool useDijkstra;
     public List<Node> path = new List<Node>();
     public float moveSpeed;
     public CharacterController controller;
-   
+    public bool grouped = false;
     public GameObject player;
     Vector3 target;
     public NPCStates currentState = NPCStates.Chase;
@@ -29,7 +32,15 @@ public class AIKrawlController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         controller = GetComponent<CharacterController>();
-        pathfinding = GameObject.Find("A*").GetComponent<Pathfinding>();
+
+        if (useDijkstra)
+        {
+            pathfindingD = GameObject.Find("Dijkstra").GetComponent<PathfindingD>();
+        }
+        else
+        {
+            pathfinding = GameObject.Find("A*").GetComponent<Pathfinding>();
+        }
     }
 
     // Update is called once per frame
@@ -71,6 +82,7 @@ public class AIKrawlController : MonoBehaviour
 
     private void Chase()
     {
+       
         if (GetComponent<Krawl>().gm.player.GetComponent<SpectrobeController>().evolved)
         {
             currentState = NPCStates.Retreat;
@@ -79,8 +91,15 @@ public class AIKrawlController : MonoBehaviour
         {
             currentState = NPCStates.Attack;
         }
-        
-        path = pathfinding.FindPath(this.transform.position, player.transform.position);
+        if (useDijkstra)
+        {
+           
+            path = pathfindingD.FindPath(this.transform.position, player.transform.position);
+
+        } else
+        {
+            path = pathfinding.FindPath(this.transform.position, player.transform.position);
+        }
         if (path.Count > 0)
         {
             target = new Vector3(path[0].worldPosition.x, this.transform.position.y, path[0].worldPosition.z);
@@ -94,8 +113,33 @@ public class AIKrawlController : MonoBehaviour
         transform.LookAt(target);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
 
-        controller.SimpleMove(((target - transform.position).normalized) * moveSpeed);
 
+       
+        foreach (GameObject k in GetComponent<Krawl>().gm.currentKrawl) {
+         if(k != this.gameObject)
+            {
+                if (Vector3.Distance(k.transform.position, transform.position) < 70)
+                {
+                    if(!k.GetComponent<AIKrawlController>().grouped)
+                    grouped = true;
+                    break;
+                } else
+                {
+                    grouped = false;
+                }
+            }
+
+        }
+
+        if (grouped)
+        {
+            controller.SimpleMove(transform.right * moveSpeed);
+          
+        }
+        else
+        {
+            controller.SimpleMove(((target - transform.position).normalized) * moveSpeed);
+        }
     }
 
     private void Attack()

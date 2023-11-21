@@ -13,7 +13,7 @@ public class PathfindingD : MonoBehaviour
     void Awake()
     {
 
-        grid = GetComponent<Grid>();
+
     }
 
     void LateUpdate()
@@ -26,7 +26,7 @@ public class PathfindingD : MonoBehaviour
     public List<Node> FindPath(Vector3 startPos, Vector3 targetPos)
     {
         var timer = System.Diagnostics.Stopwatch.StartNew();
-        grid = GetComponent<Grid>();
+        //grid = GetComponent<Grid>();
         Node startNode = grid.NodeFromWorldPoint(startPos);
         Node targetNode = grid.NodeFromWorldPoint(targetPos);
 

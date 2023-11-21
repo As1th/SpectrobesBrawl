@@ -64,12 +64,13 @@ public class Krawl : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
+    {/*
         if (touch)
         {
            controller.SimpleMove(transform.right * 80);
         }
         touch = false;
+        */
     }
     public static bool IsBAboveA(Transform A, Transform B, float Ra, float Rb)
     {

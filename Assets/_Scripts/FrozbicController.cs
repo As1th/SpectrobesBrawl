@@ -19,6 +19,7 @@ public class FrozbicController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         impact = GetComponent<ImpactReceiver>();
@@ -29,7 +30,7 @@ public class FrozbicController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {/*
         if (!controller.isGrounded)
         {
             controller.Move(Vector3.down * 90.81f * Time.deltaTime);
@@ -72,7 +73,7 @@ public class FrozbicController : MonoBehaviour
         {
             attackCoolDown--;
         }
-
+        */
     }
 
     public void spawnProjectiles()
@@ -87,7 +88,7 @@ public class FrozbicController : MonoBehaviour
 
     public void startIdle()
     {
-       
+       /*
         attackCoolDown = 100;
         //attackCoolDown = 30;
         animator.SetTrigger("Idle");
@@ -97,5 +98,6 @@ public class FrozbicController : MonoBehaviour
         krawl.deathCheck();
         //inRange = false;
       //  isAttacking = false;
+       */
     }
 }
