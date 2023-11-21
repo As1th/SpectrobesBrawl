@@ -317,13 +317,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2588064504977822742}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3307577208157893875}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 32.7}
@@ -747,13 +747,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5069091420861814640}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3307577208157893875}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 23.8}
@@ -952,6 +952,7 @@ GameObject:
   - component: {fileID: 3483971824566865288}
   - component: {fileID: 3971530724465172572}
   - component: {fileID: 2486286759276638775}
+  - component: {fileID: 4991858521772609642}
   m_Layer: 10
   m_Name: Cacswar
   m_TagString: Untagged
@@ -1072,12 +1073,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathfinding: {fileID: 0}
+  pathfindingD: {fileID: 0}
+  useDijkstra: 0
+  defender: 0
   moveSpeed: 23
   controller: {fileID: 0}
+  grouped: 0
   player: {fileID: 0}
   currentState: 0
   attackRange: 155
-  attackCooldown: 0
+  guardChaseRange: 0
+  groupingDistance: 70
 --- !u!114 &2486286759276638775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1096,6 +1102,18 @@ MonoBehaviour:
   attackCoolDown: 0
   projectiles: {fileID: 8182364275663894206, guid: 7002b5425b5bf144cbaeaaf274d27132, type: 3}
   spawnPoint: {fileID: 7120361736713908027}
+--- !u!114 &4991858521772609642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327799309185620783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b95e23035830043bc9142cd7774589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6430602880821947163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,13 +1239,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7891301714623412124}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3307577208157893875}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 28.1}

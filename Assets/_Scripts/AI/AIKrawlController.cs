@@ -9,6 +9,7 @@ public class AIKrawlController : MonoBehaviour
     public Pathfinding pathfinding;
     public PathfindingD pathfindingD;
     public bool useDijkstra;
+    public bool defender;
     public List<Node> path = new List<Node>();
     public float moveSpeed;
     public CharacterController controller;
@@ -17,8 +18,10 @@ public class AIKrawlController : MonoBehaviour
     Vector3 target;
     public NPCStates currentState = NPCStates.Chase;
     public float attackRange;
-    public float attackCooldown;
-
+    public float guardChaseRange;
+     float attackCooldown;
+    public float groupingDistance;
+    Krawl krawl;
     public enum NPCStates
     {
         Chase,
@@ -30,6 +33,7 @@ public class AIKrawlController : MonoBehaviour
 
     void Start()
     {
+        krawl = GetComponent<Krawl>();
         player = GameObject.FindGameObjectWithTag("Player");
         controller = GetComponent<CharacterController>();
 
@@ -66,7 +70,7 @@ public class AIKrawlController : MonoBehaviour
                 Chase();
                 break;
             case NPCStates.Guard:
-                Chase();
+                Guard();
                 break;
             case NPCStates.Attack:
                 Attack();
@@ -82,8 +86,8 @@ public class AIKrawlController : MonoBehaviour
 
     private void Chase()
     {
-       
-        if (GetComponent<Krawl>().gm.player.GetComponent<SpectrobeController>().evolved)
+
+        if (krawl.gm.player.GetComponent<SpectrobeController>().evolved)
         {
             currentState = NPCStates.Retreat;
         }
@@ -91,7 +95,28 @@ public class AIKrawlController : MonoBehaviour
         {
             currentState = NPCStates.Attack;
         }
-        if (useDijkstra)
+        if (defender)
+        {
+            GameObject closestVortex = krawl.gm.spawnLoci[0];
+
+            foreach (GameObject vortex in krawl.gm.spawnLoci)
+            {
+                if (Vector3.Distance(vortex.transform.position, transform.position) < Vector3.Distance(closestVortex.transform.position, transform.position))
+                {
+                    closestVortex = vortex;
+                }
+            }
+           
+                if (Vector3.Distance(closestVortex.transform.position, transform.position) > guardChaseRange)
+                {
+                    currentState = NPCStates.Guard;
+
+            }
+            
+            
+        }
+
+            if (useDijkstra)
         {
            
             path = pathfindingD.FindPath(this.transform.position, player.transform.position);
@@ -115,10 +140,10 @@ public class AIKrawlController : MonoBehaviour
 
 
        
-        foreach (GameObject k in GetComponent<Krawl>().gm.currentKrawl) {
+        foreach (GameObject k in krawl.gm.currentKrawl) {
          if(k != this.gameObject)
             {
-                if (Vector3.Distance(k.transform.position, transform.position) < 70)
+                if (Vector3.Distance(k.transform.position, transform.position) < groupingDistance)
                 {
                     if(!k.GetComponent<AIKrawlController>().grouped)
                     grouped = true;
@@ -142,9 +167,63 @@ public class AIKrawlController : MonoBehaviour
         }
     }
 
+    private void Guard()
+    {
+        if (krawl.gm.player.GetComponent<SpectrobeController>().evolved)
+        {
+            currentState = NPCStates.Retreat;
+        }
+        if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
+        {
+            currentState = NPCStates.Attack;
+        }
+        GameObject closestVortex = krawl.gm.spawnLoci[0];
+       
+        foreach (GameObject vortex in krawl.gm.spawnLoci)
+        {
+            if(Vector3.Distance(vortex.transform.position, transform.position) < Vector3.Distance(closestVortex.transform.position,transform.position))
+            {
+                  closestVortex = vortex;
+            }
+        }
+        if (Vector3.Distance(closestVortex.transform.position, player.transform.position) <= guardChaseRange)
+        {
+            currentState = NPCStates.Chase;
+        }
+        if (Vector3.Distance(closestVortex.transform.position, transform.position) < 35)
+        {
+            GetComponent<Animator>().SetBool("IsRunning", false);
+            GetComponent<Animator>().SetTrigger("Idle");
+            return;
+        }
+        if (useDijkstra)
+        {
+
+        path = pathfindingD.FindPath(this.transform.position, closestVortex.transform.position);
+
+        }
+        else
+        {
+            path = pathfinding.FindPath(this.transform.position, closestVortex.transform.position);
+        }
+        if (path.Count > 0)
+        {
+            target = new Vector3(path[0].worldPosition.x, this.transform.position.y, path[0].worldPosition.z);
+        }
+        if (!GetComponent<Animator>().GetBool("IsRunning"))
+        {
+
+            GetComponent<Animator>().SetTrigger("Idle");
+        }
+        GetComponent<Animator>().SetBool("IsRunning", true);
+        transform.LookAt(target);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        controller.SimpleMove(((target - transform.position).normalized) * moveSpeed);
+    }
+
     private void Attack()
     {
-        if (GetComponent<Krawl>().gm.player.GetComponent<SpectrobeController>().evolved)
+        if (krawl.gm.player.GetComponent<SpectrobeController>().evolved)
         {
             currentState = NPCStates.Retreat;
         }
@@ -173,9 +252,9 @@ public class AIKrawlController : MonoBehaviour
     private void Stagger()
     {
         GetComponent<Animator>().SetBool("IsRunning", false);
-        if (GetComponent<Krawl>().staggerCountdown <= 0)
+        if (krawl.staggerCountdown <= 0)
         {
-            GetComponent<Krawl>().deathCheck();
+            krawl.deathCheck();
             currentState = NPCStates.Chase;
 
             

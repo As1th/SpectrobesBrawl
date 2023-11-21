@@ -23,8 +23,7 @@ public class SwarHeadbuttDamage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (transform.root.gameObject.GetComponent<SwarController>().isAttacking)
-        {
+        
 
             if (other.gameObject.layer == 8 && other.gameObject.transform.root.GetComponent<SpectrobeController>().iframe == false && !hitOnce)
             {
@@ -34,6 +33,6 @@ public class SwarHeadbuttDamage : MonoBehaviour
                 //other.gameObject.transform.root.GetComponent<SpikanControl>().iframe = true;
                 Instantiate(attackParticle, this.gameObject.transform.position+(-transform.right*5), Quaternion.identity);
             }
-        }
+        
     }
 }

@@ -89,7 +89,7 @@ public class VortexController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 1)
+        if (other.gameObject.layer == 1 && other.gameObject.GetComponent<CHParticleDamage>() != null)
         {
             health -= other.gameObject.GetComponent<CHParticleDamage>().damage;
             Destroy(other.gameObject);

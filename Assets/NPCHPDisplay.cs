@@ -14,6 +14,6 @@ public class NPCHPDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<TextMeshPro>().text = "HP: " + (transform.root.GetComponent<Krawl>().health).ToString();
+        GetComponent<TextMeshPro>().text = "HP: " + Mathf.RoundToInt(transform.root.GetComponent<Krawl>().health).ToString();
     }
 }

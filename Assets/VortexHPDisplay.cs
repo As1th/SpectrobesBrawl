@@ -15,7 +15,8 @@ public class VortexHPDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = transform.root.GetComponent<VortexController>().health.ToString();
+        
+        text.text = Mathf.RoundToInt(transform.root.GetComponent<VortexController>().health).ToString();
         transform.LookAt(Camera.main.transform);
     }
 }

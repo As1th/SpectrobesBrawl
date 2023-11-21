@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     public bool spectrobeSwitchMode;
     public SceneDataSaver data;
     Menu menu;
-
+    public bool displayNPCStats;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,15 +87,24 @@ public class GameManager : MonoBehaviour
             spawnLoci.Add(SpawnLociArray.transform.GetChild(i).gameObject);
         }
         minKrawl = 0;
-        maxKrawl = 2;
+        maxKrawl = 3;
        
     }
     // Update is called once per frame
     void Update()
     {
-
-       
-        if (ch > 50)
+        if (Input.GetButtonDown("l"))
+        {
+            if (!displayNPCStats)
+            {
+                displayNPCStats = true;
+            }
+            else
+            {
+                displayNPCStats = false;
+            }
+        }
+            if (ch > 50)
         { ch = 50; }
 
         if (health < 0)
@@ -160,21 +169,21 @@ public class GameManager : MonoBehaviour
 
     public void startEasy()
     {
-        maxKrawlPerWave = 4;
-        swarmCount = 5;
+        maxKrawlPerWave = 3;
+        swarmCount = 4;
         beginGame();
 
     }
     public void startNormal()
     {
-        maxKrawlPerWave = 5;
-        swarmCount = 6;
+        maxKrawlPerWave = 4;
+        swarmCount = 5;
         beginGame();
     }
     public void startHard()
     {
-        maxKrawlPerWave = 6;
-        swarmCount = 7;
+        maxKrawlPerWave = 5;
+        swarmCount = 6;
         beginGame();
     }
     IEnumerator setNewWarning(string w, bool permanent)

@@ -5,25 +5,25 @@ using UnityEngine;
 public class NPCStatDisplay : MonoBehaviour
 {
     // Start is called before the first frame update
-    bool active = false;
+    GameManager gm;
     void Start()
     {
-        
+        gm = transform.root.GetComponent<Krawl>().gm;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("l"))
-        {
-            if (!active)
+       
+            if (gm.displayNPCStats)
             {
                 for (int i = 0; i < transform.childCount; i++)
                 {
                     transform.GetChild(i).gameObject.SetActive(true);
                     
                 }
-                active = true;
+                transform.LookAt(Camera.main.transform.position);
+               
             } else
             {
                 for (int i = 0; i < transform.childCount; i++)
@@ -31,9 +31,9 @@ public class NPCStatDisplay : MonoBehaviour
                     transform.GetChild(i).gameObject.SetActive(false);
 
                 }
-                active = false;
+               
             }
 
-        }
+        
     }
 }

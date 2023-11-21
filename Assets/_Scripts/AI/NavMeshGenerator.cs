@@ -20,7 +20,7 @@ public class NavMeshGenerator : MonoBehaviour
             GetComponent<NavMeshSurface>().collectObjects = CollectObjects.Children;
             GetComponent<NavMeshSurface>().BuildNavMesh();
             done = true;
-            print("dfd");
+           
         }
     }
 
