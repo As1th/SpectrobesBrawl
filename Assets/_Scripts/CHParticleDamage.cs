@@ -6,10 +6,12 @@ public class CHParticleDamage : MonoBehaviour
 {
     public GameObject attackParticle;
     public float damage;
+    public float dmgMultiplier;
     // Start is called before the first frame update
     void Start()
     {
-        
+        dmgMultiplier = Random.Range(0.8f, 1.2f);
+        damage *= dmgMultiplier;
     }
 
     // Update is called once per frame
