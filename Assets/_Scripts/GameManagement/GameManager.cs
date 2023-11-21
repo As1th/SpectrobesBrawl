@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         {
             beepLoop.Stop();
         }
-        evBar.UpdateValue((int)ev, 400);
+        //evBar.UpdateValue((int)ev, 400);
         chBar.UpdateValue((int)ch, 50);
         healthBar.UpdateValue((int)health, 300);
         if (player.GetComponent<SpectrobeController>().shield)
