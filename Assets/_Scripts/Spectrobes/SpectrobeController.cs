@@ -219,6 +219,7 @@ public class SpectrobeController : MonoBehaviour
             }
             else if (Input.GetButtonDown("Evolve"))
             {
+                /*
                 if (attackCoolDown == 0 && !stagger && !evolved && gm.ev >= EVCost) //used to be && controller.isGrounded instead of && !stagger
                 {
                     var eff = Instantiate(evolvePart, new Vector3(transform.position.x, transform.position.y + 18f, transform.position.z), Quaternion.identity);
@@ -247,7 +248,7 @@ public class SpectrobeController : MonoBehaviour
                     }
                     Destroy(this.gameObject);
                 }
-
+                */
             }
             else if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
             {
