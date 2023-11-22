@@ -81,7 +81,8 @@ public class VortexController : MonoBehaviour
         }
         if (defendSpawn == null)
         {
-            defendSpawn = Instantiate(gm.KrawlList[gm.maxKrawl-1], transform.position, Quaternion.identity);
+            int i = Random.Range(gm.minKrawl+2, gm.maxKrawl);
+            defendSpawn = Instantiate(gm.KrawlList[i], transform.position, Quaternion.identity);
             Instantiate(cloud, transform.position, Quaternion.identity);
         }
     }

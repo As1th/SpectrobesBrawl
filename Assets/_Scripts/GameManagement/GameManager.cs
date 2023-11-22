@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public UIBarScript chBar;
     public UIBarScript healthBar;
     public RawImage shieldIcon;
+    public RawImage X2Icon;
     public UIBarScript evBar;
     public GameObject pointCounter;
     public GameObject[] KrawlList;
@@ -134,6 +135,14 @@ public class GameManager : MonoBehaviour
         else
         {
             shieldIcon.enabled = false;
+        }
+        if (player.GetComponent<SpectrobeController>().hurtbox.gameObject.GetComponent<TailSwingDamage>().guaranteedCriticalHit)
+        {
+            X2Icon.enabled = true;
+        }
+        else
+        {
+            X2Icon.enabled = false;
         }
         pointCounter.GetComponent<Text>().text = score.ToString();
 
@@ -273,7 +282,7 @@ public class GameManager : MonoBehaviour
       //  print(x);
         for (y = x; y > 0; y--)
         {
-            int i = Random.Range(minKrawl, maxKrawl-1);
+            int i = Random.Range(minKrawl, maxKrawl-2);
             if (randomWaveMode)
             {
                 i = Random.Range(0, KrawlList.Length);

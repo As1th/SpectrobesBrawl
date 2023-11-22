@@ -28,7 +28,7 @@ public class CritPickup : MonoBehaviour
 
 
 
-            other.gameObject.transform.root.GetComponent<SpectrobeController>().hurtbox.GetComponent<TailSwingDamage>().guaranteedCriticalHit = true;
+            other.gameObject.transform.root.GetComponent<SpectrobeController>().hurtbox.gameObject.GetComponent<TailSwingDamage>().guaranteedCriticalHit = true;
 
 
             other.gameObject.transform.root.GetComponent<SpectrobeController>().gm.currentPowerups.Remove(this.gameObject);
