@@ -273,7 +273,7 @@ public class GameManager : MonoBehaviour
       //  print(x);
         for (y = x; y > 0; y--)
         {
-            int i = Random.Range(minKrawl, maxKrawl);
+            int i = Random.Range(minKrawl, maxKrawl-1);
             if (randomWaveMode)
             {
                 i = Random.Range(0, KrawlList.Length);
