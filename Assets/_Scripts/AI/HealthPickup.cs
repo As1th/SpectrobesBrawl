@@ -27,7 +27,7 @@ public class HealthPickup : MonoBehaviour
 
 
 
-        if (other.gameObject.layer == 11)
+        if (other.gameObject.layer == 11 && this.enabled)
         {
 
             if (other.gameObject.transform.root.GetComponent<SpectrobeController>().gm.health < 150)

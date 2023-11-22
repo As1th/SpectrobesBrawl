@@ -22,14 +22,14 @@ public class UltPickup : MonoBehaviour
 
 
 
-        if (other.gameObject.layer == 11)
+        if (other.gameObject.layer == 11 && this.enabled)
         {
 
 
 
 
             other.gameObject.transform.root.GetComponent<SpectrobeController>().ultimate = true;
-            other.gameObject.transform.root.GetComponent<SpectrobeController>().ultimateCountdown = 2100;
+            other.gameObject.transform.root.GetComponent<SpectrobeController>().ultimateCountdown = 1500;
 
             other.gameObject.transform.root.GetComponent<SpectrobeController>().gm.currentPowerups.Remove(this.gameObject);
             foreach (GameObject p in other.gameObject.transform.root.GetComponent<SpectrobeController>().gm.powerupLoci)

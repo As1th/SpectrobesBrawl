@@ -22,7 +22,7 @@ public class ShieldPickup : MonoBehaviour
 
 
 
-        if (other.gameObject.layer == 11)
+        if (other.gameObject.layer == 11 && this.enabled)
         {
 
 

@@ -32,6 +32,8 @@ public class MysteryPickup : MonoBehaviour
                 GetComponent<HealthPickup>().enabled = true;
                 break;
         }
+        this.enabled = false;
+        
     }
 
     // Update is called once per frame
