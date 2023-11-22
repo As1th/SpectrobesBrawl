@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public UIBarScript healthBar;
     public RawImage shieldIcon;
     public RawImage X2Icon;
+    public RawImage ultIcon;
     public UIBarScript evBar;
     public GameObject pointCounter;
     public GameObject[] KrawlList;
@@ -137,6 +138,14 @@ public class GameManager : MonoBehaviour
         else
         {
             shieldIcon.enabled = false;
+        }
+        if (player.GetComponent<SpectrobeController>().ultimate)
+        {
+           ultIcon.enabled = true;
+        }
+        else
+        {
+            ultIcon.enabled = false;
         }
         if (player.GetComponent<SpectrobeController>().hurtbox.gameObject.GetComponent<TailSwingDamage>().guaranteedCriticalHit)
         {

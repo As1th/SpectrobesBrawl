@@ -29,7 +29,7 @@ public class UltPickup : MonoBehaviour
 
 
             other.gameObject.transform.root.GetComponent<SpectrobeController>().ultimate = true;
-            other.gameObject.transform.root.GetComponent<SpectrobeController>().ultimateCountdown = 1000;
+            other.gameObject.transform.root.GetComponent<SpectrobeController>().ultimateCountdown = 2100;
 
             other.gameObject.transform.root.GetComponent<SpectrobeController>().gm.currentPowerups.Remove(this.gameObject);
             foreach (GameObject p in other.gameObject.transform.root.GetComponent<SpectrobeController>().gm.powerupLoci)
