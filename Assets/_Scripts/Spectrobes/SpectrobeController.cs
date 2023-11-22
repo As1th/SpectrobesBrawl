@@ -21,6 +21,7 @@ public class SpectrobeController : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     public float attackCoolDown = 0f;
     public float iframeCountdown=0f;
+    public float ultimateCountdown=0f;
     public float staggerCountdown = 0f;
     public float isAttackingCountDown=0f;
     public GameObject CHParts;
@@ -362,11 +363,19 @@ public class SpectrobeController : MonoBehaviour
         {
             iframe = false;
         }
-
+        if (ultimateCountdown > 0)
+        {
+            ultimateCountdown--;
+        }
+        else
+        {
+            ultimate = false;
+        }
         if (dashcooldown > 0)
         {
             dashcooldown--;
         }
+       
     }
     public void deathCheck()
     {
@@ -383,7 +392,7 @@ public class SpectrobeController : MonoBehaviour
     }
     public void Hit(Vector3 dir, float force, float dmg)
     {
-        if (!shield)
+        if (!shield && !ultimate)
         {
             // iframeCountdown = 65;
             gm.ch += 5;
