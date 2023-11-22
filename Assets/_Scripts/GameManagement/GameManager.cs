@@ -36,8 +36,10 @@ public class GameManager : MonoBehaviour
     public AudioSource bgm;
     public List<GameObject> currentKrawl = new List<GameObject>();
     public GameObject defeatPopup;
+    public GameObject victoryPopup;
     public TextMeshProUGUI scoreTextDefeatMenu;
     public TextMeshProUGUI wavesTextDefeatMenu;
+    public TextMeshProUGUI scoreTextVictoryMenu;
     public AudioSource beepLoop;
     public bool swarm = false;
     public TextMeshProUGUI warningText;
@@ -244,18 +246,28 @@ public class GameManager : MonoBehaviour
         beepCountdown.pitch = 1f;
         InvokeRepeating("spawn", 0, 2);
     }
- 
+
 
     public void defeatSequence()
     {
         defeat.Play();
         bgm.Stop();
-        beepLoop.enabled=false;
+        beepLoop.enabled = false;
         defeatPopup.SetActive(true);
         scoreTextDefeatMenu.text = score.ToString();
         int waves = (int)(score / 100);
         wavesTextDefeatMenu.text = waves.ToString();
-       menu.resume();
+        menu.resume();
+    }
+    public void victorySequence()
+    {
+       
+        
+        beepLoop.enabled = false;
+        victoryPopup.SetActive(true);
+        scoreTextVictoryMenu.text = score.ToString();
+      
+        menu.resume();
     }
     public void AddScore()
     {
@@ -295,7 +307,13 @@ public class GameManager : MonoBehaviour
     {
          if (spawnLoci.Count == 0)
         {
-            print("v");
+            Camera.main.gameObject.transform.parent = null;
+            Camera.main.gameObject.GetComponent<Rotate>().enabled = true;
+            Camera.main.gameObject.GetComponent<CameraControl>().enabled = false;
+           victorySequence();
+
+            player.GetComponent<SpectrobeController>().enabled = false;
+            player = null;
         }
     }
     public void spawn()

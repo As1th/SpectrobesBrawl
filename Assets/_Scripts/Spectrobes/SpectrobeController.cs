@@ -392,26 +392,33 @@ public class SpectrobeController : MonoBehaviour
     }
     public void Hit(Vector3 dir, float force, float dmg)
     {
-        if (!shield && !ultimate)
+        if (!ultimate)
         {
-            // iframeCountdown = 65;
-            gm.ch += 5;
-            if (!evolved)
+
+
+            if (!shield)
             {
-                gm.ev += 5;
+                // iframeCountdown = 65;
+                gm.ch += 5;
+                if (!evolved)
+                {
+                    gm.ev += 5;
+                }
+                deactivateHurtBox();
+                stagger = true;
+                staggerCountdown = 50;
+                impactReciever.AddImpact(dir, force);
+                // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
+                gm.health -= dmg;
+                animator.SetTrigger("Hit");
+
             }
-            deactivateHurtBox();
-            stagger = true;
-            staggerCountdown = 50;
-            impactReciever.AddImpact(dir, force);
-            // transform.rotation = Quaternion.LookRotation(new Vector3(-dir.x, 0, -dir.z));
-            gm.health -= dmg;
-            animator.SetTrigger("Hit");
+            else
+            {
+                shield = false;
+            }
         }
-        else
-        {
-            shield = false;
-        }
+        
 
     }
     public void spawnCHPartsKomadoros()
