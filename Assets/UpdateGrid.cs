@@ -9,11 +9,14 @@ public class UpdateGrid : MonoBehaviour
 {
     public Grid AStar;
     GameManager gm;
+    public bool drawPowerUpPaths;
     public SpawnPoints spawnObjects;
+    Pathfinding pathfinding;
     // Start is called before the first frame update
     void Start()
     {
         gm = this.GetComponent<GameManager>();
+        pathfinding = AStar.gameObject.GetComponent<Pathfinding>();
     }
 
     // Update is called once per frame
@@ -63,16 +66,30 @@ public class UpdateGrid : MonoBehaviour
                 Color color;
                 if (seekerMove != null && seekerMove.path != null && seekerMove.path.Count > 0)
                 {
-                    if (seekerMove.currentState == AIKrawlController.NPCStates.Guard)
-                    {
-                         color = Color.magenta;
-                    }
-                    else
+                    if (seekerMove.currentState == AIKrawlController.NPCStates.Chase)
                     {
                          color = Color.black;
                     }
+                    else
+                    {
+                         color = Color.magenta;
+                    }
                     
                     DrawPathGizmo(seekerMove.path, 20f, color); // Adjust the thickness as needed
+                }
+            }
+            if(drawPowerUpPaths)
+            {
+                foreach (GameObject powerup in gm.currentPowerups)
+                {
+                   var path = pathfinding.FindPath(powerup.transform.position, gm.player.transform.position);
+                   
+                    if (path != null && path.Count > 0 && powerup!=null)
+                    {
+                       
+
+                        DrawPathGizmo(path, 2f, Color.cyan); // Adjust the thickness as needed
+                    }
                 }
             }
 

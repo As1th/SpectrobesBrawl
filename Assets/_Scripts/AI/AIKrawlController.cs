@@ -93,7 +93,7 @@ public class AIKrawlController : MonoBehaviour
 
         foreach (GameObject vortex in krawl.gm.spawnLoci)
         {
-            if (Vector3.Distance(vortex.transform.position, player.transform.position) > Vector3.Distance(furthestVortexFromPlayer.transform.position, transform.position))
+            if (Vector3.Distance(vortex.transform.position, player.transform.position) > Vector3.Distance(furthestVortexFromPlayer.transform.position, player.transform.position))
             {
                 furthestVortexFromPlayer = vortex;
             }
