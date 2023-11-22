@@ -76,18 +76,83 @@ public class AIKrawlController : MonoBehaviour
                 Attack();
                 break;
             case NPCStates.Retreat:
-                Chase();
+                Retreat();
                 break;
             default:
                 Chase(); 
                 break;
         }
     }
+    private void Retreat()
+    {
+        if (!krawl.gm.player.GetComponent<SpectrobeController>().ultimate)
+        {
+            currentState = NPCStates.Chase;
+        }
+        GameObject furthestVortexFromPlayer = krawl.gm.spawnLoci[0];
 
+        foreach (GameObject vortex in krawl.gm.spawnLoci)
+        {
+            if (Vector3.Distance(vortex.transform.position, player.transform.position) > Vector3.Distance(furthestVortexFromPlayer.transform.position, transform.position))
+            {
+                furthestVortexFromPlayer = vortex;
+            }
+        }
+
+        if (useDijkstra)
+        {
+
+            path = pathfindingD.FindPath(this.transform.position, furthestVortexFromPlayer.transform.position);
+
+        }
+        else
+        {
+            path = pathfinding.FindPath(this.transform.position, furthestVortexFromPlayer.transform.position);
+        }
+        if (path.Count > 0)
+        {
+            target = new Vector3(path[0].worldPosition.x, this.transform.position.y, path[0].worldPosition.z);
+        }
+        if (!GetComponent<Animator>().GetBool("IsRunning"))
+        {
+
+            GetComponent<Animator>().SetTrigger("Idle");
+        }
+        GetComponent<Animator>().SetBool("IsRunning", true);
+        transform.LookAt(target);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        foreach (GameObject k in krawl.gm.currentKrawl)
+        {
+            if (k != this.gameObject)
+            {
+                if (Vector3.Distance(k.transform.position, transform.position) < groupingDistance)
+                {
+                    if (!k.GetComponent<AIKrawlController>().grouped)
+                        grouped = true;
+                    break;
+                }
+                else
+                {
+                    grouped = false;
+                }
+            }
+
+        }
+
+        if (grouped)
+        {
+            controller.SimpleMove(transform.right * moveSpeed);
+
+        }
+        else
+        {
+            controller.SimpleMove(((target - transform.position).normalized) * moveSpeed);
+        }
+    }
     private void Chase()
     {
 
-        if (krawl.gm.player.GetComponent<SpectrobeController>().evolved)
+        if (krawl.gm.player.GetComponent<SpectrobeController>().ultimate)
         {
             currentState = NPCStates.Retreat;
         }
@@ -169,7 +234,7 @@ public class AIKrawlController : MonoBehaviour
 
     private void Guard()
     {
-        if (krawl.gm.player.GetComponent<SpectrobeController>().evolved)
+        if (krawl.gm.player.GetComponent<SpectrobeController>().ultimate)
         {
             currentState = NPCStates.Retreat;
         }
@@ -218,12 +283,38 @@ public class AIKrawlController : MonoBehaviour
         GetComponent<Animator>().SetBool("IsRunning", true);
         transform.LookAt(target);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        controller.SimpleMove(((target - transform.position).normalized) * moveSpeed);
+        foreach (GameObject k in krawl.gm.currentKrawl)
+        {
+            if (k != this.gameObject)
+            {
+                if (Vector3.Distance(k.transform.position, transform.position) < groupingDistance)
+                {
+                    if (!k.GetComponent<AIKrawlController>().grouped)
+                        grouped = true;
+                    break;
+                }
+                else
+                {
+                    grouped = false;
+                }
+            }
+
+        }
+
+        if (grouped)
+        {
+            controller.SimpleMove(transform.right * moveSpeed);
+
+        }
+        else
+        {
+            controller.SimpleMove(((target - transform.position).normalized) * moveSpeed);
+        }
     }
 
     private void Attack()
     {
-        if (krawl.gm.player.GetComponent<SpectrobeController>().evolved)
+        if (krawl.gm.player.GetComponent<SpectrobeController>().ultimate)
         {
             currentState = NPCStates.Retreat;
         }

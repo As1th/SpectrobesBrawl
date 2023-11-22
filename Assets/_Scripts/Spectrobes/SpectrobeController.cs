@@ -6,6 +6,7 @@ public class SpectrobeController : MonoBehaviour
 
     // Start is called before the first frame update
     public bool shield;
+    public bool ultimate;
     private CharacterController controller;
     private Animator animator;
     public Transform rearAnchor;
