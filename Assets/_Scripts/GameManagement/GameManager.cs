@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
             spawnLoci.Add(SpawnLociArray.transform.GetChild(i).gameObject);
         }
         minKrawl = 0;
-        maxKrawl = 3;
+        maxKrawl = 4;
        
     }
     // Update is called once per frame

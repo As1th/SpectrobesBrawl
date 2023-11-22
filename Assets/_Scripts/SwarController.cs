@@ -94,6 +94,7 @@ public class SwarController : MonoBehaviour
     {
         weapon.GetComponent<SwarHeadbuttDamage>().hitOnce = false;
         deactivateHurtBox();
+        animator.SetBool("IsRunning", false);
         animator.SetTrigger("Idle");
         /*
         attackCoolDown = 10;

@@ -33,6 +33,7 @@ public class ViblovaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (!controller.isGrounded)
         {
             controller.Move(Vector3.down * 90.81f * Time.deltaTime);
@@ -76,11 +77,13 @@ public class ViblovaController : MonoBehaviour
         {
             attackCoolDown--;
         }
-
+        */
     }
 
     public void activateHurtBox()
     {
+        weapon.GetComponent<ViblovaDamage>().hitOnce = false;
+        weapon2.GetComponent<ViblovaDamage>().hitOnce = false;
         hurtbox.enabled = true;
         hurtbox2.enabled = true;
     }
@@ -96,6 +99,9 @@ public class ViblovaController : MonoBehaviour
         weapon.GetComponent<ViblovaDamage>().hitOnce = false;
         weapon2.GetComponent<ViblovaDamage>().hitOnce = false;
         deactivateHurtBox();
+        animator.SetBool("IsRunning", false);
+        animator.SetTrigger("Idle");
+        /*
         attackCoolDown = 10;
         //attackCoolDown = 30;
         animator.SetTrigger("Idle");
@@ -105,5 +111,6 @@ public class ViblovaController : MonoBehaviour
         krawl.deathCheck();
         //inRange = false;
       //  isAttacking = false;
+        */
     }
 }

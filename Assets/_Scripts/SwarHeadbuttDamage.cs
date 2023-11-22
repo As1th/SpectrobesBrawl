@@ -6,10 +6,13 @@ public class SwarHeadbuttDamage : MonoBehaviour
 {
     public GameObject attackParticle;
     public bool hitOnce = false;
+    public float damage;
+    public float dmgMultiplier;
     // Start is called before the first frame update
     void Start()
     {
-
+        dmgMultiplier = Random.Range(1f, 1.6f);
+        damage *= dmgMultiplier;
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class SwarHeadbuttDamage : MonoBehaviour
             {
                 hitOnce = true;
                 Vector3 hitDir = (other.gameObject.transform.root.position - transform.root.position);
-                other.gameObject.transform.root.GetComponent<SpectrobeController>().Hit(new Vector3(hitDir.x, 12, hitDir.z) * Time.deltaTime, 800, dmg:10);
+                other.gameObject.transform.root.GetComponent<SpectrobeController>().Hit(new Vector3(hitDir.x, 12, hitDir.z) * Time.deltaTime, 800, dmg:damage);
                 //other.gameObject.transform.root.GetComponent<SpikanControl>().iframe = true;
                 Instantiate(attackParticle, this.gameObject.transform.position+(-transform.right*5), Quaternion.identity);
             }

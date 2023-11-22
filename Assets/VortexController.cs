@@ -12,6 +12,7 @@ public class VortexController : MonoBehaviour
     public GameManager gm;
     public GameObject defendSpawn;
     public VortexStates currentState = VortexStates.Wait;
+    public GameObject attackParticle;
     public enum VortexStates
     {
         Wait,
@@ -80,7 +81,8 @@ public class VortexController : MonoBehaviour
         }
         if (defendSpawn == null)
         {
-            defendSpawn = Instantiate(gm.KrawlList[gm.maxKrawl], transform.position, Quaternion.identity);
+            defendSpawn = Instantiate(gm.KrawlList[gm.maxKrawl-1], transform.position, Quaternion.identity);
+            Instantiate(cloud, transform.position, Quaternion.identity);
         }
     }
     // Update is called once per frame
@@ -92,12 +94,15 @@ public class VortexController : MonoBehaviour
         if (other.gameObject.layer == 1 && other.gameObject.GetComponent<CHParticleDamage>() != null)
         {
             health -= other.gameObject.GetComponent<CHParticleDamage>().damage;
+            Instantiate(attackParticle, other.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
+           
 
         }
         else if (other.gameObject.layer == 9)
         {
             health -= other.gameObject.GetComponent<TailSwingDamage>().damage;
+            Instantiate(attackParticle, other.transform.position, Quaternion.identity);
         }
     }
 
