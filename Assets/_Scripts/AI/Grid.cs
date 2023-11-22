@@ -67,6 +67,10 @@ public class Grid : MonoBehaviour
                     currentState = tileStates.vortex;
 
                 }
+                if (Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y - 350, worldPoint.z), nodeRadius, layerMask: krawlMask))
+                {
+                    currentState = tileStates.krawl;
+                }
                 if ((Physics.CheckCapsule(worldPoint, new Vector3(worldPoint.x, worldPoint.y - 350, worldPoint.z), nodeRadius, layerMask: unwalkableMask)))
                 {
 					currentState = tileStates.unwalkable;
