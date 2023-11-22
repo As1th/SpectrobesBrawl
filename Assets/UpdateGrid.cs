@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
+using UnityEditor.Recorder.Encoder;
 using UnityEngine;
 
 public class UpdateGrid : MonoBehaviour
@@ -59,10 +60,19 @@ public class UpdateGrid : MonoBehaviour
             foreach (GameObject krawl in gm.currentKrawl)
             {
                 AIKrawlController seekerMove = krawl.GetComponent<AIKrawlController>();
-
+                Color color;
                 if (seekerMove != null && seekerMove.path != null && seekerMove.path.Count > 0)
                 {
-                    DrawPathGizmo(seekerMove.path, 20f); // Adjust the thickness as needed
+                    if (seekerMove.currentState == AIKrawlController.NPCStates.Guard)
+                    {
+                         color = Color.magenta;
+                    }
+                    else
+                    {
+                         color = Color.black;
+                    }
+                    
+                    DrawPathGizmo(seekerMove.path, 20f, color); // Adjust the thickness as needed
                 }
             }
 
@@ -70,9 +80,9 @@ public class UpdateGrid : MonoBehaviour
     }
 
 
-    void DrawPathGizmo(List<Node> path, float thickness)
+    void DrawPathGizmo(List<Node> path, float thickness, Color color)
     {
-        Gizmos.color = Color.black;
+        Gizmos.color = color;
 
         for (int i = 0; i < path.Count - 1; i++)
         {
