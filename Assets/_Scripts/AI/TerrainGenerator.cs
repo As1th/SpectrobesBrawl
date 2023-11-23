@@ -44,10 +44,12 @@ public class TerrainGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+      
         //mesh = new Mesh();
-       // mesh.name = "Procedural Terrain";
-      //  meshFilter = GetComponent<MeshFilter>();
-       // meshFilter.mesh = mesh;
+        // mesh.name = "Procedural Terrain";
+        //  meshFilter = GetComponent<MeshFilter>();
+        // meshFilter.mesh = mesh;
         Seed = Random.Range(0,999999);
        CreateMesh();
         //UpdateMesh();
@@ -61,6 +63,7 @@ public class TerrainGenerator : MonoBehaviour
 
     private void DrawVertices()
     {
+        var timer = System.Diagnostics.Stopwatch.StartNew();
         for (int i = 0; i < vertices.Length; i++)
         {
             var tile = Instantiate(VertexObject, vertices[i], Quaternion.Euler(-90,0,0), transform);
@@ -70,7 +73,12 @@ public class TerrainGenerator : MonoBehaviour
                 
             }
         }
-        
+
+        timer.Stop();
+        long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
+        long numberOfTicks = timer.ElapsedTicks;
+        long nanoseconds = numberOfTicks * nanosecondsPerTick;
+        Debug.Log(string.Format("Creating cubic terrain took {0} nanoseconds to complete.", nanoseconds.ToString()));
     }
 
     private void UpdateMesh()
@@ -85,6 +93,7 @@ public class TerrainGenerator : MonoBehaviour
 
     void CreateMesh()
     {
+        var timer = System.Diagnostics.Stopwatch.StartNew();
         //Vertices
         vertices = new Vector3[(Width + 1) * (Depth + 1)];
         var noiseArray = PerlinNoise();
@@ -155,6 +164,12 @@ public class TerrainGenerator : MonoBehaviour
             }
         }
         */
+
+        timer.Stop();
+        long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
+        long numberOfTicks = timer.ElapsedTicks;
+        long nanoseconds = numberOfTicks * nanosecondsPerTick;
+        Debug.Log(string.Format("Generating Perlin Noise point vertices took {0} nanoseconds to complete.", nanoseconds.ToString()));
     }
 
     float[] PerlinNoise()
@@ -220,7 +235,7 @@ public class TerrainGenerator : MonoBehaviour
                 k++;
             }
         }
-        //print(noiseArray[1]);
+     
         return noiseArray;
     }
 }
