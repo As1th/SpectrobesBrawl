@@ -30,7 +30,7 @@ public class SpectrobeController : MonoBehaviour
     public float forwardCHCharge;
     public GameObject normalAttackCollider;
     public GameObject normalAttackCollider2;
-    Vector3 velocity;
+  
     public bool stagger;
     public bool iframe = false;
     public bool permaGround;
@@ -123,7 +123,7 @@ public class SpectrobeController : MonoBehaviour
     {
         if (touch)
         {
-           controller.SimpleMove(transform.forward * 100);
+          // controller.SimpleMove(transform.forward * 100);
         }
         touch = false;
         if (!controller.isGrounded)
@@ -172,7 +172,7 @@ public class SpectrobeController : MonoBehaviour
         {
 
            
-            if (Input.GetButtonDown("Attack"))
+            if (Input.GetButtonDown("Attack") && (!gm.difficultyMenu.activeSelf))
             {
                 if (attackCoolDown == 0 && !stagger) //used to be && controller.isGrounded instead of && !stagger
                 {
@@ -192,7 +192,7 @@ public class SpectrobeController : MonoBehaviour
                 }
 
             }
-            else if (Input.GetButtonDown("Attack2"))
+            else if (Input.GetButtonDown("Attack2") && (!gm.difficultyMenu.activeSelf))
             {
                 if (attackCoolDown == 0 && !stagger && gm.ch >= CHCost)//used to be && controller.isGrounded instead of && !stagger
                 {
@@ -252,7 +252,7 @@ public class SpectrobeController : MonoBehaviour
                 }
                 */
             }
-            else if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+            else if ((Input.GetButton("Horizontal") || Input.GetButton("Vertical")) && (!gm.difficultyMenu.activeSelf))
             {
                 if (menu.introScene)
                 {

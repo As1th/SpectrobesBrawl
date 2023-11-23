@@ -13,6 +13,7 @@ public class VortexController : MonoBehaviour
     public GameObject defendSpawn;
     public VortexStates currentState = VortexStates.Wait;
     public GameObject attackParticle;
+    public GameObject attackParticleSmall;
     public enum VortexStates
     {
         Wait,
@@ -79,7 +80,7 @@ public class VortexController : MonoBehaviour
         {
             currentState = VortexStates.Wait;
         }
-        if (defendSpawn == null)
+        if (defendSpawn == null && !gm.difficultyMenu.activeSelf)
         {
             int i = Random.Range(gm.minKrawl+2, gm.maxKrawl);
             defendSpawn = Instantiate(gm.KrawlList[i], transform.position, Quaternion.identity);
@@ -95,7 +96,8 @@ public class VortexController : MonoBehaviour
         if (other.gameObject.layer == 1 && other.gameObject.GetComponent<CHParticleDamage>() != null)
         {
             health -= other.gameObject.GetComponent<CHParticleDamage>().damage;
-            Instantiate(attackParticle, other.transform.position, Quaternion.identity);
+            Instantiate(attackParticleSmall, other.transform.position, Quaternion.identity);
+           
             Destroy(other.gameObject);
            
 
@@ -103,6 +105,7 @@ public class VortexController : MonoBehaviour
         else if (other.gameObject.layer == 9)
         {
             health -= other.gameObject.GetComponent<TailSwingDamage>().damage;
+            other.GetComponent<AudioSource>().Play();
             Instantiate(attackParticle, other.transform.position, Quaternion.identity);
         }
     }

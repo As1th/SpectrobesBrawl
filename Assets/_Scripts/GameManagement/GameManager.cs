@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
             ev = 400;
             if (!beepLoop.isPlaying)
             {
-                beepLoop.Play();
+              //  beepLoop.Play();
             }
         }
         else

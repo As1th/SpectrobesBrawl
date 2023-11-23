@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using UnityEngine.AI;
+//using System.Collections.Generic;
+// UnityEngine.AI;
 using UnityEngine;
-using System;
+// System;
 using Unity.AI.Navigation;
-using static Unity.VisualScripting.Metadata;
-using Palmmedia.ReportGenerator.Core;
+//using static Unity.VisualScripting.Metadata;
+//using Palmmedia.ReportGenerator.Core;
 
 public class NavMeshGenerator : MonoBehaviour
 {

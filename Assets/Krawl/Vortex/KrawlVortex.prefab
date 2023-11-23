@@ -462,7 +462,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 13
+  m_Radius: 12.1
   m_Height: 45.39
   m_Direction: 1
   m_Center: {x: 0, y: 17.7, z: 0}
@@ -485,6 +485,7 @@ MonoBehaviour:
   defendSpawn: {fileID: 0}
   currentState: 0
   attackParticle: {fileID: 4697218109777110270, guid: 8f70d061242024a4a96296858b5aab51, type: 3}
+  attackParticleSmall: {fileID: 4697218109777110270, guid: f2aec409037c1a04abb7cff16d4a70b9, type: 3}
 --- !u!136 &827684790420945679
 CapsuleCollider:
   m_ObjectHideFlags: 0
