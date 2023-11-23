@@ -19024,7 +19024,7 @@ MonoBehaviour:
   randomWaveMode: 0
   spectrobeSwitchMode: 0
   data: {fileID: 0}
-  displayNPCStats: 0
+  displayNPCStats: 1
 --- !u!114 &1217110870
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     public bool spectrobeSwitchMode;
     public SceneDataSaver data;
     Menu menu;
-    public bool displayNPCStats;
+    public bool displayNPCStats = true;
     // Start is called before the first frame update
     void Start()
     {
