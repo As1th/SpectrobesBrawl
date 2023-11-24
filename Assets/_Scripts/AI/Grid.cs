@@ -39,8 +39,9 @@ public class Grid : MonoBehaviour
 	}
 
 	public void CreateGrid() // creates the grid of nodes
-	{
-		nodeGrid = new Node[gridSizeX, gridSizeY];
+    {
+        var timer = System.Diagnostics.Stopwatch.StartNew();
+        nodeGrid = new Node[gridSizeX, gridSizeY];
 		Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2;
         bool walkable;
         tileStates currentState;
@@ -86,8 +87,12 @@ public class Grid : MonoBehaviour
 			}
 		}
 
-        
-	}
+        timer.Stop();
+        long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
+        long numberOfTicks = timer.ElapsedTicks;
+        long nanoseconds = numberOfTicks * nanosecondsPerTick;
+        Debug.Log(string.Format("Creating Grid {0} nanoseconds to complete.", nanoseconds.ToString()));
+    }
 
     
 
@@ -105,6 +110,7 @@ public class Grid : MonoBehaviour
 
     public List<Node> GetLargestWhiteArea()
     {
+        var timer = System.Diagnostics.Stopwatch.StartNew();
         List<Node> largestWhiteArea = new List<Node>();
         List<Node> currentWhiteArea = new List<Node>();
 
@@ -130,7 +136,11 @@ public class Grid : MonoBehaviour
 
         // Mark all nodes as not visited for future use
         ResetVisitedNodes();
-
+        timer.Stop();
+        long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
+        long numberOfTicks = timer.ElapsedTicks;
+        long nanoseconds = numberOfTicks * nanosecondsPerTick;
+        Debug.Log(string.Format("Selecting largest play area took {0} nanoseconds to complete.", nanoseconds.ToString()));
         return largestWhiteArea;
     }
 
@@ -193,6 +203,7 @@ public class Grid : MonoBehaviour
 
     public Node GetMostCentralNode(List<Node> nodes)
     {
+        var timer = System.Diagnostics.Stopwatch.StartNew();
         if (nodes.Count == 0)
         {
             Debug.LogError("Node list is empty.");
@@ -220,12 +231,17 @@ public class Grid : MonoBehaviour
                 mostCentralNode = nodes[i];
             }
         }
-
+        timer.Stop();
+        long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
+        long numberOfTicks = timer.ElapsedTicks;
+        long nanoseconds = numberOfTicks * nanosecondsPerTick;
+        Debug.Log(string.Format("Calculating central node for player took {0} nanoseconds to complete.", nanoseconds.ToString()));
         return mostCentralNode;
     }
 
     public List<Node> GetEvenlySpacedNodes(List<Node> nodes, Vector3 center, float radius, float initialMinRadius, int numberOfNodes)
     {
+        var timer = System.Diagnostics.Stopwatch.StartNew();
         List<Node> evenlySpacedNodes = new List<Node>();
 
         if (numberOfNodes <= 0)
@@ -296,12 +312,18 @@ public class Grid : MonoBehaviour
             // Reduce the minimum radius and try again
             minRadius += 1f; // Adjust this value based on your needs
         }
-
+        timer.Stop();
+        long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
+        long numberOfTicks = timer.ElapsedTicks;
+        long nanoseconds = numberOfTicks * nanosecondsPerTick;
+        Debug.Log(string.Format("Selecting pickables tiles took {0} nanoseconds to complete.", nanoseconds.ToString()));
         return evenlySpacedNodes;
+        
     }
 
     public List<Node> GetMaxSeparationFlushBorderNodes(List<Node> largestWhiteArea, int numberOfNodes)
     {
+        var timer = System.Diagnostics.Stopwatch.StartNew();
         List<Node> evenlySpacedNodes = new List<Node>();
 
         if (numberOfNodes <= 0)
@@ -365,7 +387,11 @@ public class Grid : MonoBehaviour
 
         // Trim the result list to the desired number of nodes
         evenlySpacedNodes = evenlySpacedNodes.Take(numberOfNodes).ToList();
-
+        timer.Stop();
+        long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
+        long numberOfTicks = timer.ElapsedTicks;
+        long nanoseconds = numberOfTicks * nanosecondsPerTick;
+        Debug.Log(string.Format("Selecting Objective tiles took {0} nanoseconds to complete.", nanoseconds.ToString()));
         return evenlySpacedNodes;
     }
 
