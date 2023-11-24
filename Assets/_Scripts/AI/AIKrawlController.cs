@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class AIKrawlController : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class AIKrawlController : MonoBehaviour
     public float guardChaseRange;
      float attackCooldown;
     public float groupingDistance;
+        public float retreatHealTimer;
     Krawl krawl;
     public enum NPCStates
     {
@@ -85,10 +87,18 @@ public class AIKrawlController : MonoBehaviour
     }
     private void Retreat()
     {
-        if (!krawl.gm.player.GetComponent<SpectrobeController>().ultimate)
+        if (!krawl.gm.player.GetComponent<SpectrobeController>().ultimate && krawl.health>10)
         {
             currentState = NPCStates.Chase;
         }
+        if (retreatHealTimer > 0)
+        {
+            retreatHealTimer -= 1;
+        } else
+        {
+            krawl.health = 40;
+        }
+        
         GameObject furthestVortexFromPlayer = krawl.gm.spawnLoci[0];
 
         foreach (GameObject vortex in krawl.gm.spawnLoci)
@@ -151,10 +161,11 @@ public class AIKrawlController : MonoBehaviour
     }
     private void Chase()
     {
-
+        retreatHealTimer = 1700;
         if (krawl.gm.player.GetComponent<SpectrobeController>().ultimate)
         {
             currentState = NPCStates.Retreat;
+            retreatHealTimer = 1700;
         }
         if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
         {
@@ -237,6 +248,7 @@ public class AIKrawlController : MonoBehaviour
         if (krawl.gm.player.GetComponent<SpectrobeController>().ultimate)
         {
             currentState = NPCStates.Retreat;
+            retreatHealTimer = 1700;
         }
         if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
         {
@@ -317,6 +329,7 @@ public class AIKrawlController : MonoBehaviour
         if (krawl.gm.player.GetComponent<SpectrobeController>().ultimate)
         {
             currentState = NPCStates.Retreat;
+            retreatHealTimer = 1700;
         }
         if (Vector3.Distance(player.transform.position, transform.position) > attackRange)
         {
@@ -346,9 +359,25 @@ public class AIKrawlController : MonoBehaviour
         if (krawl.staggerCountdown <= 0)
         {
             krawl.deathCheck();
-            currentState = NPCStates.Chase;
+            if (krawl.health <= 10)
+            {
+                int random = Random.Range(0, 9);
+                if (random > 5)
+                {
+                    currentState = NPCStates.Retreat;
+                    retreatHealTimer = 1700;
+                }
+                else
+                {
+                    currentState = NPCStates.Chase;
+                }
+            }
+            else
+            {
+                currentState = NPCStates.Chase;
+            }
 
-            
+
         }
     }
 }
