@@ -91,7 +91,7 @@ public class Grid : MonoBehaviour
         long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
         long numberOfTicks = timer.ElapsedTicks;
         long nanoseconds = numberOfTicks * nanosecondsPerTick;
-        Debug.Log(string.Format("Creating Grid {0} nanoseconds to complete.", nanoseconds.ToString()));
+    //    Debug.Log(string.Format("Creating Grid {0} nanoseconds to complete.", nanoseconds.ToString()));
     }
 
     

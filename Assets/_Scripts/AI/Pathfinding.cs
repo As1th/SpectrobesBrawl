@@ -30,7 +30,7 @@ public class Pathfinding : MonoBehaviour
         Node startNode = grid.NodeFromWorldPoint(startPos); // starting point
 		Node targetNode = grid.NodeFromWorldPoint(targetPos); // destination
 
-	
+		
 
 		List<Node> openSet = new List<Node>();
 		HashSet<Node> closedSet = new HashSet<Node>();
@@ -52,8 +52,13 @@ public class Pathfinding : MonoBehaviour
 
 			if (currentNode == targetNode)
 			{
-				
-				return RetracePath(startNode, currentNode);
+                timer.Stop();
+                long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
+                long numberOfTicks = timer.ElapsedTicks;
+                long nanoseconds = numberOfTicks * nanosecondsPerTick;
+				var dist = Vector3.Distance(startPos, targetPos);
+                Debug.Log(string.Format("The A* Search from {0} to {1} [{3}] took {2} nanoseconds to complete.", startPos.ToString(), targetPos.ToString(), nanoseconds.ToString(), dist.ToString()));
+                return RetracePath(startNode, currentNode);
             }
 			List<Node> currentNeighbours = GetNeighbours(currentNode);
 			foreach (Node neighbour in currentNeighbours)
@@ -88,11 +93,7 @@ public class Pathfinding : MonoBehaviour
         }
 
 
-		timer.Stop();
-		long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
-		long numberOfTicks = timer.ElapsedTicks;
-		long nanoseconds = numberOfTicks * nanosecondsPerTick;
-		Debug.Log(string.Format("The A* Search from {0} to {1} took {2} nanoseconds to complete.", startPos.ToString(), targetPos.ToString(), nanoseconds.ToString()));
+	
         return RetracePath(startNode, currentNode);
     }
 
