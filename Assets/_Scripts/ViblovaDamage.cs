@@ -12,6 +12,11 @@ public class ViblovaDamage : MonoBehaviour
     void Start()
     {
         dmgMultiplier = Random.Range(1f, 1.6f);
+        float newMultiplier = Random.Range(1f, 1.6f);
+        if (newMultiplier > dmgMultiplier)
+        {
+            dmgMultiplier = newMultiplier;
+        }
         damage *= dmgMultiplier;
     }
 

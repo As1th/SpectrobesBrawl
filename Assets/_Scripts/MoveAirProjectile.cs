@@ -24,7 +24,12 @@ public class MoveAirProjectile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * speed);
         scripts = GameObject.Find("Scripts");
-        dmgMultiplier = Random.Range(0.7f, 1.1f);
+        dmgMultiplier = Random.Range(0.75f, 1.1f);
+        float newMultiplier = Random.Range(0.75f, 1.1f);
+        if (newMultiplier < dmgMultiplier)
+        {
+            dmgMultiplier = newMultiplier;
+        }
         mainDamage *= dmgMultiplier;
         deflectedDamage *= dmgMultiplier;
     }
