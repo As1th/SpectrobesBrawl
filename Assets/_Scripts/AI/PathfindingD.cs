@@ -81,7 +81,7 @@ public class PathfindingD : MonoBehaviour
         long nanosecondsPerTick = (1000L * 1000L * 1000L) / System.Diagnostics.Stopwatch.Frequency;
         long numberOfTicks = timer.ElapsedTicks;
         long nanoseconds = numberOfTicks * nanosecondsPerTick;
-        // Debug.Log(string.Format("Dijkstra's Search from {0} to {1} took {2} nanoseconds to complete.", startPos.ToString(), targetPos.ToString(), nanoseconds.ToString()));
+        Debug.Log(string.Format("Dijkstra's Search from {0} to {1} took {2} nanoseconds to complete.", startPos.ToString(), targetPos.ToString(), nanoseconds.ToString()));
         return RetracePath(startNode, currentNode);
     }
     public List<Node> RetracePath(Node startNode, Node endNode) // retraces the path by using the parent property stored in each node, saves this path in a list and passes it to the grid class to be handled

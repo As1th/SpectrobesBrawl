@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpawnPoints : MonoBehaviour
 {
@@ -60,6 +61,7 @@ public class SpawnPoints : MonoBehaviour
         foreach (Node node in points)
         {
            GetComponent<GameManager>().spawnLoci.Add( Instantiate(krawlVortex, node.worldPosition, Quaternion.identity));
+
         }
 
     }
@@ -71,6 +73,14 @@ public class SpawnPoints : MonoBehaviour
         foreach (Node node in points)
         {
             var p = Instantiate(powerup, node.worldPosition, Quaternion.identity);
+
+            /* Deploying assets based on NavMesh for the CW. Alternate method used in practice.
+            if (p.GetComponent<NavMeshAgent>().pathStatus == NavMeshPathStatus.PathPartial)
+            {
+                print("NavMesh accesibility failed.");
+            }
+            */
+
             p.GetComponent<PowerupSpawner>().gm = this.gameObject.GetComponent<GameManager>();
            
             GetComponent<GameManager>().powerupLoci.Add( p );

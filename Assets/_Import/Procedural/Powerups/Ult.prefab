@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4513689904664370130}
   - component: {fileID: 4641771610282400183}
   - component: {fileID: 1669663275466824475}
+  - component: {fileID: -569685069637169671}
   m_Layer: 19
   m_Name: Ult
   m_TagString: Untagged
@@ -204,3 +205,25 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.18
   m_Center: {x: 0, y: -0.2, z: -0.17}
+--- !u!195 &-569685069637169671
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056762684493915918}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

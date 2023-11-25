@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2057662184172593846}
   - component: {fileID: 7390908515482929201}
   - component: {fileID: 3919050229999734275}
+  - component: {fileID: 9192858593926972894}
   m_Layer: 19
   m_Name: Shield
   m_TagString: Untagged
@@ -121,6 +122,28 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2.8
   m_Center: {x: 0, y: 0, z: -0.52}
+--- !u!195 &9192858593926972894
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8540911708660332070}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8697599835890519903
 GameObject:
   m_ObjectHideFlags: 0
