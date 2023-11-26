@@ -18982,7 +18982,7 @@ MonoBehaviour:
   - {fileID: 5544784180868175928, guid: a2445a3afddb88f4a866954006ad7043, type: 3}
   currentPowerups: []
   score: 0
-  ch: 0
+  ch: 50
   ev: 0
   health: 300
   healthStore: 0
