@@ -69,13 +69,16 @@ public class UpdateGrid : MonoBehaviour
                     if (seekerMove.currentState == AIKrawlController.NPCStates.Chase)
                     {
                          color = Color.black;
+                        DrawPathGizmo(seekerMove.path, 20f, color); // Adjust the thickness as needed
                     }
-                    else
+                    else if (seekerMove.currentState == AIKrawlController.NPCStates.Guard || seekerMove.currentState == AIKrawlController.NPCStates.Retreat)
+                  
                     {
                          color = Color.magenta;
-                    }
+                        DrawPathGizmo(seekerMove.path, 20f, color); // Adjust the thickness as needed
+                    } 
                     
-                    DrawPathGizmo(seekerMove.path, 20f, color); // Adjust the thickness as needed
+                   
                 }
             }
             if(drawPowerUpPaths)

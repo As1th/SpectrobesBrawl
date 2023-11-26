@@ -383,6 +383,7 @@ public class SpectrobeController : MonoBehaviour
         {
             Instantiate(cloud, transform.position, Quaternion.identity);
             Camera.main.gameObject.transform.parent = null;
+            Camera.main.gameObject.GetComponent<CameraControl>().enabled = false;
             Camera.main.gameObject.GetComponent<Rotate>().enabled = true;
           gm.lost = true;
           gm.defeatSequence();
