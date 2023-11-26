@@ -63,25 +63,57 @@ public class UpdateGrid : MonoBehaviour
             foreach (GameObject krawl in gm.currentKrawl)
             {
                 AIKrawlController seekerMove = krawl.GetComponent<AIKrawlController>();
-                Color color;
+               
                 if (seekerMove != null && seekerMove.path != null && seekerMove.path.Count > 0)
                 {
+                    Color color = Color.black;
                     if (seekerMove.currentState == AIKrawlController.NPCStates.Chase)
                     {
                          color = Color.black;
-                        DrawPathGizmo(seekerMove.path, 20f, color); // Adjust the thickness as needed
+                       
                     }
                     else if (seekerMove.currentState == AIKrawlController.NPCStates.Guard || seekerMove.currentState == AIKrawlController.NPCStates.Retreat)
                   
                     {
                          color = Color.magenta;
-                        DrawPathGizmo(seekerMove.path, 20f, color); // Adjust the thickness as needed
-                    } 
-                    
-                   
+                       
+                       
+                    }
+
+                    DrawPathGizmo(seekerMove.path, 20f, color); // Adjust the thickness as needed
                 }
             }
-            if(drawPowerUpPaths)
+
+            foreach (GameObject vortex in gm.spawnLoci)
+            {
+                var v = vortex.GetComponent<VortexController>();
+                if (v.defendSpawn != null)
+                {
+                    AIKrawlController seekerMove = v.defendSpawn.GetComponent<AIKrawlController>();
+                  
+                    if (seekerMove != null && seekerMove.path != null && seekerMove.path.Count > 0)
+                    {
+                        Color color = Color.black;
+                        if (seekerMove.currentState == AIKrawlController.NPCStates.Chase)
+                        {
+                            color = Color.black;
+
+                        }
+                        else if (seekerMove.currentState == AIKrawlController.NPCStates.Guard || seekerMove.currentState == AIKrawlController.NPCStates.Retreat)
+
+                        {
+                            color = Color.magenta;
+
+
+                        }
+
+                        DrawPathGizmo(seekerMove.path, 20f, color); // Adjust the thickness as needed
+                    }
+                }
+
+
+            }
+            if (drawPowerUpPaths)
             {
                 foreach (GameObject powerup in gm.currentPowerups)
                 {

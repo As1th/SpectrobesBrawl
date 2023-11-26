@@ -276,7 +276,7 @@ public class AIKrawlController : MonoBehaviour
         if (useDijkstra)
         {
 
-        path = pathfindingD.FindPath(this.transform.position, closestVortex.transform.position);
+            path = pathfindingD.FindPath(this.transform.position, closestVortex.transform.position);
 
         }
         else
